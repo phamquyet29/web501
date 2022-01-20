@@ -7,20 +7,19 @@ import NewsPage from "./pages/news";
 
 const router = new Navigo("/", { linksSelector: "a" });
 
-const print = (content) => {
-    document.getElementById("header").innerHTML = Header.render();
-    document.getElementById("app").innerHTML = content;
+const print = async (content) => {
+    document.getElementById("app").innerHTML = await content.render();
 };
 
 router.on({
     "/": () => {
-        print(HomePage.render());
+        print(HomePage);
     },
     "/about": () => {
-        print(AboutPage.render());
+        print(AboutPage);
     },
     "/news": () => {
-        print(NewsPage.render());
+        print(NewsPage);
     },
     "/news/:id": ({ data }) => {
         const { id } = data;
@@ -28,3 +27,33 @@ router.on({
     },
 });
 router.resolve();
+
+
+
+const render = () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            try {
+                // connect sucessfully
+                resolve("Hello Async/await")
+            } catch (error) {
+                reject("Lỗi");
+            }
+        }, 3000)
+    })
+}
+
+// render()
+//     .then(result => {
+//         result.push(5);
+//         return result;
+//     })
+//     .then(data => {
+//         data.push(6);
+//     })
+//     .catch(error => console.log(error))
+
+const printFunctionPromise = async () => {
+    const result = await render();
+    return result;
+}
