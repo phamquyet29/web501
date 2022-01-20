@@ -1,9 +1,7 @@
-import data from "../data";
-
+import axios from 'axios';
 const NewsList = {
     async render() {
-        const response = await fetch('http://localhost:3001/posts');
-        const data = await response.json();
+        const { data } = await axios.get('http://localhost:3001/posts');
         return  /* html */`
             <h2 class="font-semibold text-2xl uppercase text-blue-800 my-4">Tin tức học tập</h2>
             <div class="grid grid-cols-3 gap-8">

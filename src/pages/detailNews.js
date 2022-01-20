@@ -1,8 +1,9 @@
+import axios from 'axios';
+
 const DetailNewsPage = {
     async render(id) {
         // const result = data.find((post) => post.id === id);
-        const response = await fetch('http://localhost:3001/posts/'+id);
-        const data = await response.json();
+        const { data } = await axios.get('http://localhost:3001/posts/'+id);
         return `
             <h1>${data.title}</h1>
             <img src="${data.img}" />
