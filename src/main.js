@@ -69,7 +69,7 @@ function loadScript(src, callback) {
 //es6 - promise: là một đối tượng đặc biệt, xử lý bất đồng bộ
 
 const render = () => new Promise((resolve, reject) => {
-    let status = true;
+    let status = false;
     setTimeout(function(){
         if(status){
             // lấy dữ liệu từ database
@@ -91,10 +91,13 @@ const render = () => new Promise((resolve, reject) => {
 // async/await: cú pháp mới es8, xử lý bất đồng bộ
 
 const printA = async () => {
-    const result = await render(); 
-    console.log('result', result);
-    result.push(5);
-    console.log('result', result);
+    try {
+        const result = await render(); 
+        result.push(5);
+        console.log('result', result);
+    } catch (error) {
+        console.log(error)
+    }
 }
 printA();
 
