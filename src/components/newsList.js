@@ -2,7 +2,7 @@ import data from "../data";
 
 const NewsList = {
     async render() {
-        const response = await fetch('https://5e79b4b817314d00161333da.mockapi.io/posts');
+        const response = await fetch('http://localhost:3001/posts');
         const data = await response.json();
         return  /* html */`
             <h2 class="font-semibold text-2xl uppercase text-blue-800 my-4">Tin tức học tập</h2>

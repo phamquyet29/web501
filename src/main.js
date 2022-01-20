@@ -7,24 +7,16 @@ import NewsPage from "./pages/news";
 
 const router = new Navigo("/", { linksSelector: "a" });
 
-const print = async (content) => {
-    document.getElementById("app").innerHTML = await content.render();
+const print = async (content, id) => {
+    // DetailNewsPage.render(id).render();
+    document.getElementById("app").innerHTML = await content.render(id);
 };
 
 router.on({
-    "/": () => {
-        print(HomePage);
-    },
-    "/about": () => {
-        print(AboutPage);
-    },
-    "/news": () => {
-        print(NewsPage);
-    },
-    "/news/:id": ({ data }) => {
-        const { id } = data;
-        print(DetailNewsPage.render(id));
-    },
+    "/": () => print(HomePage),
+    "/about": () => print(AboutPage),
+    "/news": () => print(NewsPage),
+    "/news/:id": ({ data }) => print(DetailNewsPage, data.id),
 });
 router.resolve();
 
