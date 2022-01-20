@@ -4,7 +4,7 @@ import Header from "../components/header";
 import News from "../components/news";
 
 const HomePage = {
-    render() {
+    async render() {
         return /* html */`
         <div class="max-w-5xl mx-auto">
             ${Header.render()}
@@ -13,7 +13,7 @@ const HomePage = {
                     ${Banner.render()}
                 </div>
                 <div class="news">
-                    ${News.render()}
+                    ${await News.render()}
                 </div>
             </main>
             ${Footer.render()}
