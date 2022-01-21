@@ -1,3 +1,4 @@
+import axios from "axios";
 import NavAdmin from "../../../components/NavAdmin";
 
 const AdminAddNewsPage = {
@@ -31,14 +32,42 @@ const AdminAddNewsPage = {
             <main>
             <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                 <!-- Replace with your content -->
-                <div class="px-4 py-6 sm:px-0">
-                <div class="border-4 border-dashed border-gray-200 rounded-lg h-96"></div>
-                </div>
+                <form action="" id="form-add">
+                    <input type="text" 
+                        class="border border-black" 
+                        placeholder="title post"
+                        id="title-post"
+                        > <br />
+                    <input type="text" 
+                        class="border border-black" 
+                        placeholder="image "
+                        id="img-post"
+                        > <br />
+                    <textarea name="" 
+                            id="desc-post" 
+                            cols="30" 
+                            rows="10"
+                            class="border border-black"
+                            ></textarea><br />
+                    <button class="bg-blue-500 p-4 text-white">Thêm bài viết</button>
+                </form>
                 <!-- /End replace -->
             </div>
             </main>
         </div>
         `;
     },
+    afterRender(){
+        const formAdd = document.querySelector('#form-add');
+        formAdd.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const postFake = {
+                "title": document.querySelector('#title-post').value,
+                "img":  document.querySelector('#img-post').value,
+                "desc":  document.querySelector('#desc-post').value
+            };
+            axios.post('https://5e79b4b817314d00161333da.mockapi.io/posts', postFake)
+        })
+    }
 };
 export default AdminAddNewsPage;
