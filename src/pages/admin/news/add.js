@@ -1,4 +1,5 @@
 import axios from "axios";
+import { add } from "../../../api/posts";
 import NavAdmin from "../../../components/NavAdmin";
 
 const AdminNewsAddPage = {
@@ -45,7 +46,7 @@ const AdminNewsAddPage = {
                     <input type="text" 
                         placeholder="Anh bai viet" 
                         class="border border-black"
-                        id="img-posst"
+                        id="img-post"
                     >
                     <textarea name="" 
                             id="desc-post" 
@@ -64,12 +65,13 @@ const AdminNewsAddPage = {
         const formAdd = document.querySelector('#form-add-post');
         formAdd.addEventListener('submit', (e) => {
             e.preventDefault();
-            const postFake = {
-                title: "Bai viet thay Dat moi cho vao, dung co xoa, xoa cai dam phat chet luon",
-                img: "https://picsum.photos/200/200",
-                desc: "Mo ta san pham"
-            }
-            axios.post('https://5e79b4b817314d00161333da.mockapi.io/posts', postFake)
+            add({
+                title: document.querySelector('#title-post').value,
+                img: document.querySelector('#img-post').value,
+                desc: document.querySelector('#desc-post').value
+            })
+            .then((result) => console.log(result.data))
+            .catch((error) => console.log(error))
         })
     }
 };
