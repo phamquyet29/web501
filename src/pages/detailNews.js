@@ -1,10 +1,11 @@
 // import data from "../data";
 
 import axios from "axios";
+import { get } from "../api/post";
 
 const DetailNewsPage = {
     async render(id) {
-        const { data } = await axios.get(`https://5e79b4b817314d00161333da.mockapi.io/posts/${id}`);
+        const { data } = await get(id);
         return `
             <h1>${data.title}</h1>
             <img src="${data.img}" />

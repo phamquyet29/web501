@@ -1,8 +1,9 @@
 import style from "./news.module.css";
 import axios from 'axios';
+import { getAll } from "../api/post";
 const News = {
     async render() {
-        const { data } = await axios.get('https://5e79b4b817314d00161333da.mockapi.io/posts');
+        const { data } = await getAll()
         return /* html */`
             <h2 class="font-semibold text-2xl text-blue-900 my-4 uppercase">Tin tức học lập</h2>
             <div>
