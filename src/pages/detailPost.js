@@ -1,12 +1,14 @@
+import axios from 'axios';
+
 const DetailPost = {
-    render(id) {
-        return fetch(`https://5e79b4b817314d00161333da.mockapi.io/posts/${id}`)
-            .then((response) => response.json())
-            .then((data) => `
-                <div>
-                    <h1>${data.title}</h1>
-                </div>
-            `);
+    async render(id) {
+        const { data } = await axios.get('https://5e79b4b817314d00161333da.mockapi.io/posts/'+id);
+        console.log(data);
+        return `
+            <div>
+                <h1>${data.title}</h1>
+            </div>
+        `
     },
 };
 export default DetailPost;
