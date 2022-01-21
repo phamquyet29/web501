@@ -1,6 +1,6 @@
 const News = {
     render() {
-        const API = "https://5e79b4b817314d00161333da.mockapi.io/posts";
+        const API = "http://localhost:3001/posts";
         return fetch(API)
             .then((response) => response.json())
             .then((data) => /* html */` <h2 class="font-semibold text-blue-900 my-4 uppercase text-2xl">Tin tức học tập</h2>
