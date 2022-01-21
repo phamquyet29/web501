@@ -64,10 +64,12 @@ const AdminNewsPage = {
         `;
     },
     afterRender(){
+        // lấy toàn bộ button thông qua class
         const buttons = document.querySelectorAll('.btn');
+        // lấy từng button
         buttons.forEach(button => {
-            console.log(button);
             button.addEventListener('click', () => {
+                // lấy ID thông qua thuộc tính data-id ở button
                 const id = button.dataset.id;
                 const confirm = window.confirm("May co chac chan muon xoa khong???");
                 if(confirm){
