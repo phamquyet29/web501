@@ -1,7 +1,9 @@
+import { getAll, remove } from "../../../api/posts";
 import NavAdmin from "../../../components/NavAdmin";
 
 const AdminNewsPage = {
-    render() {
+    async render() {
+        const { data } = await getAll();
         return /* html */`
         <div class="min-h-full">
             ${NavAdmin.render()}
@@ -34,18 +36,52 @@ const AdminNewsPage = {
             </div>
             </header>
             <main>
-            <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-                <!-- Replace with your content -->
-                <div class="px-4 py-6 sm:px-0">
-                <div
-                    class="border-4 border-dashed border-gray-200 rounded-lg h-96"
-                ></div>
+                <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Ảnh</th>
+                        <th>Tiêu đề</th>
+                        <th></th>
+                    </tr>
+                    <tbody>
+                        ${data.map((post, index) => `
+                            <tr>
+                                <td>${index + 1}</td>
+                                <td><img src="${post.img}" width="50"/></td>
+                                <td>${post.title}</td>
+                                <td>
+                                    <a href="/admin/news/${post.id}/edit">Edit</a>
+                                    <button data-id=${post.id} class="btn btn-remove">Remove</button>
+                                </td>
+                            </tr>
+                        `).join("")}
+                        
+                    </tbody>
+                    </thead>
+                </table>
                 </div>
-                <!-- /End replace -->
-            </div>
             </main>
         </div>
         `;
     },
+    afterRender(){
+        // lấy toàn bộ danh sách button có class là .btn
+        const buttons = document.querySelectorAll('.btn');
+        // tạo vòng lặp để lấy ra từng button
+        buttons.forEach(button => {
+            // sử dụng dataset để lấy id từ data-*
+            const id = button.dataset.id;
+            // click vào button thì xóa phần tử trong mảng
+            // dựa vào ID vừa lấy được
+            button.addEventListener('click', () => {
+                const confirm = window.confirm("Mày có chắc chắn muốn xóa không?");
+                if(confirm){
+                    remove(id).then(() => console.log("Mày đã xóa thành công"));
+                }
+            })
+        });
+    }
 };
 export default AdminNewsPage;
