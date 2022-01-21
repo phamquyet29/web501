@@ -1,9 +1,9 @@
-import axios from "axios";
+import { getAll, remove } from "../../../api/post";
 import NavAdmin from "../../../components/NavAdmin";
 
 const AdminNewsPage = {
     async render() {
-        const { data } = await axios.get('https://5e79b4b817314d00161333da.mockapi.io/posts');
+        const { data } = await getAll()
         return /* html */`
         <div class="min-h-full">
             ${NavAdmin.render()}
@@ -74,8 +74,7 @@ const AdminNewsPage = {
                 const confirm = window.confirm("May co chac chan muon xoa khong???");
                 if(confirm){
                     // call api
-                    axios.delete('https://5e79b4b817314d00161333da.mockapi.io/posts/'+id)
-                        .then(() => console.log("Da xoa thanh cong"))
+                    remove(id).then(() => console.log("Da xoa thanh cong"))
                 }
             })
         });

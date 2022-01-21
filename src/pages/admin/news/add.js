@@ -1,4 +1,5 @@
 import axios from "axios";
+import { add } from "../../../api/post";
 import NavAdmin from "../../../components/NavAdmin";
 
 const AdminAddNewsPage = {
@@ -61,12 +62,12 @@ const AdminAddNewsPage = {
         const formAdd = document.querySelector('#form-add');
         formAdd.addEventListener('submit', (e) => {
             e.preventDefault();
-            const postFake = {
+            add({
                 "title": document.querySelector('#title-post').value,
                 "img":  document.querySelector('#img-post').value,
                 "desc":  document.querySelector('#desc-post').value
-            };
-            axios.post('https://5e79b4b817314d00161333da.mockapi.io/posts', postFake)
+            })
+            // axios.post('https://5e79b4b817314d00161333da.mockapi.io/posts', postFake)
         })
     }
 };

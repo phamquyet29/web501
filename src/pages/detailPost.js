@@ -1,8 +1,9 @@
 import axios from 'axios';
+import { get } from '../api/post';
 
 const DetailPost = {
     async render(id) {
-        const { data } = await axios.get('https://5e79b4b817314d00161333da.mockapi.io/posts/'+id);
+        const { data } = await get(id);
         console.log(data);
         return `
             <div>
