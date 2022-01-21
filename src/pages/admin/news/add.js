@@ -58,14 +58,6 @@ const AdminNewsAdd = {
                 desc: document.querySelector('#desc-post').value
             };
             axios.post('http://localhost:3001/posts', post);
-            // fetch('http://localhost:3001/posts', {
-            //     method: "POST",
-            //     headers: {
-            //         'Content-Type': 'application/json'
-            //         // 'Content-Type': 'application/x-www-form-urlencoded',
-            //     },
-            //     body: JSON.stringify(post)
-            // });
         })
     }
 }
