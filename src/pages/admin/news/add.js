@@ -1,3 +1,4 @@
+import axios from "axios";
 import NavAdmin from "../../../components/NavAdmin";
 
 const AdminNewsAddPage = {
@@ -35,17 +36,41 @@ const AdminNewsAddPage = {
             </header>
             <main>
             <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-                <!-- Replace with your content -->
-                <div class="px-4 py-6 sm:px-0">
-                <div
-                    class="border-4 border-dashed border-gray-200 rounded-lg h-96"
-                ></div>
-                </div>
-                <!-- /End replace -->
+                <form action="" id="form-add-post">
+                    <input type="text" 
+                        placeholder="Tieu de bai viet" 
+                        class="border border-black" 
+                        id="title-post"
+                    > <br />
+                    <input type="text" 
+                        placeholder="Anh bai viet" 
+                        class="border border-black"
+                        id="img-posst"
+                    >
+                    <textarea name="" 
+                            id="desc-post" 
+                            cols="30" 
+                            rows="10" 
+                            class="border border-black"
+                    ></textarea>
+                    <button>Them</button>
+                </form>
             </div>
             </main>
         </div>
         `;
     },
+    afterRender(){
+        const formAdd = document.querySelector('#form-add-post');
+        formAdd.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const postFake = {
+                title: "Bai viet thay Dat moi cho vao, dung co xoa, xoa cai dam phat chet luon",
+                img: "https://picsum.photos/200/200",
+                desc: "Mo ta san pham"
+            }
+            axios.post('https://5e79b4b817314d00161333da.mockapi.io/posts', postFake)
+        })
+    }
 };
 export default AdminNewsAddPage;
