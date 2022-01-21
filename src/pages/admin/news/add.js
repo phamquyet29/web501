@@ -1,4 +1,5 @@
 import NavAdmin from "../../../components/NavAdmin";
+import axios from 'axios';
 
 const AdminNewsAdd = {
     render(){
@@ -36,7 +37,7 @@ const AdminNewsAdd = {
                     <form id="form-add-post">
                         <input type="text" class="border border-black" id="title-post" placeholder="Title"/><br />
                         <input type="text" class="border border-black" id="img-post" placeholder="Img" /><br />
-                        <textarea name="" id="" cols="30" rows="10" class="border border-black" id="desc-post" placeholder="Description"></textarea><br />
+                        <textarea name="" cols="30" rows="10" class="border border-black" id="desc-post" placeholder="Description"></textarea><br />
                         <button>Thêm</button>
                     </form>
                 </div>
@@ -52,19 +53,19 @@ const AdminNewsAdd = {
         formAdd.addEventListener('submit', function(e){
             e.preventDefault();
             const post = {
-                title: "Bài viết mới cập nhật ahihi",
-                img: "https://picsum.photos/200/200",
-                desc: "Mô tả cho bài viết vừa cập nhật"
+                title: document.querySelector('#title-post').value,
+                img: document.querySelector('#img-post').value,
+                desc: document.querySelector('#desc-post').value
             };
-
-            fetch('http://localhost:3001/posts', {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                    // 'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: JSON.stringify(post)
-            })
+            axios.post('http://localhost:3001/posts', post);
+            // fetch('http://localhost:3001/posts', {
+            //     method: "POST",
+            //     headers: {
+            //         'Content-Type': 'application/json'
+            //         // 'Content-Type': 'application/x-www-form-urlencoded',
+            //     },
+            //     body: JSON.stringify(post)
+            // });
         })
     }
 }
