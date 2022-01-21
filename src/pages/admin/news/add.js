@@ -1,8 +1,9 @@
+import { add } from "../../../api/post";
 import NavAdmin from "../../../components/NavAdmin";
 
 const AdminAddNews = {
-    render() {
-        return `
+  render() {
+    return /*html*/ `
         <div class="min-h-full">
         ${NavAdmin.render()}
       
@@ -32,15 +33,39 @@ const AdminAddNews = {
         <main>
           <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
             <!-- Replace with your content -->
-            <div class="px-4 py-6 sm:px-0">
-              <div class="border-4 border-dashed border-gray-200 rounded-lg h-96"></div>
-            </div>
+            <form action="" id="form-add">
+              <input type="text"
+                    id="title-post"
+                    class="border border-black"
+                    placeholder="Title"
+              > <br />
+              <input type="text"
+                    id="img-post"
+                    class="border border-black"
+                    placeholder="Image"
+              > <br />
+              <textarea name="" id="desc-post" cols="30" rows="10" class="border border-black"></textarea><br />
+              <button class="bg-blue-500 p-4 text-white">Thêm</button>
+            </form>
             <!-- /End replace -->
           </div>
         </main>
       </div>
         
         `;
-    },
+  },
+  afterRender() {
+    const formAdd = document.querySelector("#form-add");
+    formAdd.addEventListener("submit", (e) => {
+      e.preventDefault();
+      console.log("submited");
+      add({
+        title: "Bai viet moi them",
+        img: "http://placeimg.com/640/480/cats",
+        desc: "Mô tả bài viết",
+      });
+
+    });
+  },
 };
 export default AdminAddNews;
