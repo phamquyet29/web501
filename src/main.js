@@ -3,6 +3,7 @@ import AboutPage from "./pages/about";
 import Dashboard from "./pages/admin/dashboard";
 import AdminNewsPage from "./pages/admin/news";
 import AdminAddNewsPage from "./pages/admin/news/add";
+import AdminEditPost from "./pages/admin/news/edit";
 import ContactPage from "./pages/contact";
 import DetailPost from "./pages/detailPost";
 import HomePage from "./pages/home";
@@ -13,7 +14,7 @@ const router = new Navigo("/", { linksSelector: "a" });
 
 const print = async (content, id) => {
     document.querySelector("#app").innerHTML = await content.render(id);
-    if(content.afterRender) content.afterRender();
+    if(content.afterRender) content.afterRender(id);
 };
 
 router.on({
@@ -40,6 +41,9 @@ router.on({
     },
     "/admin/news/add": () => {
         print(AdminAddNewsPage);
+    },
+    "/admin/news/:id/edit": ({data}) => {
+        print(AdminEditPost, data.id);
     },
 });
 router.notFound(() => print(NotFoundPage));
