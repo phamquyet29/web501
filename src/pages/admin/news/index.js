@@ -1,7 +1,9 @@
+import axios from "axios";
 import NavAdmin from "../../../components/NavAdmin";
 
 const AdminNewsPage = {
-    render() {
+    async render() {
+        const { data } = await axios.get('https://5e79b4b817314d00161333da.mockapi.io/posts');
         return /* html */`
         <div class="min-h-full">
             ${NavAdmin.render()}
@@ -31,14 +33,50 @@ const AdminNewsPage = {
             <main>
             <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                 <!-- Replace with your content -->
-                <div class="px-4 py-6 sm:px-0">
-                <div class="border-4 border-dashed border-gray-200 rounded-lg h-96"></div>
-                </div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th></th>
+                    </tr>
+                    <tbody>
+                        ${data.map((post, index) => `
+                        <tr>
+                            <td>${index + 1}</td>
+                            <td><img src="${post.img}"  width="50"/></td>
+                            <td>${post.title}</td>
+                            <td>
+                                <a href="/admin/news/${post.id}/edit">Edit</a>
+                                <button data-id="${post.id}" class="btn btn-remove">Remove</button>
+                            </td>
+                        </tr>
+                        `).join("")}
+                        
+                    </tbody>
+                    </thead>
+                </table>
                 <!-- /End replace -->
             </div>
             </main>
         </div>
         `;
     },
+    afterRender(){
+        const buttons = document.querySelectorAll('.btn');
+        buttons.forEach(button => {
+            console.log(button);
+            button.addEventListener('click', () => {
+                const id = button.dataset.id;
+                const confirm = window.confirm("May co chac chan muon xoa khong???");
+                if(confirm){
+                    // call api
+                    axios.delete('https://5e79b4b817314d00161333da.mockapi.io/posts/'+id)
+                        .then(() => console.log("Da xoa thanh cong"))
+                }
+            })
+        });
+    }
 };
 export default AdminNewsPage;
