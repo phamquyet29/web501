@@ -2,13 +2,14 @@ import Navigo from "navigo";
 import Dashboard from "./pages/admin/dashboard";
 import AdminNews from "./pages/admin/news";
 import AdminAddNews from "./pages/admin/news/add";
+import AdminEditNews from "./pages/admin/news/edit";
 import DetailNewsPage from "./pages/detailNews";
 import HomePage from "./pages/home";
 
 const router = new Navigo("/", { linksSelector: "a" });
-const print = async (content, id = "") => {
+const print = async (content, id) => {
     document.getElementById("app").innerHTML = await content.render(id);
-    if(content.afterRender) content.afterRender();
+    if(content.afterRender) content.afterRender(id);
 };
 
 router.on({
@@ -19,10 +20,11 @@ router.on({
         print("About Page");
     },
     "/product": () => print("Product Page"),
-    "/news/:id": (value) => print(DetailNewsPage, value.data.id),
+    "/news/:id": ({ data }) => print(DetailNewsPage, data.id),
     "/admin/dashboard": () => print(Dashboard),
     "/admin/news": () => print(AdminNews),
     "/admin/news/add": () => print(AdminAddNews),
+    "/admin/news/:id/edit": ({data}) => print(AdminEditNews, data.id),
 });
 
 router.notFound(() => print("Not Found Page"));

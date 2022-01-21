@@ -1,8 +1,9 @@
+import { getAll, remove } from "../../../api/post";
 import NavAdmin from "../../../components/NavAdmin";
-import data from "../../../data";
 
 const AdminNews = {
-    render() {
+    async render() {
+        const { data } = await getAll();
         return /* html */`
         <div class="min-h-full">
         ${NavAdmin.render()}
@@ -46,10 +47,10 @@ const AdminNews = {
                                 STT
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Tiêu đề
+                                Ảnh
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Mô tả
+                                Tiêu đề
                                 </th>
                                 <th scope="col" class="relative px-6 py-3">
                                     <span class="sr-only">Edit</span>
@@ -63,13 +64,13 @@ const AdminNews = {
                                         ${index + 1}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        ${post.title}
+                                        <img src="${post.img}" width="50"/>
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        ${post.desc}
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                    ${post.title}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                        <a href="/admin/news/${post.id}/edit" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                                         <button data-id="${post.id}" class="btn btn-delete bg-indigo-600 hover:bg-indigo-900 px-4 py-3 text-white rounded-full">Delete</button>
                                     </td>
                                 </tr>
@@ -89,12 +90,18 @@ const AdminNews = {
         `;
     },
     afterRender() {
+        // Lấy toàn bộ button có class .btn
         const btns = document.querySelectorAll(".btn");
         btns.forEach((buttonElement) => {
-            const idButton = buttonElement.dataset.id;
+            // lấy id button thông qua thuộc tính data-id
+            const id = buttonElement.dataset.id;
             buttonElement.addEventListener("click", () => {
-                console.log(idButton);
                 // Xoa phan tu trong mang dua tren ID
+                const confirm = window.confirm("Bạn có muốn xóa hay không?");
+                if(confirm){
+                  // call api xóa
+                  remove(id).then(() => console.log('Bạn đã xóa thành công'))
+                }
             });
         });
     },

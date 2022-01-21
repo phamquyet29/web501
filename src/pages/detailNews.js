@@ -10,6 +10,7 @@ const DetailNewsPage = {
             <h1>${data.title}</h1>
             <img src="${data.img}" />
             <div>${data.desc}</div>
+            <button>Add to cart</button>
         `
     },
 };

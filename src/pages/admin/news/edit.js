@@ -1,8 +1,9 @@
-import { add } from "../../../api/post";
+import { get, update } from "../../../api/post";
 import NavAdmin from "../../../components/NavAdmin";
 
-const AdminAddNews = {
-  render() {
+const AdminEditNews = {
+  async render(id) {
+      const { data } = await get(id);
     return /*html*/ `
         <div class="min-h-full">
         ${NavAdmin.render()}
@@ -27,25 +28,32 @@ const AdminAddNews = {
                   </a>
                 </div>
               </div>
-      
           </div>
         </header>
         <main>
           <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
             <!-- Replace with your content -->
-            <form action="" id="form-add">
+            <form action="" id="form-edit">
               <input type="text"
                     id="title-post"
                     class="border border-black"
                     placeholder="Title"
+                    value="${data.title}"
               > <br />
               <input type="text"
                     id="img-post"
                     class="border border-black"
                     placeholder="Image"
+                    value="${data.img}"
               > <br />
-              <textarea name="" id="desc-post" cols="30" rows="10" class="border border-black"></textarea><br />
-              <button class="bg-blue-500 p-4 text-white">Thêm</button>
+              <textarea name="" 
+                id="desc-post" 
+                cols="30" 
+                rows="10" 
+                class="border border-black"
+                value="${data.desc}"
+              ></textarea><br />
+              <button class="bg-blue-500 p-4 text-white">Cập nhật</button>
             </form>
             <!-- /End replace -->
           </div>
@@ -54,11 +62,12 @@ const AdminAddNews = {
         
         `;
   },
-  afterRender() {
-    const formAdd = document.querySelector("#form-add");
-    formAdd.addEventListener("submit", (e) => {
+  afterRender(id) {
+    const formEdit = document.querySelector("#form-edit");
+    formEdit.addEventListener("submit", (e) => {
       e.preventDefault();
-      add({
+      update({
+        id: id,
         title: document.querySelector('#title-post').value,
         img: document.querySelector('#img-post').value,
         desc:document.querySelector('#desc-post').value,
@@ -67,4 +76,4 @@ const AdminAddNews = {
     });
   },
 };
-export default AdminAddNews;
+export default AdminEditNews;
