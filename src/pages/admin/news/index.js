@@ -1,8 +1,10 @@
+import { getAll } from "../../../api/posts";
 import NavAdmin from "../../../components/NavAdmin";
 
 const AdminNews = {
-    render(){
-        return `
+    async render(){
+        const { data } = await getAll();
+        return /*html*/`
         <div class="min-h-full">
             ${NavAdmin.render()}
             <header class="bg-white shadow">
@@ -33,9 +35,30 @@ const AdminNews = {
             <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                 <!-- Replace with your content -->
                 <div class="px-4 py-6 sm:px-0">
-                <div
-                    class="border-4 border-dashed border-gray-200 rounded-lg h-96"
-                ></div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Tiêu đề</th>
+                                <th>Ảnh</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${data.map((post, index) => `
+                                <tr>
+                                    <td>${index+1}</td>
+                                    <td>${post.title}</td>
+                                    <td><img src="${post.img}" width="50"/></td>
+                                    <td>
+                                        <a href="/admin/news/${post.id}/edit">Edit</a>
+                                        <button>Xóa</button>
+                                    </td>
+                                </tr>
+                            `).join("")}
+                            
+                        </tbody>
+                    </table>
                 </div>
                 <!-- /End replace -->
             </div>

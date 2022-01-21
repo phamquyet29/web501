@@ -1,5 +1,6 @@
 import NavAdmin from "../../../components/NavAdmin";
 import axios from 'axios';
+import { add } from "../../../api/posts";
 
 const AdminNewsAdd = {
     render(){
@@ -52,13 +53,12 @@ const AdminNewsAdd = {
         const formAdd = document.querySelector('#form-add-post');
         formAdd.addEventListener('submit', function(e){
             e.preventDefault();
-            const post = {
+            add({
                 title: document.querySelector('#title-post').value,
                 img: document.querySelector('#img-post').value,
                 desc: document.querySelector('#desc-post').value
-            };
-            axios.post('http://localhost:3001/posts', post);
-        })
+            });
+        });
     }
 }
 export default AdminNewsAdd;
