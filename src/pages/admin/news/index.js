@@ -1,4 +1,4 @@
-import { getAll } from "../../../api/posts";
+import { getAll, remove } from "../../../api/posts";
 import NavAdmin from "../../../components/NavAdmin";
 
 const AdminNews = {
@@ -52,7 +52,7 @@ const AdminNews = {
                                     <td><img src="${post.img}" width="50"/></td>
                                     <td>
                                         <a href="/admin/news/${post.id}/edit">Edit</a>
-                                        <button>Xóa</button>
+                                        <button data-id="${post.id}" class="btn btn-remove">Xóa</button>
                                     </td>
                                 </tr>
                             `).join("")}
@@ -65,6 +65,24 @@ const AdminNews = {
             </main>
         </div>
         `
+    },
+    afterRender(){
+        // lấy danh sách button sau khi render
+        const buttons = document.querySelectorAll('.btn');
+        // tạo vòng lặp cho nodelist button
+        buttons.forEach(btn => {
+            // lấy ID từ thuộc tính data-id của button
+            const id = btn.dataset.id;
+            btn.addEventListener('click', () => {
+                const confirm = window.confirm("Ban co muon xoa bai viet nay khong?");
+                if(confirm){
+                     // gọi hàm delete trong folder API và bắn id vào hàm
+                    remove(id).then(() => {
+                        console.log('Da xoa thanh cong')
+                    })
+                }
+            })
+        });
     }
 }
 export default AdminNews;
