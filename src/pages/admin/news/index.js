@@ -56,6 +56,7 @@ const AdminNewsPage = {
                                                                 ${post.title}
                                                             </td>
                                                             <td class="px-6 py-4 whitespace-nowrap">
+                                                                <a href="/admin/news/${post.id}/edit">Edit</a>
                                                                 <button data-id=${post.id} class="btn btn-remove inline-block px-4 py-3 text-white rounded bg-indigo-500 hover:bg-indigo-800">Delete</button>
                                                             </td>
                                                         </tr>
