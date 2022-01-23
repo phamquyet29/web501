@@ -34,7 +34,6 @@ const AddPost = {
         const formAdd = document.querySelector('#form-add-post');
         formAdd.addEventListener('submit', (e) => {
             e.preventDefault();
-
             const dataFake = {
                 "title": "Bai viet moi vua them 01",
                 "img": "https://picsum.photos/200/200",

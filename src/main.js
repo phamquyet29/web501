@@ -1,7 +1,8 @@
 import Navigo from "navigo";
 import Header from "./components/header";
 import AboutPage from "./pages/about";
-import AddPost from "./pages/AddPost";
+import AddPost from "./pages/AdminAddPost";
+import AdminPost from "./pages/AdminPost";
 import DetailNewsPage from "./pages/detailNews";
 import HomePage from "./pages/home";
 import NewsPage from "./pages/news";
@@ -18,8 +19,10 @@ router.on({
     "/": () => print(HomePage),
     "/about": () => print(AboutPage),
     "/news": () => print(NewsPage),
-    "/admin/news/add": () => print(AddPost),
+    
     "/news/:id": ({ data }) => print(DetailNewsPage, data.id),
+    "/admin/news/add": () => print(AddPost),
+    "/admin/news": () => print(AdminPost),
 });
 router.resolve();
 
