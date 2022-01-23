@@ -7,15 +7,15 @@ import NewsDetail from "./pages/newsDetail";
 
 const router = new Navigo("/", { linksSelector: "a" });
 
-const print = (content) => {
+const print = async (content) => {
   document.getElementById("header").innerHTML = Header.render();
-  document.getElementById("content").innerHTML = content;
+  document.getElementById("content").innerHTML = await content.render();
   document.getElementById("footer").innerHTML = Footer.render();
 };
 
 router.on({
   "/": () => {
-    print(HomePage.render());
+    print(HomePage);
   },
   "/about": () => {
     print(AboutPage.render());
@@ -68,38 +68,42 @@ function loadScript(src, callback) {
 
 //es6 - promise: là một đối tượng đặc biệt, xử lý bất đồng bộ
 
-const render = () => new Promise((resolve, reject) => {
-    let status = false;
-    setTimeout(function(){
-        if(status){
-            // lấy dữ liệu từ database
-            resolve([1,2,3,4])
-        } else {
-            reject("Lắc đầu")
-        }
-    }, 3000)
-});
+// const render = () => new Promise((resolve, reject) => {
+//     let status = false;
+//     setTimeout(function(){
+//         if(status){
+//             // lấy dữ liệu từ database
+//             resolve([1,2,3,4])
+//         } else {
+//             reject("Lắc đầu")
+//         }
+//     }, 3000)
+// });
 
-// render()
-//     .then((result) => {
-//         result.push(5)
-//         return result
-//     })
-//     .then(data => console.log(data))
-//     .catch(error => console.log(error))
+// // render()
+// //     .then((result) => {
+// //         result.push(5)
+// //         return result
+// //     })
+// //     .then(data => console.log(data))
+// //     .catch(error => console.log(error))
 
-// async/await: cú pháp mới es8, xử lý bất đồng bộ
+// // async/await: cú pháp mới es8, xử lý bất đồng bộ
 
-const printA = async () => {
-    try {
-        const result = await render(); 
-        result.push(5);
-        console.log('result', result);
-    } catch (error) {
-        console.log(error)
-    }
-}
-printA();
+// const printA = async () => {
+//     try {
+//         const result = await render(); 
+//         result.push(5);
+//         console.log('result', result);
+//     } catch (error) {
+//         console.log(error)
+//     }
+// }
+// printA();
+
+
+
+
 
 
 
