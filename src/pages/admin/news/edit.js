@@ -3,7 +3,6 @@ import AdminNav from "../../../components/AdminNav";
 
 const AdminEditPost = {
     async render(id) {
-        console.log(id);
         const { data } = await get(id);
         return /* html */`
         <div class="min-h-full">
