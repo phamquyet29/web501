@@ -3,6 +3,7 @@ import AdminNav from "../../../components/AdminNav";
 
 const AdminAddPost = {
     async render() {
+        console.log("Add Post");
         return /* html */`
         <div class="min-h-full">
             ${AdminNav.render()}
