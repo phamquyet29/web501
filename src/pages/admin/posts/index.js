@@ -18,7 +18,7 @@ const AdminPost = {
                                 <td>${index + 1}</td>
                                 <td>${post.title}</td>
                                 <td>
-                                    <button class="btn">Remove</button>
+                                    <button data-id="${post.id}" class="btn">Remove</button>
                                 </td>
                             </tr>
                         `).join("")}    
@@ -30,8 +30,13 @@ const AdminPost = {
         `;
     },
     afterRender(){
-        const btn = document.querySelectorAll('.btn');
-        console.log(btn);
+        const btns = document.querySelectorAll('.btn');
+        btns.forEach(btn => {
+            const id = btn.dataset.id;
+            btn.addEventListener('click', function(){
+                axios.delete('https://5e79b4b817314d00161333da.mockapi.io/posts/'+id);
+            })
+        });
     }
 };
 
