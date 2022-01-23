@@ -1,5 +1,7 @@
+import toastr from "toastr";
 import { getAll, remove } from "../../../api/post";
 import AdminNav from "../../../components/AdminNav";
+import "toastr/build/toastr.min.css";
 
 const AdminNewsPage = {
     async render() {
@@ -17,7 +19,7 @@ const AdminNewsPage = {
                             </h2>
                         </div>
                         <div class="mt-5 flex lg:mt-0 lg:ml-4">
-                            <a href="/admin/news/add" class="sm:ml-3">
+                            <a href="/#/admin/news/add" class="sm:ml-3">
                                 <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                 <!-- Heroicon name: solid/check -->
                                 <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -56,7 +58,7 @@ const AdminNewsPage = {
                                                                 ${post.title}
                                                             </td>
                                                             <td class="px-6 py-4 whitespace-nowrap">
-                                                                <a href="/admin/news/${post.id}/edit">Edit</a>
+                                                                <a href="/#/admin/news/${post.id}/edit">Edit</a>
                                                                 <button data-id=${post.id} class="btn btn-remove inline-block px-4 py-3 text-white rounded bg-indigo-500 hover:bg-indigo-800">Delete</button>
                                                             </td>
                                                         </tr>
@@ -85,8 +87,13 @@ const AdminNewsPage = {
             // Lấy giá trị ID thông qua thuộc tính data-id của button
             const { id } = btn.dataset;
             btn.addEventListener("click", () => {
+                const confirm = window.confirm("Bạn có chắc chắn muốn xóa không?");
+                if (confirm) {
+                    remove(id).then(() => {
+                        toastr.success("Bạn đã xóa thành công");
+                    });
+                }
                 // remove
-                remove(id);
             });
         });
     },
