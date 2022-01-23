@@ -7,21 +7,21 @@ import Footer from "./components/footer";
 
 const router = new Navigo("/", { linksSelector: "a" });
 
-const print = (content) => {
+const print = async (content) => {
     document.getElementById("header").innerHTML = Header.render();
-    document.getElementById("app").innerHTML = content;
+    document.getElementById("app").innerHTML = await content.render();
     document.getElementById("footer").innerHTML = Footer.render();
 };
 
 router.on({
     "/": () => {
-        print(HomePage.render());
+        print(HomePage);
     },
     "/about": () => {
-        print(AboutPage.render());
+        print(AboutPage);
     },
     "/product": () => {
-        print(ProductPage.render());
+        print(ProductPage);
     },
 });
 router.resolve();
