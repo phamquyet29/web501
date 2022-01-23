@@ -34,7 +34,12 @@ const AdminPost = {
         btns.forEach(btn => {
             const id = btn.dataset.id;
             btn.addEventListener('click', function(){
-                axios.delete('https://5e79b4b817314d00161333da.mockapi.io/posts/'+id);
+                const confirm = window.confirm("Bạn có chắc chắn không??");
+                if(confirm){
+                    axios.delete('https://5e79b4b817314d00161333da.mockapi.io/posts/'+id);
+                    
+                    
+                }
             })
         });
     }
