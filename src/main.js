@@ -23,6 +23,9 @@ router.on({
     "/product": () => {
         print(ProductPage);
     },
+    "/admin/news": () => {
+        print(ProductPage);
+    },
 });
 router.resolve();
 
