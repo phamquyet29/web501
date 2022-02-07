@@ -1,10 +1,10 @@
 import NavAdmin from "../../../components/NavAdmin";
-import axios from 'axios';
+import axios from "axios";
 import { add } from "../../../api/posts";
 
 const AdminNewsAdd = {
-    render(){
-        return /*html*/`
+  render() {
+    return /*html*/ `
         <div class="min-h-full">
             ${NavAdmin.render()}
             <header class="bg-white shadow">
@@ -37,7 +37,10 @@ const AdminNewsAdd = {
                 <div class="px-4 py-6 sm:px-0">
                     <form id="form-add-post">
                         <input type="text" class="border border-black" id="title-post" placeholder="Title"/><br />
-                        <input type="text" class="border border-black" id="img-post" placeholder="Img" /><br />
+                        <div class="w-3xl grid grid-cols-2 gap-8">
+                            <div><input type="file" class="border border-black" id="img-post" /></div>
+                            <div><img width="200" src="https://thumbs.dreamstime.com/b/no-thumbnail-image-placeholder-forums-blogs-websites-148010362.jpg" id="img-preview"/></div>
+                        </div>
                         <textarea name="" cols="30" rows="10" class="border border-black" id="desc-post" placeholder="Description"></textarea><br />
                         <button>Thêm</button>
                     </form>
@@ -46,19 +49,43 @@ const AdminNewsAdd = {
             </div>
             </main>
         </div>
-        `
-    },
-    afterRender(){
-        // console.log(document.querySelector('#form-add-post'));
-        const formAdd = document.querySelector('#form-add-post');
-        formAdd.addEventListener('submit', function(e){
+        `;
+  },
+  afterRender() {
+    const formAdd = document.querySelector("#form-add-post");
+    const imgPreview = document.querySelector("#img-preview");
+    const imgPost = document.querySelector("#img-post");
+
+    imgPost.addEventListener("change", function (e) {
+      const file = e.target.files[0];
+
+      console.log(file);
+
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", "jkbdphzy");
+      axios({
+        url: "https://api.cloudinary.com/v1_1/ecommercer2021/image/upload",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-endcoded",
+        },
+        data: formData,
+      })
+        .then((res) => {
+          console.log(res.data.secure_url);
+          imgPreview.src = res.data.secure_url;
+          formAdd.addEventListener("submit", function (e) {
             e.preventDefault();
             add({
-                title: document.querySelector('#title-post').value,
-                img: document.querySelector('#img-post').value,
-                desc: document.querySelector('#desc-post').value
+              title: document.querySelector("#title-post").value,
+              img: res.data.secure_url,
+              desc: document.querySelector("#desc-post").value,
             });
-        });
-    }
-}
+          });
+        })
+        .catch((error) => console.log(error));
+    });
+  },
+};
 export default AdminNewsAdd;
