@@ -1,3 +1,4 @@
+import axios from "axios";
 import { add } from "../../../api/post";
 import NavAdmin from "../../../components/NavAdmin";
 
@@ -39,7 +40,7 @@ const AdminAddNews = {
                     class="border border-black"
                     placeholder="Title"
               > <br />
-              <input type="text"
+              <input type="file"
                     id="img-post"
                     class="border border-black"
                     placeholder="Image"
@@ -56,15 +57,39 @@ const AdminAddNews = {
   },
   afterRender() {
     const formAdd = document.querySelector("#form-add");
-    formAdd.addEventListener("submit", (e) => {
-      e.preventDefault();
-      add({
-        title: document.querySelector('#title-post').value,
-        img: document.querySelector('#img-post').value,
-        desc:document.querySelector('#desc-post').value,
-      });
+    const imgPost = document.querySelector('#img-post');
 
+    imgPost.addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/ecommercer2021/image/upload"
+
+      const formData = new FormData();
+
+      formData.append('file', file);
+      formData.append('upload_preset', "jkbdphzy");
+
+    // call api cloudinary
+    
+      const response = await axios.post(CLOUDINARY_API, formData, {
+        headers: {
+          "Content-Type": "application/form-data"
+        }
+      });
+      console.log(response.data.url);
+
+
+      formAdd.addEventListener("submit", (e) => {
+        e.preventDefault();
+        add({
+          title: document.querySelector('#title-post').value,
+          img: response.data.url,
+          desc:document.querySelector('#desc-post').value,
+        });
+  
+      });
     });
+
+    
   },
 };
 export default AdminAddNews;
