@@ -85,7 +85,9 @@ const AdminAddNewsPage = {
           img: data.url,
           desc: document.querySelector("#desc-post").value,
         });
+        // Sau khi thêm bài viết thành công...
       });
+
     });
   },
 };
