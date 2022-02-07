@@ -1,14 +1,14 @@
-import news from "../data";
+import { get } from "../api/posts";
 
 const DetailPage = {
-    render(id) {
-        const result = news.find((post) => post.id === id);
-        return `
+  async render(id) {
+    const { data } = await get(id);
+    return `
             <div>Detail Page</div>
-            <h1>${result.title}</h1>
-            <img src="${result.img}" />
-            <p>${result.desc}</p>
+            <h1>${data.title}</h1>
+            <img src="${data.img}" />
+            <p>${data.desc}</p>
         `;
-    },
+  },
 };
 export default DetailPage;

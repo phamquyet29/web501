@@ -7,25 +7,22 @@ import DetailPage from "./pages/detail";
 import HomePage from "./pages/home";
 import ProductPage from "./pages/product";
 
-const router = new Navigo("/", { linksSelector: "a" });
+const router = new Navigo("/", { linksSelector: "a", hash: true });
 
-const print = async (content) => {
-    document.querySelector("#app").innerHTML = await content.render();
-    if(content.afterRender) await content.afterRender();
+const print = async (content, id) => {
+  document.querySelector("#app").innerHTML = await content.render(id);
+  if (content.afterRender) await content.afterRender();
 };
 
 router.on({
-    "/": () => print(HomePage),
-    "/about": () => print(AboutPage),
-    "/product": () => print(ProductPage),
-    "/news/:id": ({ data }) => {
-        const { id } = data;
-        print(DetailPage.render(id));
-    },
-    "/admin/dashboard": () => print(DashboardPage),
-    "/admin/products": () => console.log("admin product"),
-    "/admin/news": () => print(AdminNews),
-    "/admin/news/add": () => print(AdminNewsAdd),
+  "/": () => print(HomePage),
+  "/about": () => print(AboutPage),
+  "/product": () => print(ProductPage),
+  "/news/:id": ({ data }) => print(DetailPage, data.id),
+  "/admin/dashboard": () => print(DashboardPage),
+  "/admin/products": () => console.log("admin product"),
+  "/admin/news": () => print(AdminNews),
+  "/admin/news/add": () => print(AdminNewsAdd),
 });
 
 router.resolve();
