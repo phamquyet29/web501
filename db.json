@@ -613,5 +613,24 @@
     }
   ],
   "products": [],
-  "users": []
+  "users": [
+    {
+      "email": "keninsta01@gmail.com",
+      "password": "$2a$10$TkGMJaHrLCo4Dh.cXXb.OOycQw0ow5TBpcsn44LyeV.IN3Z.KLPtC",
+      "username": "datlt2306",
+      "id": 1
+    },
+    {
+      "email": "keninsta011@gmail.com",
+      "password": "$2a$10$/vjaZXnfGo7UygnNTNWAsep6qtreXvKFHmiAzY8wHcfZDy868Ur7G",
+      "username": "datlt23061",
+      "id": 2
+    },
+    {
+      "email": "keninsta01111@gmail.com",
+      "password": "$2a$10$mKDqlmyefUXTBLv/rnRTy.OcJmXzjZHym45CfF28ZU9SB1kyJC1Ry",
+      "username": "datlt2306111",
+      "id": 3
+    }
+  ]
 }

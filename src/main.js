@@ -5,6 +5,7 @@ import AdminAddNews from "./pages/admin/news/add";
 import AdminEditNews from "./pages/admin/news/edit";
 import DetailNewsPage from "./pages/detailNews";
 import HomePage from "./pages/home";
+import Signup from "./pages/signup";
 
 const router = new Navigo("/", { linksSelector: "a" });
 const print = async (content, id) => {
@@ -25,6 +26,7 @@ router.on({
     "/admin/news": () => print(AdminNews),
     "/admin/news/add": () => print(AdminAddNews),
     "/admin/news/:id/edit": ({data}) => print(AdminEditNews, data.id),
+    "/signup": () => print(Signup)
 });
 
 router.notFound(() => print("Not Found Page"));
