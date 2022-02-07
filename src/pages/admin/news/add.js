@@ -3,8 +3,8 @@ import { add } from "../../../api/posts";
 import NavAdmin from "../../../components/NavAdmin";
 
 const AdminNewsAddPage = {
-    render() {
-        return /* html */`
+  render() {
+    return /* html */ `
         <div class="min-h-full">
             ${NavAdmin.render()}
             <header class="bg-white shadow">
@@ -60,19 +60,19 @@ const AdminNewsAddPage = {
             </main>
         </div>
         `;
-    },
-    afterRender(){
-        const formAdd = document.querySelector('#form-add-post');
-        formAdd.addEventListener('submit', (e) => {
-            e.preventDefault();
-            add({
-                title: document.querySelector('#title-post').value,
-                img: document.querySelector('#img-post').value,
-                desc: document.querySelector('#desc-post').value
-            })
-            .then((result) => console.log(result.data))
-            .catch((error) => console.log(error))
-        })
-    }
+  },
+  afterRender() {
+    const formAdd = document.querySelector("#form-add-post");
+    formAdd.addEventListener("submit", (e) => {
+      e.preventDefault();
+      add({
+        title: document.querySelector("#title-post").value,
+        img: document.querySelector("#img-post").value,
+        desc: document.querySelector("#desc-post").value,
+      })
+        .then((result) => console.log(result.data))
+        .catch((error) => console.log(error));
+    });
+  },
 };
 export default AdminNewsAddPage;
