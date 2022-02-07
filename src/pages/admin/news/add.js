@@ -3,8 +3,8 @@ import { add } from "../../../api/post";
 import NavAdmin from "../../../components/NavAdmin";
 
 const AdminAddNewsPage = {
-    render() {
-        return /* html */`
+  render() {
+    return /* html */ `
         <div class="min-h-full">
             ${NavAdmin.render()}
             <header class="bg-white shadow">
@@ -39,9 +39,8 @@ const AdminAddNewsPage = {
                         placeholder="title post"
                         id="title-post"
                         > <br />
-                    <input type="text" 
+                    <input type="file" 
                         class="border border-black" 
-                        placeholder="image "
                         id="img-post"
                         > <br />
                     <textarea name="" 
@@ -57,18 +56,37 @@ const AdminAddNewsPage = {
             </main>
         </div>
         `;
-    },
-    afterRender(){
-        const formAdd = document.querySelector('#form-add');
-        formAdd.addEventListener('submit', (e) => {
-            e.preventDefault();
-            add({
-                "title": document.querySelector('#title-post').value,
-                "img":  document.querySelector('#img-post').value,
-                "desc":  document.querySelector('#desc-post').value
-            })
-            // axios.post('https://5e79b4b817314d00161333da.mockapi.io/posts', postFake)
-        })
-    }
+  },
+  afterRender() {
+    const formAdd = document.querySelector("#form-add");
+    const imgPost = document.querySelector("#img-post");
+
+    imgPost.addEventListener("change", async (e) => {
+      const file = e.target.files[0];
+      const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/ecommercer2021/image/upload";
+
+      // Lấy giá trị của file upload cho sử dụng formData
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", "jkbdphzy");
+      
+        // call API
+      const { data } = await axios.post(CLOUDINARY_API,formData, {
+          headers: {
+            "Content-Type": "application/x-www-formendcoded",
+          },
+        }
+      );
+      // submit form
+      formAdd.addEventListener("submit", (e) => {
+        e.preventDefault();
+        add({
+          title: document.querySelector("#title-post").value,
+          img: data.url,
+          desc: document.querySelector("#desc-post").value,
+        });
+      });
+    });
+  },
 };
 export default AdminAddNewsPage;
