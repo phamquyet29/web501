@@ -9,6 +9,8 @@ import DetailPost from "./pages/detailPost";
 import HomePage from "./pages/home";
 import NotFoundPage from "./pages/notFound";
 import ProductPage from "./pages/product";
+import Signin from "./pages/signin";
+import Signup from "./pages/signup";
 
 const router = new Navigo("/", { linksSelector: "a" });
 
@@ -45,6 +47,8 @@ router.on({
     "/admin/news/:id/edit": ({data}) => {
         print(AdminEditPost, data.id);
     },
+    "/signup": () => print(Signup),
+    "/signin": () => print(Signin)
 });
 router.notFound(() => print(NotFoundPage));
 router.resolve();
