@@ -1,6 +1,8 @@
 import axios from "axios";
+import AdminNewsPage from ".";
 import { add } from "../../../api/post";
 import AdminNav from "../../../components/AdminNav";
+import { reRender } from "../../../utils";
 
 const AdminAddPost = {
     async render() {
@@ -66,6 +68,9 @@ const AdminAddPost = {
                 img: data.url,
                 desc: document.querySelector("#desc-post").value,
             });
+            window.location.href = "/#/admin/news";
+
+            reRender(AdminNewsPage, "#app");
         });
     },
 };

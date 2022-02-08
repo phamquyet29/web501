@@ -2,6 +2,7 @@ import toastr from "toastr";
 import { getAll, remove } from "../../../api/post";
 import AdminNav from "../../../components/AdminNav";
 import "toastr/build/toastr.min.css";
+import { reRender } from "../../../utils";
 
 const AdminNewsPage = {
     async render() {
@@ -91,6 +92,8 @@ const AdminNewsPage = {
                 if (confirm) {
                     remove(id).then(() => {
                         toastr.success("Bạn đã xóa thành công");
+                    }).then(() => {
+                        reRender(AdminNewsPage, "#app");
                     });
                 }
                 // remove
