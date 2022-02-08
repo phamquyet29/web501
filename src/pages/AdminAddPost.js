@@ -1,6 +1,8 @@
 import axios from "axios";
 import { add } from "../api/posts";
 import Banner from "../components/banner";
+import { reRender } from '../utils/rerender'
+import TablePost from "./tablePost";
 
 const AddPost = {
     async render() {
@@ -61,7 +63,9 @@ const AddPost = {
                 "title": document.querySelector('#title-post').value,
                 "img": response.data.url,
                 "desc": document.querySelector('#desc-post').value
-            })
+            });
+            document.location.href="/#/admin/news";
+            await reRender(AdminPost, "#app");
         })
     }
 };
