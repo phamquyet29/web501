@@ -3,6 +3,7 @@ import Footer from "./components/footer";
 import Header from "./components/header";
 import AboutPage from "./pages/about";
 import AdminPost from "./pages/admin/posts";
+import AddPost from "./pages/admin/posts/add";
 import HomePage from "./pages/home";
 import NewsDetail from "./pages/newsDetail";
 
@@ -28,9 +29,8 @@ router.on({
     const { id } = data;
     print(NewsDetail, id);
   },
-  "/admin/news": () => {
-    print(AdminPost);
-  },
+  "/admin/news": () => print(AdminPost),
+  "/admin/news/add": () => print(AddPost)
 });
 
 router.resolve();
