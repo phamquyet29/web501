@@ -5,6 +5,7 @@ import ProductPage from "./pages/product";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import AdminPosts from "./pages/posts";
+import AdminAddPosts from "./pages/posts/add";
 
 const router = new Navigo("/", { linksSelector: "a" });
 
@@ -20,6 +21,7 @@ router.on({
     "/about": () => print(AboutPage),
     "/product": () => print(ProductPage),
     "/admin/posts": () =>print(AdminPosts),
+    "/admin/posts/add": () =>print(AdminAddPosts),
 });
 router.resolve();
 
