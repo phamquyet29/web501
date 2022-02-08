@@ -38,32 +38,33 @@ const AddPost = {
         const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/ecommercer2021/image/upload";
         const CLOUDINARY_PRESET = "jkbdphzy";
 
-        formAdd.addEventListener('submit', (e) => {
+        formAdd.addEventListener('submit', async (e) => {
             e.preventDefault();
 
+            // Lấy giá trị input file
             const file = imgPost.files[0];
 
+            // append vào object formData
             const formData = new FormData();
             formData.append('file', file);
             formData.append('upload_preset', CLOUDINARY_PRESET)
             
             
             // call api cloudinary
-            axios.post(CLOUDINARY_API,formData, {
+            const response = await axios.post(CLOUDINARY_API,formData, {
                 headers: {
                     "Content-Type": "application/form-data"
                 }
             })
+            
+            const dataFake = {
+                "title": document.querySelector('#title-post').value,
+                "img": response.data.url,
+                "desc": document.querySelector('#desc-post').value
+            }
 
-
-            // const dataFake = {
-            //     "title": "Bai viet moi vua them 01",
-            //     "img": "https://picsum.photos/200/200",
-            //     "desc": "Mo ta san pham"
-            // }
-
-            // // call api thêm sản phẩm
-            // axios.post('http://localhost:3001/posts', dataFake)
+            // call api thêm bài viết
+            axios.post('http://localhost:3001/posts', dataFake)
         })
     }
 };
