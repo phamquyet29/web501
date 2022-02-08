@@ -22,7 +22,8 @@ const NewList = {
                         <td>
                             <img src="${post.img}" alt="" width="50" />
                         </td>
-                        <td class="my-3"><a href="" class="font-semibold text-lg text-orange-500 ">${post.title}</a></td>
+                        <td class="my-3">
+                            <a href="" class="font-semibold text-lg text-orange-500 ">${post.title}</a></td>
                         <td>
                             <button>Delete</button>
                         </td>
