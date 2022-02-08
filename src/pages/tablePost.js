@@ -1,9 +1,10 @@
 import axios from "axios";
+import { getAll, remove } from "../api/posts";
 import { reRender } from "../utils/rerender";
 
 const TablePost = {
     async render(){
-        const { data } = await axios.get('http://localhost:3001/posts');
+        const { data } = await getAll();
         return `
         ${data.map((post, index) => `
             <tr>
@@ -24,8 +25,8 @@ const TablePost = {
             btn.addEventListener('click', () => {
                 const confirm = window.confirm("Are you sure??");
                 if(confirm){
-                    axios.delete('http://localhost:3001/posts/'+id).then(() => {
-                    reRender(TablePost, '#table-news');
+                    remove(id).then(() => {
+                        reRender(TablePost, '#table-news');
                     })
                 }
             })

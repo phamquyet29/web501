@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { getAll } from '../api/posts';
 const NewsList = {
     async render() {
-        const { data } = await axios.get('http://localhost:3001/posts');
+        const { data } = await getAll();
         return  /* html */`
             <h2 class="font-semibold text-2xl uppercase text-blue-800 my-4">Tin tức học tập</h2>
             <div class="grid grid-cols-3 gap-8">

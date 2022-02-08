@@ -1,4 +1,5 @@
 import axios from "axios";
+import { add } from "../api/posts";
 import Banner from "../components/banner";
 
 const AddPost = {
@@ -49,22 +50,18 @@ const AddPost = {
             formData.append('file', file);
             formData.append('upload_preset', CLOUDINARY_PRESET)
             
-            
             // call api cloudinary
-            const response = await axios.post(CLOUDINARY_API,formData, {
+            const response = await axios.post(CLOUDINARY_API, formData, {
                 headers: {
                     "Content-Type": "application/form-data"
                 }
             })
-            
-            const dataFake = {
+            // call api thêm bài viết
+            add({
                 "title": document.querySelector('#title-post').value,
                 "img": response.data.url,
                 "desc": document.querySelector('#desc-post').value
-            }
-
-            // call api thêm bài viết
-            axios.post('http://localhost:3001/posts', dataFake)
+            })
         })
     }
 };

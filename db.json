@@ -1,20 +1,6 @@
 {
   "posts": [
     {
-      "createdAt": "2022-01-15T01:54:24.955Z",
-      "title": "Tiffany Wisoky",
-      "img": "http://placeimg.com/640/480/cats",
-      "desc": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
-      "id": "39"
-    },
-    {
-      "createdAt": "2022-01-19T19:07:46.337Z",
-      "title": "Đặng Đình Khải",
-      "img": "http://placeimg.com/640/480/sports",
-      "desc": "Content description!",
-      "id": "40"
-    },
-    {
       "title": "Bai viet moi vua them 01",
       "img": "https://picsum.photos/200/200",
       "desc": "Mo ta san pham",
@@ -25,6 +11,12 @@
       "img": "http://res.cloudinary.com/ecommercer2021/image/upload/v1644299077/tyoijrwtrdjvn6cncfhg.png",
       "desc": "Noi dung bai viet 1",
       "id": "k75NwB3"
+    },
+    {
+      "title": "bai viet 2",
+      "img": "http://res.cloudinary.com/ecommercer2021/image/upload/v1644299756/fw3bavsz4nvnhi1d92fa.png",
+      "desc": "Noi dung bai viet 2",
+      "id": "8XfVO3T"
     }
   ],
   "products": []
