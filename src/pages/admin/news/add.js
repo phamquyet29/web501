@@ -43,26 +43,29 @@ const AdminAddPost = {
         const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/ecommercer2021/image/upload";
         const CLOUDINARY_PRESET = "jkbdphzy";
 
-        formAdd.addEventListener("submit", (e) => {
+        formAdd.addEventListener("submit", async (e) => {
             e.preventDefault();
+            // lấy giá trị input file
             const file = document.querySelector("#img-post").files[0];
 
+            // tạo object và gắn giá trị vào các thuộc tính của formData
             const formData = new FormData();
             formData.append("file", file);
             formData.append("upload_preset", CLOUDINARY_PRESET);
 
-            axios.post(CLOUDINARY_API, formData, {
+            // call API cloudinary để đẩy ảnh lên
+            const { data } = await axios.post(CLOUDINARY_API, formData, {
                 headers: {
                     "Content-Type": "application/form-data",
                 },
             });
-            // call api
 
-            // add({
-            //     title: document.querySelector("#title-post").value,
-            //     img: document.querySelector("#img-post").value,
-            //     desc: document.querySelector("#desc-post").value,
-            // });
+            // call api thêm bài viết
+            add({
+                title: document.querySelector("#title-post").value,
+                img: data.url,
+                desc: document.querySelector("#desc-post").value,
+            });
         });
     },
 };
