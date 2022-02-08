@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { reRender } from '../../../utils/rerender';
+import { getAll } from '../../../api/posts';
 
 const AdminPost = {
     async render() {
-        const { data } = await axios.get('https://5e79b4b817314d00161333da.mockapi.io/posts');
+        const { data } = await getAll();
         
         return /* html */`
         <div class="max-w-5xl mx-auto"> 
