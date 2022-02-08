@@ -4,6 +4,7 @@ import AboutPage from "./pages/about";
 import ProductPage from "./pages/product";
 import Header from "./components/header";
 import Footer from "./components/footer";
+import AdminPosts from "./pages/posts";
 
 const router = new Navigo("/", { linksSelector: "a" });
 
@@ -14,18 +15,10 @@ const print = async (content) => {
 };
 
 router.on({
-    "/": () => {
-        print(HomePage);
-    },
-    "/about": () => {
-        print(AboutPage);
-    },
-    "/product": () => {
-        print(ProductPage);
-    },
-    "/admin/news": () => {
-        print(ProductPage);
-    },
+    "/": () => print(HomePage),
+    "/about": () => print(AboutPage),
+    "/product": () => print(ProductPage),
+    "/admin/posts": () =>print(AdminPosts),
 });
 router.resolve();
 
