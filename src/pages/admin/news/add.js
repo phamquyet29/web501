@@ -1,3 +1,4 @@
+import axios from "axios";
 import { add } from "../../../api/post";
 import AdminNav from "../../../components/AdminNav";
 
@@ -24,8 +25,8 @@ const AdminAddPost = {
                 <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                     <div class="px-4 py-6 sm:px-0">
                         <form id="form-add">
-                            <input type="text" id="title-post" class="border border-black" placeholder="Title" /> </br >
-                            <input type="text" id="img-post" class="border border-black"  placeholder="Image" //> </br >
+                            <input type="text" id="title-post" class="border border-black" placeholder="Title" /> </br>
+                            <input type="file" id="img-post" class="border border-black"  placeholder="Image" /> </br >
                             <textarea name="" id="desc-post" cols="30" rows="10" class="border border-black"></textarea>
                             <button>Add New</button>
                         </form>
@@ -39,13 +40,29 @@ const AdminAddPost = {
     },
     afterRender() {
         const formAdd = document.querySelector("#form-add");
+        const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/ecommercer2021/image/upload";
+        const CLOUDINARY_PRESET = "jkbdphzy";
+
         formAdd.addEventListener("submit", (e) => {
             e.preventDefault();
-            add({
-                title: document.querySelector("#title-post").value,
-                img: document.querySelector("#img-post").value,
-                desc: document.querySelector("#desc-post").value,
+            const file = document.querySelector("#img-post").files[0];
+
+            const formData = new FormData();
+            formData.append("file", file);
+            formData.append("upload_preset", CLOUDINARY_PRESET);
+
+            axios.post(CLOUDINARY_API, formData, {
+                headers: {
+                    "Content-Type": "application/form-data",
+                },
             });
+            // call api
+
+            // add({
+            //     title: document.querySelector("#title-post").value,
+            //     img: document.querySelector("#img-post").value,
+            //     desc: document.querySelector("#desc-post").value,
+            // });
         });
     },
 };
