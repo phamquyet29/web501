@@ -55,36 +55,29 @@ const AdminNewsAdd = {
     const formAdd = document.querySelector("#form-add-post");
     const imgPreview = document.querySelector("#img-preview");
     const imgPost = document.querySelector("#img-post");
+    const CLOUDINARY_API_URL = "https://api.cloudinary.com/v1_1/ecommercer2021/image/upload";
+    const CLOUDINARY_PRESET = "jkbdphzy";
 
-    imgPost.addEventListener("change", function (e) {
-      const file = e.target.files[0];
+    formAdd.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const file = imgPost.files[0];
 
-      console.log(file);
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", CLOUDINARY_PRESET);
 
-      const formData = new FormData();
-      formData.append("file", file);
-      formData.append("upload_preset", "jkbdphzy");
-      axios({
-        url: "https://api.cloudinary.com/v1_1/ecommercer2021/image/upload",
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-endcoded",
-        },
-        data: formData,
-      })
-        .then((res) => {
-          console.log(res.data.secure_url);
-          imgPreview.src = res.data.secure_url;
-          formAdd.addEventListener("submit", function (e) {
-            e.preventDefault();
-            add({
-              title: document.querySelector("#title-post").value,
-              img: res.data.secure_url,
-              desc: document.querySelector("#desc-post").value,
-            });
-          });
+        // call api cloudinary
+        const { data } = await axios.post(CLOUDINARY_API_URL, formData, {
+            headers: {
+                "Content-Type": "application/form-data"
+            }
         })
-        .catch((error) => console.log(error));
+        // call api thêm bài viết
+        add({
+            title: document.querySelector("#title-post").value,
+            img: data.url,
+            desc: document.querySelector("#desc-post").value,
+        });
     });
   },
 };
