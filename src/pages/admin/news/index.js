@@ -1,5 +1,6 @@
 import { getAll, remove } from "../../../api/posts";
 import NavAdmin from "../../../components/NavAdmin";
+import { reRender } from "../../../utils";
 
 const AdminNewsPage = {
     async render() {
@@ -78,7 +79,10 @@ const AdminNewsPage = {
             button.addEventListener('click', () => {
                 const confirm = window.confirm("Mày có chắc chắn muốn xóa không?");
                 if(confirm){
-                    remove(id).then(() => console.log("Mày đã xóa thành công"));
+                    remove(id).then(() => {
+                        console.log("Mày đã xóa thành công")
+                        reRender(AdminNewsPage, "#app");
+                    });
                 }
             })
         });
