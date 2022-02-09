@@ -225,5 +225,13 @@
       "id": "IpcDiWw"
     }
   ],
-  "products": []
+  "products": [],
+  "users": [
+    {
+      "email": "datlt2306@gmail.com",
+      "password": "$2a$10$8RxEg1fBACGJYzHxfK.X1eb/BMLISDsrgvmxeyTpWvhCCo1biuy.a",
+      "username": "datlt2306",
+      "id": 1
+    }
+  ]
 }
