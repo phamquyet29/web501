@@ -6,6 +6,7 @@ import DashboardPage from "./pages/dashboard";
 import DetailPage from "./pages/detail";
 import HomePage from "./pages/home";
 import ProductPage from "./pages/product";
+import Signin from "./pages/signin";
 import Signup from "./pages/signup";
 
 const router = new Navigo("/", { linksSelector: "a", hash: true });
@@ -25,6 +26,7 @@ router.on({
   "/admin/news": () => print(AdminNews),
   "/admin/news/add": () => print(AdminNewsAdd),
   "/signup": () => print(Signup),
+  "/signin": () => print(Signin),
 });
 
 router.resolve();
