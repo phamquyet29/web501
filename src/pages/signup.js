@@ -21,6 +21,8 @@ const Signup = {
         email: document.querySelector("#email").value,
         password: document.querySelector("#password").value,
       });
+      window.location.href="/#/";
+      // thông báo bạn đăng nhập thành công....
     });
   },
 };

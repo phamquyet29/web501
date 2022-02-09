@@ -15,12 +15,11 @@ const Signin = {
     formSignin.addEventListener("submit", async (e) => {
       e.preventDefault();
       // call api
-      const response = await signin({
+      const { data } = await signin({
         email: document.querySelector("#email").value,
         password: document.querySelector("#password").value,
       });
-      console.log(response.data.user);
-      localStorage.setItem('user', JSON.stringify(response.data.user))
+      localStorage.setItem('user', JSON.stringify(data.user))
     });
   },
 };
