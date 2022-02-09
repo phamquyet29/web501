@@ -16,19 +16,26 @@ const print = async (content, id) => {
   if (content.afterRender) content.afterRender(id);
 };
 
+// router.hooks({
+//   before(done, match) {
+//     console.log(match)
+//     done()
+//   }
+// });
 router.on({
   "/": () => print(HomePage),
   "/about": () => print(AboutPage),
   "/news/:id": (value) => print(DetailNewsPage, value.data.id),
-  "/admin/dashboard": () => print(DashboardPage),
+  "/admin/dashboard": () =>  { print(DashboardPage) }, 
   "/admin/news": () => print(AdminNewsPage),
   "/admin/news/:id/edit": ({ data }) => print(AdminEditPost, data.id),
   "/admin/news/add": () => print(AdminNewsAddPage),
   "/signup": () => print(Signup),
   "/signin": () => print(Signin),
 });
-router.resolve();
 
+
+router.resolve();
 /**
  * ôn lại callback
  * ôn lại promise

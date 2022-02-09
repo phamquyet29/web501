@@ -14,10 +14,21 @@ const Header = {
                 <li><a href="/product" class="block px-4 py-3 hover:bg-indigo-500 hover:text-white">Product</a></li>
                 <li><a href="/contact" class="block px-4 py-3 hover:bg-indigo-500 hover:text-white">Contact</a></li>
                 <li><a href="/admin/dashboard" class="block px-4 py-3 hover:bg-indigo-500 hover:text-white">Dashboard</a></li>
+                <li><a class="block px-4 py-3 hover:bg-indigo-500 hover:text-white" id="email"></a></li>
+                <li><a class="block px-4 py-3 hover:bg-indigo-500 hover:text-white" id="logout">Logout</a></li>
             </ul>
             </div>
         </header>
         `;
     },
+    afterRender(){
+        const email = document.querySelector('#email');
+        const logout = document.querySelector('#logout');
+        email.innerHTML = JSON.parse(localStorage.getItem('user')).email;
+
+        logout.addEventListener('click', function(){
+            localStorage.removeItem('user');
+        })
+    }
 };
 export default Header;

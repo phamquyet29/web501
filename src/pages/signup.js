@@ -6,7 +6,7 @@ const Signup = {
             <form id="formSignup">
                 <input type="text" placeholder="Username" id="username"/>
                 <input type="email"  placeholder="Email" id="email"/>
-                <input type="password"  placeholder="Password" id="password"/>
+                <input type="password" placeholder="Password" id="password"/>
                 <button>Đăng ký</button>
             </form>
         `;
