@@ -1,5 +1,6 @@
 import Banner from "../../components/banner";
 import axios from "axios";
+import { edit } from "../../api/posts";
 
 const AdminEditposts = {
     async render(){
@@ -46,11 +47,12 @@ const AdminEditposts = {
                 }
             });
             // call API thêm bài viết
-            axios.put('https://5e79b4b817314d00161333da.mockapi.io/posts/15', {
+            edit({
+                id: 15,
                 title: document.querySelector('#title-post').value,
                 img: data.url,
                 desc: document.querySelector('#desc-post').value
-            });
+            })
             // chuyển trang
             document.location.href = "/admin/news";
        });

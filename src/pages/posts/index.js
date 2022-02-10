@@ -1,9 +1,9 @@
 import Banner from "../../components/banner";
-import axios from "axios";
+import { getAll } from "../../api/posts";
 
 const AdminPosts = {
     async render(){
-        const response = await axios.get('https://5e79b4b817314d00161333da.mockapi.io/posts');
+        const response = await getAll();
         return `
             <div class="max-w-5xl mx-auto">
                 <div class="banner">
