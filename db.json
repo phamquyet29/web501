@@ -131,6 +131,11 @@
       "email": "datlt@gmail.com",
       "password": "$2a$10$a0/z9dDn1EU92K3Q2vYSFu5cICbN6khbqz3wvPfXjLHof4J41N1.K",
       "id": 1
+    },
+    {
+      "email": "datlt2@gmail.com",
+      "password": "$2a$10$x15SoAE89cug7ObbCyEM0OaqQ5kTBmJB1f/KvXULtN0ZwonC94aqS",
+      "id": 2
     }
   ]
 }

@@ -9,7 +9,7 @@ import NewsDetail from "./pages/newsDetail";
 import Signin from "./pages/signin";
 import Signup from "./pages/signup";
 
-const router = new Navigo("/", { linksSelector: "a" });
+const router = new Navigo("/", { linksSelector: "a", hash: true });
 
 const print = async (content, id) => {
   document.getElementById("header").innerHTML = Header.render();
@@ -18,6 +18,20 @@ const print = async (content, id) => {
 
   if(content.afterRender) content.afterRender();
 };
+
+const userId = JSON.parse(localStorage.getItem('user')).id
+router.on('/admin/*/',  () => {
+  console.log('truy cap duong dan admin/*')
+}, {
+  before(done, match) {
+    // do something
+    if(userId == 1){
+      done();
+    } else {
+      // console.log('2')
+    }
+  },
+});
 
 router.on({
   "/": () => {
