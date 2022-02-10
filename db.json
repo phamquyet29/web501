@@ -104,5 +104,17 @@
       "desc": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
       "id": "32"
     }
+  ],
+  "users": [
+    {
+      "email": "datlt@gmail.com",
+      "password": "$2a$10$6AN8d5pMQuUNltYAxOIAjue7.83PtnbOytFUEfjxRXVg.XLJVIwpy",
+      "id": 1
+    },
+    {
+      "email": "datlt2@gmail.com",
+      "password": "$2a$10$kpjOedOFs4RuM04WF3k6S..tu40axlajmO7krXskTmWF9YiN7Za/a",
+      "id": 2
+    }
   ]
 }
