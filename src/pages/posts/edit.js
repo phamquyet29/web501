@@ -51,6 +51,8 @@ const AdminEditposts = {
                 img: data.url,
                 desc: document.querySelector('#desc-post').value
             });
+            // chuyển trang
+            document.location.href = "/admin/news";
        });
     }
 };
