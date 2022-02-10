@@ -6,6 +6,7 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import AdminPosts from "./pages/posts";
 import AdminAddPosts from "./pages/posts/add";
+import AdminEditposts from "./pages/posts/edit";
 
 const router = new Navigo("/", { linksSelector: "a" });
 
@@ -22,6 +23,7 @@ router.on({
     "/product": () => print(ProductPage),
     "/admin/posts": () =>print(AdminPosts),
     "/admin/posts/add": () =>print(AdminAddPosts),
+    "/admin/posts/:id/edit": () =>print(AdminEditposts),
 });
 router.resolve();
 
