@@ -1,10 +1,10 @@
 import Banner from "../../components/banner";
 import axios from "axios";
-import { edit } from "../../api/posts";
+import { edit, get } from "../../api/posts";
 
 const AdminEditposts = {
-    async render(){
-        const { data } = await axios.get('https://5e79b4b817314d00161333da.mockapi.io/posts/15');
+    async render(id){
+        const { data } = await get(id);
         console.log(data);
         return `
             <div class="max-w-5xl mx-auto">
@@ -23,7 +23,7 @@ const AdminEditposts = {
             </div>
         `
     },
-    afterRender(){
+    afterRender(id){
        const formEditPost = document.querySelector('#formEditPost');
        const CLOUDINARY_PRESET = "jkbdphzy";
        const CLOUDINARY_API_URL = "https://api.cloudinary.com/v1_1/ecommercer2021/image/upload";
@@ -48,13 +48,11 @@ const AdminEditposts = {
             });
             // call API thêm bài viết
             edit({
-                id: 15,
+                id: id,
                 title: document.querySelector('#title-post').value,
                 img: data.url,
                 desc: document.querySelector('#desc-post').value
             })
-            // chuyển trang
-            document.location.href = "/admin/news";
        });
     }
 };

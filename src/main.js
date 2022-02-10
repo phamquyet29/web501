@@ -10,10 +10,10 @@ import AdminEditposts from "./pages/posts/edit";
 
 const router = new Navigo("/", { linksSelector: "a" });
 
-const print = async (content) => {
+const print = async (content, id) => {
     document.getElementById("header").innerHTML = Header.render();
-    document.getElementById("app").innerHTML = await content.render();
-    if(content.afterRender) await content.afterRender();
+    document.getElementById("app").innerHTML = await content.render(id);
+    if(content.afterRender) await content.afterRender(id);
     document.getElementById("footer").innerHTML = Footer.render();
 };
 
@@ -23,7 +23,7 @@ router.on({
     "/product": () => print(ProductPage),
     "/admin/posts": () =>print(AdminPosts),
     "/admin/posts/add": () =>print(AdminAddPosts),
-    "/admin/posts/:id/edit": () =>print(AdminEditposts),
+    "/admin/posts/:id/edit": ({data}) =>print(AdminEditposts, data.id),
 });
 router.resolve();
 

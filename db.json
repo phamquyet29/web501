@@ -1,11 +1,10 @@
 {
-    "posts": [
-        {
-          "createdAt": "2022-02-09T20:43:32.682Z",
-          "title": "ggggggggggg",
-          "img": "http://res.cloudinary.com/dvj4wwihv/image/upload/v1644487695/xydeoffcdehzs1dpoviq.png",
-          "desc": "ahihihihi",
-          "id": "23"
-        }
-      ]
+  "posts": [
+    {
+      "id": "23",
+      "title": "ggggggggggg updated",
+      "img": "http://res.cloudinary.com/ecommercer2021/image/upload/v1644489405/pn2qgxuqgjpav6fx2l1y.png",
+      "desc": "ahihihihi"
+    }
+  ]
 }
