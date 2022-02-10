@@ -125,5 +125,12 @@
       "desc": "Noi dung bai viet moi 1",
       "id": "Fhb4ltM"
     }
+  ],
+  "users": [
+    {
+      "email": "datlt@gmail.com",
+      "password": "$2a$10$a0/z9dDn1EU92K3Q2vYSFu5cICbN6khbqz3wvPfXjLHof4J41N1.K",
+      "id": 1
+    }
   ]
 }
