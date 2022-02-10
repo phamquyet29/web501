@@ -20,7 +20,9 @@ const Signin = {
                     email: $('#email').value,
                     password: $('#password').value,
                 });
-                console.log('data', data);
+                // console.log('data', data);
+                alert('Đăng nhập thành công')
+                document.location.href="/#/"
             } catch (error) {
                 // nếu lỗi thì trả về object chứa lỗi error.response.data
                 alert(error.response.data)
