@@ -73,5 +73,12 @@
       "id": "TCppoM-"
     }
   ],
-  "products": []
+  "products": [],
+  "users": [
+    {
+      "email": "datlt@gmail.com",
+      "password": "$2a$10$jIjiXSV5MychwbDgC8L3LuBRqnMeFnD7aZx1jV4TKnENpVFxJ5/ca",
+      "id": 1
+    }
+  ]
 }

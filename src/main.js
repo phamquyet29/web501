@@ -6,6 +6,8 @@ import AdminPost from "./pages/AdminPost";
 import DetailNewsPage from "./pages/detailNews";
 import HomePage from "./pages/home";
 import NewsPage from "./pages/news";
+import Signin from "./pages/signin";
+import Signup from "./pages/signup";
 
 const router = new Navigo("/", { linksSelector: "a", hash: true });
 
@@ -23,6 +25,8 @@ router.on({
     "/news/:id": ({ data }) => print(DetailNewsPage, data.id),
     "/admin/news/add": () => print(AddPost),
     "/admin/news": () => print(AdminPost),
+    "/signup": () => print(Signup),
+    "/signin": () => print(Signin)
 });
 router.resolve();
 
