@@ -20,6 +20,11 @@ const Signin = {
                     password: document.querySelector('#password').value,
                 });
                 localStorage.setItem('user', JSON.stringify(response.data.user));
+                if(response.data.user.id === 1){
+                    document.location.href="/admin/news";
+                } else {
+                    document.location.href="/";
+                }
 
             } catch (error) {
                 console.log(error.response.data);

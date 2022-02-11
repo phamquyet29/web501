@@ -1,3 +1,5 @@
+import { reRender } from "../utils/rerender";
+
 const Header = {
     render() {
         return /* html */`
@@ -17,8 +19,10 @@ const Header = {
               <a href="/product" class="menu-item__link">Product </a>
             </li>
           </ul>
-          <span id="account" class="text-white"></span>
-          <button id="logout">Logout</button>
+          <div>
+            <span id="account" class="text-white"></span>
+            ${localStorage.getItem('user') ? '<button id="logout">Logout</button>' : ""}
+          </div>
         </div>
   
       </header>
@@ -32,6 +36,8 @@ const Header = {
 
         btnLogout.addEventListener('click', function(){
            localStorage.removeItem('user');
+           alert('Ban da logout thanh cong');
+           reRender(Header, "#header");
         })
     }
 };
