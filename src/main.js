@@ -15,6 +15,19 @@ const print = async (content, id) => {
   document.querySelector("#app").innerHTML = await content.render(id);
   if (content.afterRender) await content.afterRender();
 };
+router.on('/admin/*/', () => {}, {
+    before(done, match) {
+      const userId = JSON.parse(localStorage.getItem('user')).user.id;
+      console.log(userId);
+      if(userId === 1){
+          // render dựa trên router
+        done();
+      } else {
+          document.location.href="/"
+      }
+      
+    }
+  });
 
 router.on({
   "/": () => print(HomePage),
