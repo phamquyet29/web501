@@ -12,12 +12,14 @@ const Signin = {
     },
     afterRender(){
         const formSignin = document.querySelector('#formSignin');
-        formSignin.addEventListener('submit', function(e){
+        formSignin.addEventListener('submit', async function(e){
             e.preventDefault();
-            signin({
+            const response = await signin({
                 email: document.querySelector('#email').value,
                 password: document.querySelector('#password').value
             })
+            // lưu thông tin user vào localStorage
+            localStorage.setItem("user", JSON.stringify(response.data))
         });
     }
 }
