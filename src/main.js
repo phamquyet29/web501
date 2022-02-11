@@ -17,12 +17,17 @@ const print = async (content, id) => {
 };
 router.on("/admin/*", () => {}, {
     before(done, match) {
-      const id = JSON.parse(localStorage.getItem('user')).id;
-      if(id == 1){
-        done();
-      } else {
-          document.location.href="/"
-      }
+        if(JSON.parse(localStorage.getItem('user'))){
+            const id = JSON.parse(localStorage.getItem('user')).id;
+            if(id == 1){
+                done();
+            } else {
+                document.location.href="/"
+            }
+        } else {
+            document.location.href="/"
+        }
+      
       
     }
 })

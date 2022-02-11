@@ -20,6 +20,11 @@ const Signin = {
         password: document.querySelector("#password").value,
       });
       localStorage.setItem('user', JSON.stringify(data.user))
+      if(data.user.id == 1){
+          document.location.href="/admin/news"
+      } else {
+          document.location.href="/"
+      }
     });
   },
 };
