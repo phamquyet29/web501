@@ -232,6 +232,12 @@
       "password": "$2a$10$8RxEg1fBACGJYzHxfK.X1eb/BMLISDsrgvmxeyTpWvhCCo1biuy.a",
       "username": "datlt2306",
       "id": 1
+    },
+    {
+      "email": "datlt2307@gmail.com",
+      "password": "$2a$10$FLQvGdRpE9/md9F0htpHceJDpNo8MulNb2.yrSX2RpabY0Z5uYW4W",
+      "username": "datlt2307",
+      "id": 2
     }
   ]
 }

@@ -20,6 +20,13 @@ const Signin = {
             })
             // lưu thông tin user vào localStorage
             localStorage.setItem("user", JSON.stringify(response.data))
+            if(response.data.user.id === 1) {
+                // nếu là admin thì chuyển trang
+                document.location.href="/admin/news"
+            } else {
+                // ngược lại nếu là member => id != 1
+                document.location.href="/"
+            }
         });
     }
 }
