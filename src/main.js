@@ -15,13 +15,17 @@ const print = async (content, id) => {
   document.getElementById("app").innerHTML = await content.render(id);
   if (content.afterRender) content.afterRender(id);
 };
-
-// router.hooks({
-//   before(done, match) {
-//     console.log(match)
-//     done()
-//   }
-// });
+router.on("/admin/*", () => {}, {
+    before(done, match) {
+      const id = JSON.parse(localStorage.getItem('user')).id;
+      if(id == 1){
+        done();
+      } else {
+          document.location.href="/"
+      }
+      
+    }
+})
 router.on({
   "/": () => print(HomePage),
   "/about": () => print(AboutPage),
