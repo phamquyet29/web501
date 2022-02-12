@@ -4,22 +4,32 @@
       "title": "Bai viet moi vua them 01",
       "img": "https://picsum.photos/200/200",
       "desc": "Mo ta san pham",
-      "id": "ZnsEWgz"
+      "id": "ZnsEWgz",
+      "postCateId": 1
     },
     {
       "title": "bai viet 1",
       "img": "http://res.cloudinary.com/ecommercer2021/image/upload/v1644299077/tyoijrwtrdjvn6cncfhg.png",
       "desc": "Noi dung bai viet 1",
-      "id": "k75NwB3"
+      "id": "k75NwB3",
+      "postCateId": 1
     },
     {
       "title": "bai viet 2",
       "img": "http://res.cloudinary.com/ecommercer2021/image/upload/v1644299756/fw3bavsz4nvnhi1d92fa.png",
       "desc": "Noi dung bai viet 2",
-      "id": "8XfVO3T"
+      "id": "8XfVO3T",
+      "postCateId": 2
     },
     {
       "title": "bai viet 3",
+      "img": "http://res.cloudinary.com/ecommercer2021/image/upload/v1644300790/odydceuhm92lszqex9lc.png",
+      "desc": "12321321",
+      "id": "FpRwiRq",
+      "postCateId": 2
+    },
+    {
+      "title": "bai viet 3 clone",
       "img": "http://res.cloudinary.com/ecommercer2021/image/upload/v1644300790/odydceuhm92lszqex9lc.png",
       "desc": "12321321",
       "id": "FpRwiRq"
@@ -72,6 +82,10 @@
       "desc": "dasdada",
       "id": "TCppoM-"
     }
+  ],
+  "postCates": [
+    { "id": 1, "name": "danh mục bài viết 1"},
+    { "id": 2, "name": "danh mục bài viết 2"}
   ],
   "products": [],
   "users": [
