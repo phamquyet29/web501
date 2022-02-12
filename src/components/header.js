@@ -13,5 +13,8 @@ const Header = {
             </div>
         </header>`;
     },
+    afterRender(){
+      Nav.afterRender();
+    }
 };
 export default Header;

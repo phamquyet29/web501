@@ -12,9 +12,7 @@ import Signup from "./pages/signup";
 const router = new Navigo("/", { linksSelector: "a", hash: true });
 
 const print = async (content, id) => {
-  document.getElementById("header").innerHTML = Header.render();
   document.getElementById("content").innerHTML = await content.render(id);
-  document.getElementById("footer").innerHTML = Footer.render();
 
   if(content.afterRender) content.afterRender();
 };
