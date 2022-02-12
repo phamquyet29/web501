@@ -6,5 +6,12 @@
       "img": "http://res.cloudinary.com/ecommercer2021/image/upload/v1644489405/pn2qgxuqgjpav6fx2l1y.png",
       "desc": "ahihihihi"
     }
+  ],
+  "users": [
+    {
+      "email": "admin@gmail.com",
+      "password": "$2a$10$xyrnKzsDIKkElu/SRLdJ/utCbltwLFgitvwOKFKpMeWGqgYHbZBSG",
+      "id": 1
+    }
   ]
 }
