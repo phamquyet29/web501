@@ -17,6 +17,25 @@ const print = async (content, id) => {
     if(content.afterRender) content.afterRender();
 };
 
+router.on("/admin/*", () =>{}, {
+    // Phương thức before được gọi trước khi render nội dung ra trình duyệt
+    before: (done) => {
+        if(localStorage.getItem('user')){
+            // lấy id trong localStorage
+            const userId = JSON.parse(localStorage.getItem('user')).id;
+            // Nếu userid == 1 thì render
+            if(userId === 1){
+                done();
+            } else {
+                // ngược lại nếu ko phải admin quay về trang chủ
+                document.location.href="/"
+            }
+        } else {
+            document.location.href="/"
+        }
+        
+    }
+})
 router.on({
     "/": () => print(HomePage),
     "/about": () => print(AboutPage),
@@ -29,33 +48,3 @@ router.on({
     "/signin": () => print(Signin)
 });
 router.resolve();
-
-
-
-// const render = () => {
-//     return new Promise((resolve, reject) => {
-//         setTimeout(() => {
-//             try {
-//                 // connect sucessfully
-//                 resolve("Hello Async/await")
-//             } catch (error) {
-//                 reject("Lỗi");
-//             }
-//         }, 3000)
-//     })
-// }
-
-// // render()
-// //     .then(result => {
-// //         result.push(5);
-// //         return result;
-// //     })
-// //     .then(data => {
-// //         data.push(6);
-// //     })
-// //     .catch(error => console.log(error))
-
-// const printFunctionPromise = async () => {
-//     const result = await render();
-//     return result;
-// }

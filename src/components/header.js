@@ -24,14 +24,17 @@ const Header = {
     },
     afteRender(){
       const accountEmail = document.querySelector('#account-email');
-      accountEmail.innerHTML = JSON.parse(localStorage.getItem('user')).email;
-      
+      if(accountEmail){
+        accountEmail.innerHTML = JSON.parse(localStorage.getItem('user')).email;  
+      }
       const logout = document.querySelector('#logout');
-
-      logout.addEventListener('click', function(){
+      if(logout){
+        logout.addEventListener('click', function(){
           localStorage.removeItem('user');
           reRender(Header, '#header');
       })
+      }
+      
     }
 };
 export default Header;
