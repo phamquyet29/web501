@@ -22,8 +22,15 @@ const Signin = {
                     password: document.querySelector('#password').value
                 });    
                 if(data){
-                    console.log(data);
+                    localStorage.setItem('user', JSON.stringify(data.user));
                     toastr.success("Đăng nhập thành công");
+                    setTimeout(()=>{
+                        if(data.user.id === 1){
+                            document.location.href="/admin/news"
+                        } else {
+                            document.location.href="/"
+                        }
+                    }, 2000);
                 }
                 
             } catch (error) {
