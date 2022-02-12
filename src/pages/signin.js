@@ -23,6 +23,9 @@ const Signin = {
                     password: document.querySelector('#password').value,
                 });
                 if(data){
+                    console.log(data.user);
+                    // Lưu thông tin user vào localStorage
+                    localStorage.setItem("user", JSON.stringify(data.user));
                     toastr.success("Đăng nhập thành công, chuyển trang sau 2s");
                     setTimeout(() => {
                         document.location.href="/"

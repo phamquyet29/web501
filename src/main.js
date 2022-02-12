@@ -13,10 +13,8 @@ import Signin from "./pages/signin";
 const router = new Navigo("/", { linksSelector: "a" });
 
 const print = async (content, id) => {
-    document.getElementById("header").innerHTML = Header.render();
     document.getElementById("app").innerHTML = await content.render(id);
     if(content.afterRender) await content.afterRender(id);
-    document.getElementById("footer").innerHTML = Footer.render();
 };
 
 router.on({
