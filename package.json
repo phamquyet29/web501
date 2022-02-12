@@ -21,6 +21,7 @@
     "json-server": "^0.17.0",
     "json-server-auth": "^2.1.0",
     "navigo": "^8.11.1",
-    "sweetalert": "^2.1.2"
+    "sweetalert": "^2.1.2",
+    "toastr": "^2.1.4"
   }
 }

@@ -1,4 +1,6 @@
 import { signin } from "../api/user";
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
 
 const Signin = {
     render(){
@@ -12,12 +14,24 @@ const Signin = {
     },
     afterRender(){
         const formSignin = document.querySelector('#formSignin');
-        formSignin.addEventListener('submit', function(e){
+        formSignin.addEventListener('submit', async function(e){
             e.preventDefault();
-            signin({
-                email: document.querySelector('#email').value,
-                password: document.querySelector('#password').value
-            })
+            try {
+                const { data } = await signin({
+                    email: document.querySelector('#email').value,
+                    password: document.querySelector('#password').value
+                });    
+                if(data){
+                    console.log(data);
+                    toastr.success("Đăng nhập thành công");
+                }
+                
+            } catch (error) {
+                toastr.error(error.response.data);
+            }
+            
+
+            
         })
     }
 }
