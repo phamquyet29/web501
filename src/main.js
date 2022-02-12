@@ -8,6 +8,7 @@ import AdminPosts from "./pages/posts";
 import AdminAddPosts from "./pages/posts/add";
 import AdminEditposts from "./pages/posts/edit";
 import Signup from "./pages/signup";
+import Signin from "./pages/signin";
 
 const router = new Navigo("/", { linksSelector: "a" });
 
@@ -25,7 +26,8 @@ router.on({
     "/admin/posts": () =>print(AdminPosts),
     "/admin/posts/add": () =>print(AdminAddPosts),
     "/admin/posts/:id/edit": ({data}) =>print(AdminEditposts, data.id),
-    "/signup": () => print(Signup)
+    "/signup": () => print(Signup),
+    "/signin": () => print(Signin)
 });
 router.resolve();
 
