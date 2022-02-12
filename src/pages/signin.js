@@ -15,11 +15,21 @@ const Signin = {
         const formSignin = document.querySelector('#formSignin');
         formSignin.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const { data } = await signin({
-                email: document.querySelector('#email').value,
-                password: document.querySelector('#password').value,
-            });
-            console.log(data);
+            try {
+                const { data } = await signin({
+                    email: document.querySelector('#email').value,
+                    password: document.querySelector('#password').value,
+                });
+                if(data){
+                    setTimeout(() => {
+                        document.location.href="/"
+                    }, 2000)
+                }
+
+            } catch (error) {
+                console.log(error.response.data)
+            }
+            
         })
     }
 }

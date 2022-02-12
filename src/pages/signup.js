@@ -15,11 +15,20 @@ const Signup = {
         const formSignup = document.querySelector('#formSignup');
         formSignup.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const { data } = await signup({
-                email: document.querySelector('#email').value,
-                password: document.querySelector('#password').value,
-            });
-            console.log(data);
+            try {
+                const { data } = await signup({
+                    email: document.querySelector('#email').value,
+                    password: document.querySelector('#password').value,
+                });
+                if(data){
+                    setTimeout(() => {
+                        document.location.href="/signin"
+                    }, 2000)
+                }    
+            } catch (error) {
+                console.log(error)
+            }
+            
         })
     }
 }
