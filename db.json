@@ -140,8 +140,14 @@
     }
   ],
   "categoryPosts": [
-    { "id": 1, "name": "Danh muc bai viet 1"},
-    { "id": 2, "name": "Danh muc bai viet 2"}
+    {
+      "id": 1,
+      "name": "Danh muc bai viet 1"
+    },
+    {
+      "id": 2,
+      "name": "Danh muc bai viet 2"
+    }
   ],
   "users": [
     {
@@ -153,6 +159,26 @@
       "email": "member@gmail.com",
       "password": "$2a$10$x15SoAE89cug7ObbCyEM0OaqQ5kTBmJB1f/KvXULtN0ZwonC94aqS",
       "id": 2
+    },
+    {
+      "email": "member2@gmail.com",
+      "password": "$2a$10$590XBx.sOSfP6gFEnFtTTe4ebGF781tGsxZqrPJ3i2196QrcJyq/y",
+      "id": 3
+    },
+    {
+      "email": "member3@gmail.com",
+      "password": "$2a$10$yJfC1WimCkwUWUwwzDyzTO5q7czJpU4lvXZaq8XBtnyA1lKgoqx.K",
+      "id": 4
+    },
+    {
+      "email": "dafaf@gmail.com",
+      "password": "$2a$10$aMRJ9w.x8X4bQX6KPLLeHOJK68V9qxG5djNgLEuFlNu2bAztcCiVS",
+      "id": 5
+    },
+    {
+      "email": "member100@gmail.com",
+      "password": "$2a$10$Q66peqKcmeyjPycrnDjeQeNROg4/yu1TJQN0o3Qw9OTc4YWtdLnRa",
+      "id": 6
     }
   ]
 }
