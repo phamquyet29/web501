@@ -1,6 +1,8 @@
+// eslint-disable-next-line import/no-unresolved
 import toastr from "toastr";
 import { getAll, remove } from "../../../api/post";
 import AdminNav from "../../../components/AdminNav";
+// eslint-disable-next-line import/no-unresolved
 import "toastr/build/toastr.min.css";
 import { reRender } from "../../../utils";
 
