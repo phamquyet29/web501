@@ -1,5 +1,6 @@
 import { reRender } from "../utils";
-
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
 const Header = {
     render() {
         return /* html */`<nav class="max-w-5xl mx-auto bg-orange-500 flex items-center justify-between">
@@ -29,6 +30,7 @@ const Header = {
         logout.addEventListener('click', function(){
           localStorage.removeItem('user');
           reRender(Header, "#header");
+          toastr.success("Logout thành công")
         })
       }
     }
