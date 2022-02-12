@@ -1,5 +1,7 @@
 import { signin } from "../api/user";
 import { $ } from "../utils/selector";
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
 
 const Signin = {
     render(){
@@ -20,17 +22,19 @@ const Signin = {
                     email: $('#email').value,
                     password: $('#password').value,
                 });
-                console.log('data', data.user);
                 localStorage.setItem('user', JSON.stringify(data.user));
-                if(data.user.id === 1){
-                    document.location.href="/#/admin/news"
-                } else {
-                    document.location.href="/#/"
-                }
+                toastr.success("Đăng nhập thành công, chuyển trang sau 2s")
+                setTimeout(function(){
+                    if(data.user.id === 1){
+                        document.location.href="/#/admin/news"
+                    } else {
+                        document.location.href="/#/"
+                    }
+                },2000)
                 
             } catch (error) {
                 // nếu lỗi thì trả về object chứa lỗi error.response.data
-                alert(error.response.data)
+                toastr.success(error.response.data)
                 $('#formSignin').reset()
             }
             

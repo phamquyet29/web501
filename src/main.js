@@ -19,12 +19,13 @@ const print = async (content, id) => {
   if(content.afterRender) content.afterRender();
 };
 
-const userId = JSON.parse(localStorage.getItem('user')).id
+
 router.on('/admin/*/',  () => {
   console.log('truy cap duong dan admin/*')
 }, {
   before(done, match) {
-    // do something
+    const userId = JSON.parse(localStorage.getItem('user')).id;
+    
     if(userId == 1){
       done();
     } else {
