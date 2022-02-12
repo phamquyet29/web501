@@ -22,13 +22,17 @@ router.on('/admin/*/',  () => {
   console.log('truy cap duong dan admin/*')
 }, {
   before(done, match) {
-    const userId = JSON.parse(localStorage.getItem('user')).id;
+      if(localStorage.getItem('user')){
+        const userId = JSON.parse(localStorage.getItem('user')).id;
+        if(userId == 1){
+            done();
+        } else {
+            document.location.href="/"
+        }
+      } else{
+        document.location.href="/"
+      }
     
-    if(userId == 1){
-      done();
-    } else {
-      // console.log('2')
-    }
   },
 });
 
