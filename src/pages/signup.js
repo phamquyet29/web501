@@ -1,4 +1,6 @@
 import { signup } from "../api/user";
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
 
 const Signup = {
     render(){
@@ -21,12 +23,13 @@ const Signup = {
                     password: document.querySelector('#password').value,
                 });
                 if(data){
+                    toastr.success("Đăng ký thành công, chuyển trang sau 2s");
                     setTimeout(() => {
                         document.location.href="/signin"
                     }, 2000)
                 }    
             } catch (error) {
-                console.log(error)
+                toastr.error(error.response.data);
             }
             
         })
