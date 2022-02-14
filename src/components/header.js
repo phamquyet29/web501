@@ -1,3 +1,5 @@
+import { reRender } from "../utils";
+
 const Header = {
   render() {
     return `
@@ -26,6 +28,7 @@ const Header = {
     if(logout){
       logout.addEventListener('click', function(){
           localStorage.removeItem('user');
+          reRender(Header, "#header");
       })
     }
   }

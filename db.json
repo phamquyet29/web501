@@ -1,20 +1,6 @@
 {
   "posts": [
     {
-      "createdAt": "2022-01-14T17:58:26.446Z",
-      "title": "Vickie Jast",
-      "img": "http://placeimg.com/640/480/technics",
-      "desc": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
-      "id": "11"
-    },
-    {
-      "createdAt": "2022-01-15T02:21:11.908Z",
-      "title": "Mrs. Drew Farrell",
-      "img": "http://placeimg.com/640/480/fashion",
-      "desc": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
-      "id": "13"
-    },
-    {
       "createdAt": "2022-01-14T11:14:02.843Z",
       "title": "Lorena Cole",
       "img": "http://placeimg.com/640/480/technics",

@@ -11,9 +11,9 @@ import Signup from "./pages/signup";
 
 const router = new Navigo("/", { linksSelector: "a", hash: true });
 
-const print = async (content, id) => {
-  document.querySelector("#app").innerHTML = await content.render(id);
-  if (content.afterRender) await content.afterRender();
+const print = async (component, id) => {
+  document.querySelector("#app").innerHTML = await component.render(id);
+  if (component.afterRender) await component.afterRender();
 };
 router.on('/admin/*/', () => {}, {
     before(done, match) {

@@ -1,5 +1,6 @@
 import { getAll, remove } from "../../../api/posts";
 import NavAdmin from "../../../components/NavAdmin";
+import { reRender } from "../../../utils";
 
 const AdminNews = {
     async render(){
@@ -78,7 +79,8 @@ const AdminNews = {
                 if(confirm){
                      // gọi hàm delete trong folder API và bắn id vào hàm
                     remove(id).then(() => {
-                        console.log('Da xoa thanh cong')
+                        console.log('Da xoa thanh cong');
+                        reRender(AdminNews, "#app");
                     })
                 }
             })

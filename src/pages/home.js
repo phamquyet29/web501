@@ -7,7 +7,7 @@ const HomePage = {
     async render() {
         return /* html */`
             <div class="max-w-5xl mx-auto">
-                <header>
+                <header id="header">
                     ${Header.render()}
                 </header>
                 <main>
