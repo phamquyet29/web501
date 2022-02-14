@@ -7,7 +7,13 @@ const Header = {
               <li><a href="/#/about" class="block px-4 py-5 hover:bg-indigo-500 hover:text-white">About Page</a></li>
               <li><a href="/#/product" class="block px-4 py-5 hover:bg-indigo-500 hover:text-white">Product Page</a></li>
             </ul>
-            <span id="accountInfo">Username</span>
+            ${localStorage.getItem('user') ? `
+            <div>
+             Xin chao : <span id="accountInfo">Username</span>
+              <button id="logout">Logout</button>
+            </div>
+            `: ""}
+            
         </div>
         `;
   },
@@ -15,6 +21,13 @@ const Header = {
     // lấy thông tin username từ localStorage và hiển thị ra ngoài
     const username = JSON.parse(localStorage.getItem("user")).user.username;
     document.querySelector('#accountInfo').innerHTML = username;
+    // Logout
+    const logout = document.querySelector('#logout');
+    if(logout){
+      logout.addEventListener('click', function(){
+          localStorage.removeItem('user');
+      })
+    }
   }
 };
 export default Header;
