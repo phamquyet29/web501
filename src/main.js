@@ -2,14 +2,13 @@ import Navigo from "navigo";
 import HomePage from "./pages/home";
 import AboutPage from "./pages/about";
 import ProductPage from "./pages/products";
-import Header from "./components/header";
-import Footer from "./components/footer";
 import AdminPosts from "./pages/posts";
 import AdminAddPosts from "./pages/posts/add";
 import AdminEditposts from "./pages/posts/edit";
 import Signup from "./pages/signup";
 import Signin from "./pages/signin";
 import ProductDetailPage from "./pages/products/detail";
+import CartPage from "./pages/cart";
 
 const router = new Navigo("/", { linksSelector: "a" });
 
@@ -39,6 +38,7 @@ router.on({
     "/admin/posts/add": () =>print(AdminAddPosts),
     "/admin/posts/:id/edit": ({data}) =>print(AdminEditposts, data.id),
     "/signup": () => print(Signup),
-    "/signin": () => print(Signin)
+    "/signin": () => print(Signin),
+    "/cart": () => print(CartPage)
 });
 router.resolve();
