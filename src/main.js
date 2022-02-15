@@ -3,6 +3,7 @@ import Header from "./components/header";
 import AboutPage from "./pages/about";
 import AddPost from "./pages/AdminAddPost";
 import AdminPost from "./pages/AdminPost";
+import CartPage from "./pages/cart";
 import DetailNewsPage from "./pages/detailNews";
 import HomePage from "./pages/home";
 import NewsPage from "./pages/news";
@@ -51,6 +52,7 @@ router.on({
     "/admin/news/add": () => print(AddPost),
     "/admin/news": () => print(AdminPost),
     "/signup": () => print(Signup),
-    "/signin": () => print(Signin)
+    "/signin": () => print(Signin),
+    "/cart": () => print(CartPage)
 });
 router.resolve();
