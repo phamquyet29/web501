@@ -10,8 +10,20 @@ export const addToCart = (newItem, next) => {
         cart.push(newItem);
     } else {
         // eslint-disable-next-line no-plusplus
-        existItem.count++;
+        existItem.quantity++;
     }
     localStorage.setItem("cart", JSON.stringify(cart));
     next();
+};
+export const increaseQuantityFromCart = () => {
+
+};
+export const decreaseQuantityFromCart = () => {
+
+};
+export const removeItemFromCart = () => {
+
+};
+export const getTotalPrice = () => {
+
 };

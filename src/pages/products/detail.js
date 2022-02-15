@@ -17,7 +17,7 @@ const DetailProduct = {
         const btnAddToCart = document.querySelector("#btnAddToCart");
         btnAddToCart.addEventListener("click", async () => {
             const { data } = await get(id);
-            addToCart({ ...data, count: 1 }, () => {
+            addToCart({ ...data, quantity: 1 }, () => {
                 console.log("được gọi sau khi add to cart nè");
             });
         });
