@@ -1,7 +1,7 @@
 import Navigo from "navigo";
 import HomePage from "./pages/home";
 import AboutPage from "./pages/about";
-import ProductPage from "./pages/product";
+import ProductPage from "./pages/products";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import AdminPosts from "./pages/posts";
@@ -9,6 +9,7 @@ import AdminAddPosts from "./pages/posts/add";
 import AdminEditposts from "./pages/posts/edit";
 import Signup from "./pages/signup";
 import Signin from "./pages/signin";
+import ProductDetailPage from "./pages/products/detail";
 
 const router = new Navigo("/", { linksSelector: "a" });
 
@@ -32,7 +33,8 @@ router.on("/admin/*", () => {}, {
 router.on({
     "/": () => print(HomePage),
     "/about": () => print(AboutPage),
-    "/product": () => print(ProductPage),
+    "/products": () => print(ProductPage),
+    "/products/:id": ({data}) => print(ProductDetailPage, data.id),
     "/admin/posts": () =>print(AdminPosts),
     "/admin/posts/add": () =>print(AdminAddPosts),
     "/admin/posts/:id/edit": ({data}) =>print(AdminEditposts, data.id),
@@ -40,63 +42,3 @@ router.on({
     "/signin": () => print(Signin)
 });
 router.resolve();
-
-
-// const a = 10;
-// const b = 20;
-
-// function sum(a,b, callback){
-//     callback(a + b);
-// }
-// sum(a,b, function(result){
-//     document.getElementById('app').innerHTML = result;
-// });
-
-// function loadScript(src, callback){
-//     const script = document.createElement('script');
-//     script.src = src;
-//     script.onload = () => {
-//         callback(null, script)
-//     }
-//     script.onerror = () => {
-//         callback(new Error("Lỗi kết nối"));
-//     }
-//     document.head.append(script);
-// }
-// loadScript('https://dev.to/lydiahallie/javascript-visualized-event-loop-3dif', function(error, script){
-//     if(error){
-//         console.log(error);
-//     } else {
-//         console.log(script);
-//     }
-// });
-
-// Promise
-function loadScript(src){
-    return new Promise((resolve, reject) => {
-        const script = document.createElement('script');
-        script.src = src;
-        script.onload = () => {
-            resolve(script)
-        }
-        script.onerror = () => {
-            reject(new Error("Lỗi kết nối"));
-        }
-        document.head.append(script);
-    });
-}
-// loadScript('https://dev.to/lydiahallie/javascript-visualized-event-loop-3dif')
-//     .then(script => console.log(script))
-//     .catch(error => console.log(error))
-
-// async/await
-async function asyncFunction(){
-    try {
-        const result = await loadScript('https://dev.to/lydiahallie/javascript-visualized-event-loop-3dif')
-        console.log(result)
-    } catch (error) {
-        console.log(error)
-    }
-}
-asyncFunction();
-
