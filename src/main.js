@@ -4,6 +4,7 @@ import Header from "./components/header";
 import AboutPage from "./pages/about";
 import AdminPost from "./pages/admin/posts";
 import AddPost from "./pages/admin/posts/add";
+import CartPage from "./pages/cart";
 import HomePage from "./pages/home";
 import NewsDetail from "./pages/newsDetail";
 import ProductsPage from "./pages/products";
@@ -57,7 +58,8 @@ router.on({
   "/admin/news": () => print(AdminPost),
   "/admin/news/add": () => print(AddPost),
   "/signup": () => print(Signup),
-  "/signin": () => print(Signin)
+  "/signin": () => print(Signin),
+  "/cart": () => print(CartPage)
 });
 
 router.resolve();
