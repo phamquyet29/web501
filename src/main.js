@@ -6,6 +6,8 @@ import AdminPost from "./pages/admin/posts";
 import AddPost from "./pages/admin/posts/add";
 import HomePage from "./pages/home";
 import NewsDetail from "./pages/newsDetail";
+import ProductsPage from "./pages/products";
+import ProductDetailPage from "./pages/products/detail";
 import Signin from "./pages/signin";
 import Signup from "./pages/signup";
 
@@ -14,7 +16,7 @@ const router = new Navigo("/", { linksSelector: "a", hash: true });
 const print = async (content, id) => {
   document.getElementById("content").innerHTML = await content.render(id);
 
-  if(content.afterRender) content.afterRender();
+  if(content.afterRender) content.afterRender(id);
 };
 
 
@@ -46,6 +48,11 @@ router.on({
   "/news/:id": ({ data }) => {
     const { id } = data;
     print(NewsDetail, id);
+  },
+  "/products": () => print(ProductsPage),
+  "/products/:id": ({ data }) => {
+    const { id } = data;
+    print(ProductDetailPage, id);
   },
   "/admin/news": () => print(AdminPost),
   "/admin/news/add": () => print(AddPost),

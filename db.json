@@ -180,5 +180,31 @@
       "password": "$2a$10$Q66peqKcmeyjPycrnDjeQeNROg4/yu1TJQN0o3Qw9OTc4YWtdLnRa",
       "id": 6
     }
+  ],
+  "products": [
+    { 
+      "createdAt": "2022-01-10T07:26:52.549Z",
+      "name": "Product A",
+      "img": "http://placeimg.com/640/480/fashion",
+      "price": "100",
+      "desc": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+      "id": "1"
+    },
+    { 
+      "createdAt": "2022-01-10T07:26:52.549Z",
+      "name": "Product B",
+      "img": "http://placeimg.com/640/480/fashion",
+      "price": "200",
+      "desc": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+      "id": "2"
+    },
+    { 
+      "createdAt": "2022-01-10T07:26:52.549Z",
+      "name": "Product C",
+      "img": "http://placeimg.com/640/480/fashion",
+      "price": "300",
+      "desc": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+      "id": "3"
+    }
   ]
 }
