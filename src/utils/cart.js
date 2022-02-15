@@ -1,6 +1,8 @@
+import { getLocalStorage, setLocalStorage } from "./index";
+
 let cart = [];
 if (localStorage.getItem("cart")) {
-    cart = JSON.parse(localStorage.getItem("cart"));
+    cart = getLocalStorage("cart");
 }
 
 // eslint-disable-next-line import/prefer-default-export
@@ -12,7 +14,7 @@ export const addToCart = (newItem, next) => {
         // eslint-disable-next-line no-plusplus
         existItem.quantity++;
     }
-    localStorage.setItem("cart", JSON.stringify(cart));
+    setLocalStorage("cart", cart);
     next();
 };
 export const increaseQuantityFromCart = () => {
