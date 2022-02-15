@@ -16,7 +16,7 @@ const router = new Navigo("/", { linksSelector: "a", hash: true });
 const print = async (content, id) => {
     // DetailNewsPage.render(id).render();
     document.getElementById("app").innerHTML = await content.render(id);
-    if(content.afterRender) content.afterRender();
+    if(content.afterRender) content.afterRender(id);
 };
 
 router.on("/admin/*", () =>{}, {
