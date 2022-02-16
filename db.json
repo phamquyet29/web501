@@ -25,6 +25,36 @@
       "id": 4
     }
   ],
+  "products": [
+    {
+      "name": "Prouct A",
+      "img": "anh moi them",
+      "desc": "dfafaf",
+      "id": 1,
+      "price": "200"
+    },
+    {
+      "name": "Prouct B",
+      "img": "anh moi them 2",
+      "desc": "dfafaf 2",
+      "id": 2,
+      "price": "300"
+    },
+    {
+      "name": "Prouct C",
+      "img": "http://res.cloudinary.com/ecommercer2021/image/upload/v1644222765/atufa0wijsaliuwykjnn.png",
+      "desc": "dsadsadas",
+      "id": 3,
+      "price": "400"
+    },
+    {
+      "name": "Prouct D",
+      "img": "http://res.cloudinary.com/ecommercer2021/image/upload/v1644223001/gmy2xihg8axmsllxwclj.png",
+      "desc": "",
+      "id": 4,
+      "price": "500"
+    }
+  ],
   "users": [
     {
       "email": "keninsta01@gmail.com",
