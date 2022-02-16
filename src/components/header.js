@@ -13,10 +13,10 @@ const Header = {
           <ul class="flex">
             <li><a href="/" class="menu-item__link">Home Page</a></li>
             <li>
-              <a href="/about" class="menu-item__link">About </a>
+              <a href="/#/about" class="menu-item__link">About </a>
             </li>
             <li>
-              <a href="/product" class="menu-item__link">Product </a>
+              <a href="/#/products" class="menu-item__link">Product </a>
             </li>
           </ul>
           <div>
