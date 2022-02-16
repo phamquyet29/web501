@@ -9,11 +9,11 @@ const ProductsPage = {
                         ${data.map((product) => `
                                     <div class="border p-4">
                                         <div class="news-img">
-                                            <a href="/news/${product.id}">
+                                            <a href="/#/products/${product.id}">
                                                 <img src="${product.img}" />
                                             </a>
                                         </div>
-                                        <h3 class="my-3"><a href="/news/${product.id}" class="font-semibold text-orange-500">${product.name}</a></h3>
+                                        <h3 class="my-3"><a href="/#/products/${product.id}" class="font-semibold text-orange-500">${product.name}</a></h3>
                                         <p class="text-sm text-gray-600">${product.desc}</p>
                                         <p class="text-sm text-gray-600">${product.price}</p>
                                     </div>

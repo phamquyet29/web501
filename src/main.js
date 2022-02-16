@@ -6,6 +6,7 @@ import AdminEditNews from "./pages/admin/news/edit";
 import DetailNewsPage from "./pages/detailNews";
 import HomePage from "./pages/home";
 import ProductsPage from "./pages/product";
+import DetailProductPage from "./pages/product/detail";
 import Signin from "./pages/signin";
 import Signup from "./pages/signup";
 
@@ -38,6 +39,7 @@ router.on({
         print("About Page");
     },
     "/products": () => print(ProductsPage),
+    "/products/:id": ({ data }) => print(DetailProductPage, data.id),
     "/news/:id": ({ data }) => print(DetailNewsPage, data.id),
     "/admin/dashboard": () => print(Dashboard),
     "/admin/news": () => print(AdminNews),
