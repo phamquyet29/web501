@@ -6,10 +6,12 @@ import AdminNewsAddPage from "./pages/admin/news/add";
 import AdminEditPost from "./pages/admin/news/edit";
 import DetailNewsPage from "./pages/detail";
 import HomePage from "./pages/home";
+import ProductsPage from "./pages/products";
+import DetailProductPage from "./pages/products/detail";
 import Signin from "./pages/signin";
 import Signup from "./pages/signup";
 
-const router = new Navigo("/", { linksSelector: "a" });
+const router = new Navigo("/", { linksSelector: "a", hash: true });
 
 const print = async (content, id) => {
   document.getElementById("app").innerHTML = await content.render(id);
@@ -41,43 +43,9 @@ router.on({
   "/admin/news/add": () => print(AdminNewsAddPage),
   "/signup": () => print(Signup),
   "/signin": () => print(Signin),
+  "/products": () => print(ProductsPage),
+  "/products/:id": (value) => print(DetailProductPage, value.data.id),
 });
 
 
 router.resolve();
-/**
- * ôn lại callback
- * ôn lại promise
- * Biết cách sử dụng async/await
- * API là gì? sử dụng API
- *                                                   /endpoint
- * Ví dụ: https://5e79b4b817314d00161333da.mockapi.io/user
- *      GET /user
- */
-
-// sum(10,20, myFunction);
-// const render = () => new Promise((resolve, reject) => {
-//     setTimeout(() => {
-//         try {
-//             resolve("Mảng chứa dữ liệu từ server");
-//         } catch (error) {
-//             reject("Lỗi kết nối");
-//         }
-//     }, 3000);
-// });
-
-// cach 1
-// const printA = render();
-// printA
-//     .then((result) => console.log(result))
-//     .catch((error) => console.log(error));
-
-// cach 2
-// const printB = async () => {
-//     try {
-//         document.querySelector("#app").innerHTML = await render();
-//     } catch (error) {
-//         console.log(error);
-//     }
-// };
-// printB();
