@@ -1,4 +1,4 @@
-import { getAll } from "../api/products";
+import { getAll } from "../../api/products";
 const ProductsPage = {
     async render() {
         const { data } = await getAll();
@@ -9,8 +9,8 @@ const ProductsPage = {
                     .map(
                         (post) => `
                             <div class="border p-3">
-                                <a href="/#/news/${post.id}"><img src="${post.img}" alt="" /></a>
-                                <h3 class="my-3"><a href="/#/news/${post.id}" class="font-semibold text-orange-500 text-lg">${post.name}</a></h3>
+                                <a href="/#/products/${post.id}"><img src="${post.img}" alt="" /></a>
+                                <h3 class="my-3"><a href="/#/products/${post.id}" class="font-semibold text-orange-500 text-lg">${post.name}</a></h3>
                                 <p>${post.desc}</p>
                                 <p>${post.price}</p>
                             </div>

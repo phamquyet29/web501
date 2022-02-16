@@ -5,7 +5,8 @@ import AdminNewsAdd from "./pages/admin/news/add";
 import DashboardPage from "./pages/dashboard";
 import DetailPage from "./pages/detail";
 import HomePage from "./pages/home";
-import ProductsPage from "./pages/products";
+import ProductsPage from "./pages/product";
+import DetailProductPage from "./pages/product/detail";
 import Signin from "./pages/signin";
 import Signup from "./pages/signup";
 
@@ -36,6 +37,7 @@ router.on({
   "/": () => print(HomePage),
   "/about": () => print(AboutPage),
   "/products": () => print(ProductsPage),
+  "/products/:id": ({ data }) => print(DetailProductPage, data.id),
   "/news/:id": ({ data }) => print(DetailPage, data.id),
   "/admin/dashboard": () => print(DashboardPage),
   "/admin/products": () => console.log("admin product"),
