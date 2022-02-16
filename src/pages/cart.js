@@ -1,5 +1,7 @@
 import { reRender } from "../utils";
-import { decreaseQuantity, increaseQuantity } from "../utils/cart";
+import { decreaseQuantity, increaseQuantity, removeItemInCart } from "../utils/cart";
+import toastr from 'toastr';
+import "toastr/build/toastr.min.css";
 
 const CartPage = {
     render(){
@@ -47,7 +49,10 @@ const CartPage = {
                 } else if(btn.classList.contains('btn-decrease')){
                     decreaseQuantity(id, () => reRender(CartPage, "#app"));
                 } else {
-                    console.log('remove');
+                    removeItemInCart(id, () => {
+                        toastr.success("Xóa sản phẩm thành công");
+                        reRender(CartPage, "#app")
+                    })
                 }
             })
         })

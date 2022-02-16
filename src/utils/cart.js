@@ -30,3 +30,11 @@ export const decreaseQuantity = (id, next) => {
     localStorage.setItem('cart', JSON.stringify(cart));
     next();
 }
+export const removeItemInCart = (id, next) => {
+    const confirm = window.confirm("Bạn có chắc chắn muốn xóa không?");
+    if(confirm){
+        cart = cart.filter(item => item.id !== +id);
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    next();
+}
