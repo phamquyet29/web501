@@ -1,4 +1,5 @@
 import { get } from "../../api/products";
+import { addTocart } from "../../utils/cart";
 
 const DetailProductPage = {
   async render(id) {
@@ -13,11 +14,22 @@ const DetailProductPage = {
                 
                 <p class="my-8">${data.desc}</p>
                 <p class="font-bold text-3xl">${data.price}</p>
-                <button id="btnAddToCart" class="block bg-red-700 text-white text-2xl uppercase w-full py-5 my-5">Thêm giỏ hàng</button>
+                <div>
+                    <input type="number" id="inputValue" class="border border-gray-500" />
+                </div>
+                <button id="btnAddToCart" class="block bg-red-700 text-white text-2xl uppercase w-full py-5 my-5">Chọn mua</button>
             </div>
         </div>
             
         `;
   },
+  afterRender(id){
+      const btnAddToCart = document.querySelector('#btnAddToCart');
+      const inputValue = document.querySelector('#inputValue');
+      btnAddToCart.addEventListener('click', async () => {
+        const { data } = await get(id);
+        addTocart({...data, quantity: inputValue.value ? +inputValue.value : 1})
+      })
+  }
 };
 export default DetailProductPage;
