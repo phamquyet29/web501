@@ -4,6 +4,7 @@ import Dashboard from "./pages/admin/dashboard";
 import AdminNewsPage from "./pages/admin/news";
 import AdminAddNewsPage from "./pages/admin/news/add";
 import AdminEditPost from "./pages/admin/news/edit";
+import CartPage from "./pages/cart";
 import ContactPage from "./pages/contact";
 import DetailPost from "./pages/detailPost";
 import HomePage from "./pages/home";
@@ -51,6 +52,7 @@ router.on({
     "/products/:id": ({ data }) => {
         print(DetailProductPage, data.id);
     },
+    "/cart": () => print(CartPage)
 });
 router.notFound(() => print(NotFoundPage));
 router.resolve();
