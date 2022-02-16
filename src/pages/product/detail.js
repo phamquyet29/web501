@@ -1,5 +1,7 @@
 import { get } from "../../api/products";
 import { addTocart } from "../../utils/cart";
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
 
 const DetailProductPage = {
   async render(id) {
@@ -28,7 +30,9 @@ const DetailProductPage = {
       const inputValue = document.querySelector('#inputValue');
       btnAddToCart.addEventListener('click', async () => {
         const { data } = await get(id);
-        addTocart({...data, quantity: inputValue.value ? +inputValue.value : 1})
+        addTocart({...data, quantity: inputValue.value ? +inputValue.value : 1}, () => {
+            toastr.success("Đã thêm");
+        })
       })
   }
 };
