@@ -9,6 +9,7 @@ import DetailPost from "./pages/detailPost";
 import HomePage from "./pages/home";
 import NotFoundPage from "./pages/notFound";
 import ProductPage from "./pages/products";
+import DetailProductPage from "./pages/products/detail";
 import Signin from "./pages/signin";
 import Signup from "./pages/signup";
 
@@ -46,7 +47,10 @@ router.on({
     },
     "/signup": () => print(Signup),
     "/signin": () => print(Signin),
-    "/products": () => print(ProductPage)
+    "/products": () => print(ProductPage),
+    "/products/:id": ({ data }) => {
+        print(DetailProductPage, data.id);
+    },
 });
 router.notFound(() => print(NotFoundPage));
 router.resolve();
