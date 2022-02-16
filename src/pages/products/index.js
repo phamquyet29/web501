@@ -1,4 +1,4 @@
-import { getAll } from '../api/product';
+import { getAll } from '../../api/product';
 
 const ProductPage = {
     async render() {
