@@ -4,6 +4,7 @@ import DashboardPage from "./pages/admin/dashboard";
 import AdminNewsPage from "./pages/admin/news";
 import AdminNewsAddPage from "./pages/admin/news/add";
 import AdminEditPost from "./pages/admin/news/edit";
+import CartPage from "./pages/cart";
 import DetailNewsPage from "./pages/detail";
 import HomePage from "./pages/home";
 import ProductsPage from "./pages/products";
@@ -45,6 +46,7 @@ router.on({
   "/signin": () => print(Signin),
   "/products": () => print(ProductsPage),
   "/products/:id": (value) => print(DetailProductPage, value.data.id),
+  "/cart": () => print(CartPage)
 });
 
 
