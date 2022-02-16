@@ -1,5 +1,5 @@
 import { reRender } from "../utils";
-import { increaseQuantity } from "../utils/cart";
+import { decreaseQuantity, increaseQuantity } from "../utils/cart";
 
 const CartPage = {
     render(){
@@ -45,7 +45,7 @@ const CartPage = {
                 if(btn.classList.contains('btn-increase')){
                     increaseQuantity(id, () => reRender(CartPage, "#app"));
                 } else if(btn.classList.contains('btn-decrease')){
-                    console.log('decrease')
+                    decreaseQuantity(id, () => reRender(CartPage, "#app"));
                 } else {
                     console.log('remove');
                 }
