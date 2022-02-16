@@ -4,7 +4,6 @@ if(localStorage.getItem('cart')){
 };
 
 export const addTocart = (newProduct) => {
-    console.log('newProduct', newProduct);
     const existProduct = cart.find(item => item.id === newProduct.id);
 
     if(!existProduct){
@@ -14,4 +13,9 @@ export const addTocart = (newProduct) => {
     }
 
     localStorage.setItem('cart', JSON.stringify(cart))
+}
+export const increaseQuantity = (id, next) => {
+    cart.find(item => item.id === id).quantity++
+    localStorage.setItem('cart', JSON.stringify(cart));
+    next();
 }

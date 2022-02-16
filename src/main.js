@@ -2,6 +2,7 @@ import Navigo from "navigo";
 import AboutPage from "./pages/about";
 import AdminNews from "./pages/admin/news";
 import AdminNewsAdd from "./pages/admin/news/add";
+import CartPage from "./pages/cart";
 import DashboardPage from "./pages/dashboard";
 import DetailPage from "./pages/detail";
 import HomePage from "./pages/home";
@@ -45,6 +46,7 @@ router.on({
   "/admin/news/add": () => print(AdminNewsAdd),
   "/signup": () => print(Signup),
   "/signin": () => print(Signin),
+  "/cart": () => print(CartPage)
 });
 
 router.resolve();
