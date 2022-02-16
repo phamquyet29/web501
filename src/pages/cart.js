@@ -1,5 +1,5 @@
 import { reRender } from "../utils";
-import { increaseQuantity } from "../utils/cart";
+import { decreaseQuantity, increaseQuantity, removeItemInCart } from "../utils/cart";
 import toastr from "toastr";
 import "toastr/build/toastr.min.css";
 
@@ -51,9 +51,15 @@ const CartPage = {
                         toastr.success("Tăng số lượng thành công");
                     })
                 } else if(btn.classList.contains('btn-decrease')){
-                    console.log('decrease')
+                    decreaseQuantity(id, () => {
+                        reRender(CartPage, "#app");
+                        toastr.success("Giảm số lượng thành công");
+                    })
                 } else {
-                    console.log('remove');
+                    removeItemInCart(id, () => {
+                        reRender(CartPage, "#app");
+                        toastr.success("Xóa sản phẩm thành công");
+                    })
                 }
             })
         })
