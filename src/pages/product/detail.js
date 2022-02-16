@@ -1,6 +1,9 @@
 import { get } from "../../api/product";
 import { addToCart } from "../../utils/cart";
 import { $ } from "../../utils/selector";
+import toastr from 'toastr';
+import "toastr/build/toastr.min.css";
+
 
 const DetailProductPage = {
     async render(id) {
@@ -16,7 +19,9 @@ const DetailProductPage = {
     afterRender(id){
         $('#btnAddToCart').addEventListener('click', async function(){
             const { data } = await get(id);
-            addToCart({...data, quantity: +$("#inputQty").value})
+            addToCart({...data, quantity: +$("#inputQty").value}, () => {
+                toastr.success("Thêm thành công!");
+            });
         })
     }
 };
