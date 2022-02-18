@@ -60,9 +60,11 @@ const AdminAddNews = {
     const formAdd = document.querySelector("#form-add");
     const imgPost = document.querySelector('#img-post');
     const imgPreview = document.querySelector('#img-preview');
-    
+
     const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/ecommercer2021/image/upload"
     const CLOUDINARY_PRESET = "jkbdphzy";
+
+    let imgLink = "";
     
     // preview image when upload
     imgPost.addEventListener('change', async (e) => {
@@ -72,23 +74,23 @@ const AdminAddNews = {
     formAdd.addEventListener("submit", async(e) => {
       e.preventDefault();
       const file = imgPost.files[0];
-
-      const formData = new FormData();
-      formData.append('file', file);
-      formData.append('upload_preset', CLOUDINARY_PRESET);
-
-    // call api cloudinary
-    
-      const response = await axios.post(CLOUDINARY_API, formData, {
-        headers: {
-          "Content-Type": "application/form-data"
-        }
-      });
-      console.log(response.data.url);
-
+      if(file){
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', CLOUDINARY_PRESET);
+  
+        // call api cloudinary
+      
+        const { data } = await axios.post(CLOUDINARY_API, formData, {
+          headers: {
+            "Content-Type": "application/form-data"
+          }
+        });
+        imgLink = data.url;
+      }
       add({
         title: document.querySelector('#title-post').value,
-        img: response.data.url,
+        img: imgLink ? imgLink : "",
         desc:document.querySelector('#desc-post').value,
       });
 
