@@ -1,6 +1,8 @@
 import axios from "axios";
 import { add } from "../../../api/post";
 import NavAdmin from "../../../components/NavAdmin";
+import $ from 'jquery';
+import validate from 'jquery-validation';
 
 const AdminAddNews = {
   render() {
@@ -39,6 +41,7 @@ const AdminAddNews = {
                     id="title-post"
                     class="border border-black"
                     placeholder="Title"
+                    name="title-post"
               > <br />
               <input type="file"
                     id="img-post"
@@ -57,7 +60,7 @@ const AdminAddNews = {
         `;
   },
   afterRender() {
-    const formAdd = document.querySelector("#form-add");
+    const formAdd = $("#form-add");
     const imgPost = document.querySelector('#img-post');
     const imgPreview = document.querySelector('#img-preview');
 
@@ -71,32 +74,45 @@ const AdminAddNews = {
       imgPreview.src = URL.createObjectURL(e.target.files[0]);
     });
 
-    formAdd.addEventListener("submit", async(e) => {
-      e.preventDefault();
-      const file = imgPost.files[0];
-      if(file){
-        const formData = new FormData();
-        formData.append('file', file);
-        formData.append('upload_preset', CLOUDINARY_PRESET);
-  
-        // call api cloudinary
+    formAdd.validate({
+      rules: {
+        "title-post":{
+					required: true,
+					minlength: 5
+				},
+      },
+      messages: {
+        "title-post": {
+					required: "Không được để trống trường này!",
+					minlength: "Nhập ít nhất 5 ký tự anh ei"
+				},
+      },
+      submitHandler:  function() {
+        async function addProduct(){
+          const file = imgPost.files[0];
+          if(file){
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('upload_preset', CLOUDINARY_PRESET);
       
-        const { data } = await axios.post(CLOUDINARY_API, formData, {
-          headers: {
-            "Content-Type": "application/form-data"
+            // call api cloudinary
+          
+            const { data } = await axios.post(CLOUDINARY_API, formData, {
+              headers: {
+                "Content-Type": "application/form-data"
+              }
+            });
+            imgLink = data.url;
           }
-        });
-        imgLink = data.url;
+          add({
+            title: document.querySelector('#title-post').value,
+            img: imgLink ? imgLink : "",
+            desc:document.querySelector('#desc-post').value,
+          });
+        }
+        addProduct();
       }
-      add({
-        title: document.querySelector('#title-post').value,
-        img: imgLink ? imgLink : "",
-        desc:document.querySelector('#desc-post').value,
-      });
-
     });
-
-    
   },
 };
 export default AdminAddNews;
