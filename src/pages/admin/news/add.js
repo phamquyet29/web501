@@ -81,7 +81,7 @@ const AdminAddNewsPage = {
     // submit form
     formAdd.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const file = e.target.files[0];
+      const file = imgPost.files[0];
       
       // Lấy giá trị của file upload cho sử dụng formData
       const formData = new FormData();
