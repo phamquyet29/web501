@@ -1,5 +1,6 @@
 import { get, update } from "../../../api/post";
 import NavAdmin from "../../../components/NavAdmin";
+import axios from 'axios';
 
 const AdminEditNews = {
   async render(id) {
@@ -94,6 +95,7 @@ const AdminEditNews = {
             imgLink = data.url;
         }
         update({
+            id,
             title: document.querySelector('#title-post').value,
             img: imgLink ? imgLink : imgPreview.src,
             desc:document.querySelector('#desc-post').value,
