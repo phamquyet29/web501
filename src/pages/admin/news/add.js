@@ -45,6 +45,7 @@ const AdminAddNews = {
                     class="border border-black"
                     placeholder="Image"
               > <br />
+              <img src="http://2.bp.blogspot.com/-MowVHfLkoZU/VhgIRyPbIoI/AAAAAAAATtI/fHk-j_MYUBs/s640/placeholder-image.jpg" id="img-preview"/>
               <textarea name="" id="desc-post" cols="30" rows="10" class="border border-black"></textarea><br />
               <button class="bg-blue-500 p-4 text-white">Thêm</button>
             </form>
@@ -58,15 +59,23 @@ const AdminAddNews = {
   afterRender() {
     const formAdd = document.querySelector("#form-add");
     const imgPost = document.querySelector('#img-post');
-
+    const imgPreview = document.querySelector('#img-preview');
+    
+    const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/ecommercer2021/image/upload"
+    const CLOUDINARY_PRESET = "jkbdphzy";
+    
+    // preview image when upload
     imgPost.addEventListener('change', async (e) => {
-      const file = e.target.files[0];
-      const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/ecommercer2021/image/upload"
+      imgPreview.src = URL.createObjectURL(e.target.files[0]);
+    });
+
+    formAdd.addEventListener("submit", async(e) => {
+      e.preventDefault();
+      const file = imgPost.files[0];
 
       const formData = new FormData();
-
       formData.append('file', file);
-      formData.append('upload_preset', "jkbdphzy");
+      formData.append('upload_preset', CLOUDINARY_PRESET);
 
     // call api cloudinary
     
@@ -77,16 +86,12 @@ const AdminAddNews = {
       });
       console.log(response.data.url);
 
-
-      formAdd.addEventListener("submit", (e) => {
-        e.preventDefault();
-        add({
-          title: document.querySelector('#title-post').value,
-          img: response.data.url,
-          desc:document.querySelector('#desc-post').value,
-        });
-  
+      add({
+        title: document.querySelector('#title-post').value,
+        img: response.data.url,
+        desc:document.querySelector('#desc-post').value,
       });
+
     });
 
     
