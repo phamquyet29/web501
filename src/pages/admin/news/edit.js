@@ -60,6 +60,11 @@ const AdminNewsEdit = {
     const CLOUDINARY_API_URL = "https://api.cloudinary.com/v1_1/ecommercer2021/image/upload";
     const CLOUDINARY_PRESET = "jkbdphzy";
 
+    // handle sự kiện change để xem ảnh trên local
+    imgPost.addEventListener('change', function(e){
+        imgPreview.src = URL.createObjectURL(e.target.files[0]);
+    });
+
     formAdd.addEventListener("submit", async function (e) {
         e.preventDefault();
         const file = imgPost.files[0];
