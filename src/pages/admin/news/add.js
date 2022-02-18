@@ -1,6 +1,8 @@
 import axios from "axios";
 import { add } from "../../../api/posts";
 import NavAdmin from "../../../components/NavAdmin";
+import $ from 'jquery';
+import validate from 'jquery-validation';
 
 const AdminNewsAddPage = {
   render() {
@@ -44,6 +46,7 @@ const AdminNewsAddPage = {
                         placeholder="Tieu de bai viet" 
                         class="border border-black" 
                         id="title-post"
+                        name="title-post"
                     >
                     <div class="grid grid-cols-2 gap-8">
                         <div>
@@ -68,37 +71,46 @@ const AdminNewsAddPage = {
         `;
   },
   afterRender() {
-    const formAdd = document.querySelector("#form-add-post");
     const imgPost = document.querySelector("#img-post");
     const imgPreview = document.querySelector('#previewImage');
 
     imgPost.addEventListener("change", (e) => {
         imgPreview.src = URL.createObjectURL(imgPost.files[0])
     });
-    formAdd.addEventListener("submit", async (e) => {
-        e.preventDefault();
+    $("#form-add-post").validate({
+        rules: {
+            "title-post": "required"
+        },
+        messages:{
+            "title-post": "Nhập tiêu đề anh ei"
+        },
+        
+        submitHandler: async (form) => {
+            const file = imgPost.files[0];
+            const formData = new FormData();
 
-        const file = imgPost.files[0];
-        const formData = new FormData();
-        formData.append("file", file);
-        formData.append("upload_preset", "jkbdphzy");
+            formData.append("file", file);
+            formData.append("upload_preset", "jkbdphzy");
 
-        const {data } = await axios({
-            url: "https://api.cloudinary.com/v1_1/ecommercer2021/image/upload",
-            method: "POST",
-            headers: {
-            "Content-Type": "application/x-www-formendcoded",
-            },
-            data: formData,
-        })
-        add({
-          title: document.querySelector("#title-post").value,
-          img: data.url,
-          desc: document.querySelector("#desc-post").value,
-        })
-          .then((result) => console.log(result.data))
-          .catch((error) => console.log(error));
-      });
+            const {data } = await axios({
+                url: "https://api.cloudinary.com/v1_1/ecommercer2021/image/upload",
+                method: "POST",
+                headers: {
+                "Content-Type": "application/x-www-formendcoded",
+                },
+                data: formData,
+            })
+            add({
+                title: document.querySelector("#title-post").value,
+                img: data.url,
+                desc: document.querySelector("#desc-post").value,
+            })
+                .then((result) => console.log(result.data))
+                .catch((error) => console.log(error));
+
+            form.reset();
+        }
+       });
   },
 };
 export default AdminNewsAddPage;
