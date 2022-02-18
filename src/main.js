@@ -2,6 +2,7 @@ import Navigo from "navigo";
 import AboutPage from "./pages/about";
 import AdminNews from "./pages/admin/news";
 import AdminNewsAdd from "./pages/admin/news/add";
+import AdminNewsEdit from "./pages/admin/news/edit";
 import CartPage from "./pages/cart";
 import DashboardPage from "./pages/dashboard";
 import DetailPage from "./pages/detail";
@@ -20,7 +21,7 @@ const print = async (component, id) => {
 router.on('/admin/*/', () => {}, {
     before(done, match) {
       if(localStorage.getItem('user')){
-        const userId = JSON.parse(localStorage.getItem('user')).user.id;
+        const userId = JSON.parse(localStorage.getItem('user')).id;
         if(userId === 1){
             // render dựa trên router
           done();
@@ -28,7 +29,7 @@ router.on('/admin/*/', () => {}, {
             document.location.href="/"
         }
       } else {
-        document.location.href="/"
+        document.location.href="/signin"
       }
      
     }
@@ -44,6 +45,7 @@ router.on({
   "/admin/products": () => console.log("admin product"),
   "/admin/news": () => print(AdminNews),
   "/admin/news/add": () => print(AdminNewsAdd),
+  "/admin/news/:id/edit": ({ data }) => print(AdminNewsEdit, data.id),
   "/signup": () => print(Signup),
   "/signin": () => print(Signin),
   "/cart": () => print(CartPage)

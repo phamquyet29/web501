@@ -19,7 +19,7 @@ const Signin = {
                 password: document.querySelector('#password').value
             })
             // lưu thông tin user vào localStorage
-            localStorage.setItem("user", JSON.stringify(response.data))
+            localStorage.setItem("user", JSON.stringify(response.data.user))
             if(response.data.user.id === 1) {
                 // nếu là admin thì chuyển trang
                 document.location.href="/admin/news"
