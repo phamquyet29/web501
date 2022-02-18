@@ -42,12 +42,17 @@ const AdminEditPost = {
                         id="title-post"
                         value="${data.title}"
                         > <br />
-                    <input type="text" 
-                        class="border border-black" 
-                        placeholder="image "
-                        id="img-post"
-                        value="${data.img}"
-                        > <br />
+                    <div class="grid grid-cols-2 gap-8">
+                        <div>
+                          <input type="file" 
+                          class="border border-black" 
+                          id="img-post"
+                          > 
+                        </div>
+                        <div>
+                          <img src="${data.img}" id="imgPreview" />
+                        </div>
+                      </div>
                     <textarea name="" 
                             id="desc-post" 
                             cols="30" 
@@ -64,17 +69,48 @@ const AdminEditPost = {
         `;
     },
     afterRender(id){
-        const formEdit = document.querySelector('#form-edit');
-        formEdit.addEventListener('submit', (e) => {
+        const formEdit = document.querySelector("#form-edit");
+        const imgPost = document.querySelector("#img-post");
+        const imgPreview = document.querySelector('#imgPreview');
+
+        const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/ecommercer2021/image/upload";
+        const CLOUDINARY_PRESET = "jkbdphzy"
+
+        let imgLink = "";
+
+        imgPost.addEventListener('change', (e) => {
+            // console.log(URL.createObjectURL(e.target.files[0]))
+            imgPreview.src = URL.createObjectURL(e.target.files[0])
+        })
+
+        // submit form
+        formEdit.addEventListener("submit", async (e) => {
             e.preventDefault();
+            const file = imgPost.files[0];
+            if(file){
+                 // Lấy giá trị của file upload cho sử dụng formData
+                const formData = new FormData();
+                formData.append("file", file);
+                formData.append("upload_preset", CLOUDINARY_PRESET);
+                    // call API
+                const { data } = await axios.post(CLOUDINARY_API,formData, {
+                    headers: {
+                        "Content-Type": "application/x-www-formendcoded",
+                    },
+                    }
+                );
+                imgLink = data.url;
+            }
+            
+           
             update({
                 id: id,
-                "title": document.querySelector('#title-post').value,
-                "img":  document.querySelector('#img-post').value,
-                "desc":  document.querySelector('#desc-post').value
-            })
-            // axios.post('https://5e79b4b817314d00161333da.mockapi.io/posts', postFake)
-        })
+                title: document.querySelector("#title-post").value,
+                img: imgLink ? imgLink : imgPreview.src,
+                desc: document.querySelector("#desc-post").value,
+            });
+        // Sau khi thêm bài viết thành công...
+        });
     }
 };
 export default AdminEditPost;
