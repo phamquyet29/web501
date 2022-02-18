@@ -38,16 +38,22 @@ const AdminNewsAddPage = {
             <main>
             <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                 <form action="" id="form-add-post">
+                    
+                    
                     <input type="text" 
                         placeholder="Tieu de bai viet" 
                         class="border border-black" 
                         id="title-post"
-                    > <br />
-                    <input type="file"  
-                        class="border border-black"
-                        id="img-post"
                     >
-                    <br />
+                    <div class="grid grid-cols-2 gap-8">
+                        <div>
+                            <input type="file"  
+                                class="border border-black"
+                                id="img-post"
+                            >
+                        </div>
+                        <div><img width="200" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/832px-No-Image-Placeholder.svg.png" id="previewImage" /></div>
+                    </div>
                     <textarea name="" 
                             id="desc-post" 
                             cols="30" 
@@ -64,9 +70,10 @@ const AdminNewsAddPage = {
   afterRender() {
     const formAdd = document.querySelector("#form-add-post");
     const imgPost = document.querySelector("#img-post");
+    const imgPreview = document.querySelector('#previewImage');
 
     imgPost.addEventListener("change", (e) => {
-      
+        imgPreview.src = URL.createObjectURL(imgPost.files[0])
     });
     formAdd.addEventListener("submit", async (e) => {
         e.preventDefault();
