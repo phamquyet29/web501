@@ -68,12 +68,6 @@ const AddPost = {
                 addPost();
             }
         });
-
-        // formAddPost.addEventListener('submit', async function(e){
-        //     e.preventDefault();
-
-        
-        // })
     }
 }
 export default AddPost;
