@@ -4,6 +4,7 @@ import Header from "./components/header";
 import AboutPage from "./pages/about";
 import AdminPost from "./pages/admin/posts";
 import AddPost from "./pages/admin/posts/add";
+import EditPostPage from "./pages/admin/posts/edit";
 import CartPage from "./pages/cart";
 import HomePage from "./pages/home";
 import NewsDetail from "./pages/newsDetail";
@@ -22,7 +23,6 @@ const print = async (content, id) => {
 
 
 router.on('/admin/*/',  () => {
-  console.log('truy cap duong dan admin/*')
 }, {
   before(done, match) {
       if(localStorage.getItem('user')){
@@ -50,6 +50,7 @@ router.on({
     const { id } = data;
     print(NewsDetail, id);
   },
+  
   "/products": () => print(ProductsPage),
   "/products/:id": ({ data }) => {
     const { id } = data;
@@ -57,6 +58,10 @@ router.on({
   },
   "/admin/news": () => print(AdminPost),
   "/admin/news/add": () => print(AddPost),
+  "/admin/news/:id/edit": ({ data }) => {
+    const { id } = data;
+    print(EditPostPage, id);
+  },
   "/signup": () => print(Signup),
   "/signin": () => print(Signin),
   "/cart": () => print(CartPage)
