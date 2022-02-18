@@ -78,7 +78,7 @@ const AdminNewsAddPage = {
     formAdd.addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        const file = e.target.files[0];
+        const file = imgPost.files[0];
         const formData = new FormData();
         formData.append("file", file);
         formData.append("upload_preset", "jkbdphzy");
