@@ -18,11 +18,23 @@ const Banner = {
                     <img src="https://picsum.photos/1500/400" alt="" />
                 </div>
             </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
         </div>
         `;
     },
     afterRender() {
-        const swiper = new Swiper(".swiper");
+        const swiper = new Swiper(".swiper", {
+            pagination: {
+                el: ".swiper-pagination",
+                type: "progressbar",
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
     },
 };
 export default Banner;
