@@ -1,8 +1,8 @@
 
-import Banner from "../components/banner";
+import Banner from "../../components/banner";
 import swal from 'sweetalert';
-import { reRender } from "../utils/rerender";
-import TablePost from "./tablePost";
+import { reRender } from "../../utils/rerender";
+import TablePost from "../tablePost";
 
 const AdminPost = {
     async render() {

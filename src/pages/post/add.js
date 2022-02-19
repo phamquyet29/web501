@@ -1,8 +1,8 @@
 import axios from "axios";
-import { add } from "../api/posts";
-import Banner from "../components/banner";
-import { reRender } from '../utils/rerender'
-import TablePost from "./tablePost";
+import { add } from "../../api/posts";
+import Banner from "../../components/banner";
+import { reRender } from '../../utils/rerender'
+import TablePost from "../tablePost";
 
 const AddPost = {
     async render() {
