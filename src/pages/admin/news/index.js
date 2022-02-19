@@ -58,6 +58,9 @@ const AdminNewsPage = {
                                                                 ${index + 1}
                                                             </td>
                                                             <td class="px-6 py-4 whitespace-nowrap">
+                                                                <img src="${post.img}" width="50" />
+                                                            </td>
+                                                            <td class="px-6 py-4 whitespace-nowrap">
                                                                 ${post.title}
                                                             </td>
                                                             <td class="px-6 py-4 whitespace-nowrap">
