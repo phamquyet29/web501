@@ -29,6 +29,7 @@ const AdminAddPost = {
                         <form id="form-add">
                             <input type="text" id="title-post" class="border border-black" placeholder="Title" /> </br>
                             <input type="file" id="img-post" class="border border-black"  placeholder="Image" /> </br >
+                            <img src="https://thumbs.dreamstime.com/b/no-thumbnail-image-placeholder-forums-blogs-websites-148010362.jpg" id="img-preview"/>
                             <textarea name="" id="desc-post" cols="30" rows="10" class="border border-black"></textarea>
                             <button>Add New</button>
                         </form>
@@ -42,30 +43,42 @@ const AdminAddPost = {
     },
     afterRender() {
         const formAdd = document.querySelector("#form-add");
+        const imgPost = document.querySelector("#img-post");
+        const imgPreview = document.querySelector("#img-preview");
         const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/ecommercer2021/image/upload";
         const CLOUDINARY_PRESET = "jkbdphzy";
+        let imgLink = "";
 
+        // Preview image
+        imgPost.addEventListener("change", (e) => {
+            imgPreview.src = URL.createObjectURL(e.target.files[0]);
+        });
+
+        // Submit form
         formAdd.addEventListener("submit", async (e) => {
             e.preventDefault();
             // lấy giá trị input file
             const file = document.querySelector("#img-post").files[0];
+            if (file) {
+                // tạo object và gắn giá trị vào các thuộc tính của formData
+                const formData = new FormData();
+                formData.append("file", file);
+                formData.append("upload_preset", CLOUDINARY_PRESET);
 
-            // tạo object và gắn giá trị vào các thuộc tính của formData
-            const formData = new FormData();
-            formData.append("file", file);
-            formData.append("upload_preset", CLOUDINARY_PRESET);
-
-            // call API cloudinary để đẩy ảnh lên
-            const { data } = await axios.post(CLOUDINARY_API, formData, {
-                headers: {
-                    "Content-Type": "application/form-data",
-                },
-            });
+                // call API cloudinary để đẩy ảnh lên
+                const { data } = await axios.post(CLOUDINARY_API, formData, {
+                    headers: {
+                        "Content-Type": "application/form-data",
+                    },
+                });
+                imgLink = data.url;
+            }
 
             // call api thêm bài viết
             add({
                 title: document.querySelector("#title-post").value,
-                img: data.url,
+                //  Nếu imgLink có giá trị thì sẽ lấy giá trị của imgLink ngược lại thì rỗng
+                img: imgLink || "",
                 desc: document.querySelector("#desc-post").value,
             });
             window.location.href = "/#/admin/news";
