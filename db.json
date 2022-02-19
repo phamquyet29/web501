@@ -27,11 +27,23 @@
       "img": "http://res.cloudinary.com/ecommercer2021/image/upload/v1644489405/pn2qgxuqgjpav6fx2l1y.png",
       "desc": "ahihihihi",
       "catePostId": "2"
+    },
+    {
+      "title": "",
+      "img": "",
+      "desc": "",
+      "id": "ZKuCytx"
     }
   ],
   "catePosts": [
-    { "id": "1", "name": "Danh muc bai viet 1"},
-    { "id": "2", "name": "Danh muc bai viet 2"}
+    {
+      "id": "1",
+      "name": "Danh muc bai viet 1"
+    },
+    {
+      "id": "2",
+      "name": "Danh muc bai viet 2"
+    }
   ],
   "users": [
     {
