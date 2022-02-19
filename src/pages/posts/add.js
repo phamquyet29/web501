@@ -1,6 +1,8 @@
 import Banner from "../../components/banner";
 import axios from "axios";
 import { add } from "../../api/posts";
+import $ from "jquery";
+import validate from "jquery-validation";
 
 const AdminAddPosts = {
     async render(){
@@ -11,7 +13,7 @@ const AdminAddPosts = {
                 </div>
                 <div class="news">
                     <form id="formAddPost">
-                        <input type="text" class="border border-black" id="title-post" placeholder="Title Post"/><br />
+                        <input type="text" class="border border-black" id="title-post" name="title-post" placeholder="Title Post"/><br />
                         <input type="file" class="border border-black" id="img-post" /> <br />
                         <img width="200" src="https://thumbs.dreamstime.com/b/no-thumbnail-image-placeholder-forums-blogs-websites-148010362.jpg" id="img-preview"/>
                         <textarea name="" class="border border-black" id="desc-post" cols="30" rows="10"></textarea> <br />
@@ -22,7 +24,7 @@ const AdminAddPosts = {
         `
     },
     afterRender(){
-       const formAddPost = document.querySelector('#formAddPost');
+       const formAddPost = $('#formAddPost');
        const imgPreview = document.querySelector('#img-preview');
        const imgPost = document.querySelector('#img-post');
        let imgLink = "";
@@ -37,34 +39,50 @@ const AdminAddPosts = {
         })
 
 
-       formAddPost.addEventListener('submit', async function(e){
-            e.preventDefault();
+        // validate form
+        formAddPost.validate({
+            rules: {
+                "title-post": {
+                    required: true,
+                    minlength: 5
+                }
+            },
+            messages: {
+                "title-post": {
+                    required: "Không để trống trường này!",
+                    minlength: "Ít nhất phải trên 5 ký tự"
+                }
+            },
+            submitHandler: () => {
+                async function handleAddPost(){
+                            // Lấy giá trị của input file
+                    const file = document.querySelector('#img-post').files[0];
+                    if(file){
+                        // Gắn vào đối tượng formData
+                        const formData = new FormData();
+                        formData.append('file', file);
+                        formData.append('upload_preset', CLOUDINARY_PRESET);
+                        
 
-            // Lấy giá trị của input file
-            const file = document.querySelector('#img-post').files[0];
-            if(file){
-                // Gắn vào đối tượng formData
-                const formData = new FormData();
-                formData.append('file', file);
-                formData.append('upload_preset', CLOUDINARY_PRESET);
-                
-
-                // call api cloudinary, để upload ảnh lên
-                const { data } = await axios.post(CLOUDINARY_API_URL,formData, {
-                    headers: {
-                        "Content-Type": "application/form-data"
+                        // call api cloudinary, để upload ảnh lên
+                        const { data } = await axios.post(CLOUDINARY_API_URL,formData, {
+                            headers: {
+                                "Content-Type": "application/form-data"
+                            }
+                        });
+                        imgLink = data.url
                     }
-                });
-                imgLink = data.url
+                    
+                    // call API thêm bài viết
+                    add({
+                        title: document.querySelector('#title-post').value, // iphone x plus 10
+                        img: imgLink ||  "",
+                        desc: document.querySelector('#desc-post').value
+                    })
+                }
+                handleAddPost();
             }
-            
-            // call API thêm bài viết
-            add({
-                title: document.querySelector('#title-post').value, // iphone x plus 10
-                img: imgLink ||  "",
-                desc: document.querySelector('#desc-post').value
-            })
-       });
+        })
     }
 };
 export default AdminAddPosts;
