@@ -1,6 +1,6 @@
 import Banner from "../../components/banner";
 import axios from "axios";
-import { edit, get } from "../../api/posts";
+import { update, get } from "../../api/posts";
 
 const AdminEditposts = {
     async render(id){
@@ -14,7 +14,7 @@ const AdminEditposts = {
                 <div class="news">
                     <form id="formEditPost">
                         <input type="text" class="border border-black" id="title-post" placeholder="Title Post" value="${data.title}"/><br />
-                        <img src="${data.img}" />
+                        <img src="${data.img}" id="img-preview" />
                         <input type="file" class="border border-black" id="img-post" /> <br />
                         <textarea name="" class="border border-black" id="desc-post" cols="30" rows="10">${data.desc}</textarea> <br />
                         <button class="bg-blue-500 inline-block px-3 py-4">Add post</button>
@@ -24,36 +24,50 @@ const AdminEditposts = {
         `
     },
     afterRender(id){
-       const formEditPost = document.querySelector('#formEditPost');
-       const CLOUDINARY_PRESET = "jkbdphzy";
-       const CLOUDINARY_API_URL = "https://api.cloudinary.com/v1_1/ecommercer2021/image/upload";
-
-
-       formEditPost.addEventListener('submit', async function(e){
-            e.preventDefault();
-
-            // Lấy giá trị của input file
-            const file = document.querySelector('#img-post').files[0];
-            // Gắn vào đối tượng formData
-            const formData = new FormData();
-            formData.append('file', file);
-            formData.append('upload_preset', CLOUDINARY_PRESET);
-            
-
-            // call api cloudinary, để upload ảnh lên
-            const { data } = await axios.post(CLOUDINARY_API_URL,formData, {
-                headers: {
-                    "Content-Type": "application/form-data"
-                }
-            });
-            // call API thêm bài viết
-            edit({
-                id: id,
-                title: document.querySelector('#title-post').value,
-                img: data.url,
-                desc: document.querySelector('#desc-post').value
-            })
-       });
+        const formEditPost = document.querySelector('#formEditPost');
+        const imgPreview = document.querySelector('#img-preview');
+        const imgPost = document.querySelector('#img-post');
+        let imgLink = "";
+ 
+ 
+        const CLOUDINARY_PRESET = "jkbdphzy";
+        const CLOUDINARY_API_URL = "https://api.cloudinary.com/v1_1/ecommercer2021/image/upload";
+ 
+         // preview
+         imgPost.addEventListener('change', function(e){
+             imgPreview.src = URL.createObjectURL(e.target.files[0])
+         })
+ 
+ 
+         formEditPost.addEventListener('submit', async function(e){
+             e.preventDefault();
+ 
+             // Lấy giá trị của input file
+             const file = document.querySelector('#img-post').files[0];
+             if(file){
+                 // Gắn vào đối tượng formData
+                 const formData = new FormData();
+                 formData.append('file', file);
+                 formData.append('upload_preset', CLOUDINARY_PRESET);
+                 
+ 
+                 // call api cloudinary, để upload ảnh lên
+                 const { data } = await axios.post(CLOUDINARY_API_URL,formData, {
+                     headers: {
+                         "Content-Type": "application/form-data"
+                     }
+                 });
+                 imgLink = data.url
+             }
+             
+             // call API thêm bài viết
+             update({
+                 id,
+                 title: document.querySelector('#title-post').value, // iphone x plus 10
+                 img: imgLink ||  imgPreview.src,
+                 desc: document.querySelector('#desc-post').value
+             })
+        });
     }
 };
 export default AdminEditposts;

@@ -25,7 +25,7 @@ const AdminAddPosts = {
        const formAddPost = document.querySelector('#formAddPost');
        const imgPreview = document.querySelector('#img-preview');
        const imgPost = document.querySelector('#img-post');
-       const imgLink = "";
+       let imgLink = "";
 
 
        const CLOUDINARY_PRESET = "jkbdphzy";
@@ -60,7 +60,7 @@ const AdminAddPosts = {
             
             // call API thêm bài viết
             add({
-                title: document.querySelector('#title-post').value,
+                title: document.querySelector('#title-post').value, // iphone x plus 10
                 img: imgLink ||  "",
                 desc: document.querySelector('#desc-post').value
             })
