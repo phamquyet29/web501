@@ -24,6 +24,7 @@ const AddPost = {
                     class="border border-black"
                     placeholder="Imager post"
                 > <br />
+                <img src="https://thumbs.dreamstime.com/b/no-thumbnail-image-placeholder-forums-blogs-websites-148010362.jpg" id="img-preview"/>
                 <textarea name="" 
                     id="desc-post" 
                     class="border border-black"
@@ -37,31 +38,43 @@ const AddPost = {
     afterRender(){
         const formAdd = document.querySelector('#form-add-post');
         const imgPost = document.querySelector('#img-post');
+        const imgPreview = document.querySelector("#img-preview");
+        let imgLink = "";
 
         const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/ecommercer2021/image/upload";
         const CLOUDINARY_PRESET = "jkbdphzy";
+
+
+        imgPost.addEventListener('change', function(e){
+            imgPreview.src = URL.createObjectURL(e.target.files[0])
+        });
+
 
         formAdd.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             // Lấy giá trị input file
             const file = imgPost.files[0];
+            if(file){
+                // append vào object formData
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('upload_preset', CLOUDINARY_PRESET)
 
-            // append vào object formData
-            const formData = new FormData();
-            formData.append('file', file);
-            formData.append('upload_preset', CLOUDINARY_PRESET)
+                // call api cloudinary
+                const { data } = await axios.post(CLOUDINARY_API, formData, {
+                    headers: {
+                        "Content-Type": "application/form-data"
+                    }
+                });
+                imgLink = data.url;
+            }
+
             
-            // call api cloudinary
-            const response = await axios.post(CLOUDINARY_API, formData, {
-                headers: {
-                    "Content-Type": "application/form-data"
-                }
-            })
             // call api thêm bài viết
             add({
                 "title": document.querySelector('#title-post').value,
-                "img": response.data.url,
+                "img": imgLink || "",
                 "desc": document.querySelector('#desc-post').value
             });
             document.location.href="/#/admin/news";
