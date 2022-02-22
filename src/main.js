@@ -11,6 +11,7 @@ import ProductsPage from "./pages/products";
 import DetailProductsPage from "./pages/products/detail";
 import Signin from "./pages/signin";
 import Signup from "./pages/signup";
+import DetailCategoryPage from "./pages/category/detail";
 
 const router = new Navigo("/", { linksSelector: "a", hash: true });
 
@@ -48,6 +49,9 @@ router.on({
     // Product
     "/products": () => print(ProductsPage),
     "/products/:id": ({ data }) => print(DetailProductsPage, data.id),
+    
+    // Category post
+    "/category/:id": ({ data }) => print(DetailCategoryPage, data.id),
     // Admin
     "/admin/news/add": () => print(AddPost),
     "/admin/news": () => print(AdminPost),
