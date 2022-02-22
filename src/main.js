@@ -8,6 +8,7 @@ import EditPostPage from "./pages/admin/posts/edit";
 import CartPage from "./pages/cart";
 import HomePage from "./pages/home";
 import NewsDetail from "./pages/newsDetail";
+import DetailCategoryPost from "./pages/posts/category";
 import ProductsPage from "./pages/products";
 import ProductDetailPage from "./pages/products/detail";
 import Signin from "./pages/signin";
@@ -49,6 +50,11 @@ router.on({
   "/news/:id": ({ data }) => {
     const { id } = data;
     print(NewsDetail, id);
+  },
+
+  "/category/:id": ({ data }) => {
+    const { id } = data;
+    print(DetailCategoryPost, id);
   },
   
   "/products": () => print(ProductsPage),

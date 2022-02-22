@@ -42,7 +42,7 @@ const AddPost = {
                 }
             },
             submitHandler: function() {
-                async function addPost(){
+                async function addPostHandle(){
                     const file = imgPost.files[0];
                     if(file){
                         // lấy giá trị của file và gán vào object formData
@@ -65,7 +65,7 @@ const AddPost = {
                         desc: document.querySelector('#desc-post').value,
                     });
                 }
-                addPost();
+                addPostHandle();
             }
         });
     }

@@ -1,7 +1,9 @@
+import { getAllCate } from "../api/posts";
 import { reRender } from "../utils/rerender";
 
 const Nav = {
-    render() {
+    async render() {
+        const { data } = await getAllCate();
         return /* html */`
         <nav class="flex items-center justify-between">
             <ul class="flex">
@@ -14,7 +16,16 @@ const Nav = {
             <li><a class="block py-3 px-4 text-white hover:bg-blue-500" id="logout">Logout</a></li>
         </ul>`: ""}
             
-        </nav>`;
+        </nav>
+        
+        <nav class="flex items-center justify-between">
+            <ul class="flex">
+                ${data.map(category => `
+                    <li><a href="/#/category/${category.id}" class="block py-3 px-4 text-white hover:bg-blue-500">${category.name}</a></li>
+                `).join("")}
+            </ul>
+        </nav>
+        `;
     },
     afterRender(){
         const email = document.querySelector('#email');
