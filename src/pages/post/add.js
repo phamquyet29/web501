@@ -3,6 +3,8 @@ import { add } from "../../api/posts";
 import Banner from "../../components/banner";
 import { reRender } from '../../utils/rerender'
 import TablePost from "../tablePost";
+import $ from 'jquery';
+import validate from 'jquery-validation';
 
 const AddPost = {
     async render() {
@@ -17,6 +19,7 @@ const AddPost = {
                     id="title-post"
                     class="border border-black"
                     placeholder="Title post"
+                    name="title-post"
                 > 
                 <br />
                 <input type="file"
@@ -36,7 +39,7 @@ const AddPost = {
         `;
     },
     afterRender(){
-        const formAdd = document.querySelector('#form-add-post');
+        const formAdd = $('#form-add-post');
         const imgPost = document.querySelector('#img-post');
         const imgPreview = document.querySelector("#img-preview");
         let imgLink = "";
@@ -49,37 +52,59 @@ const AddPost = {
             imgPreview.src = URL.createObjectURL(e.target.files[0])
         });
 
+        formAdd.validate({
+            rules: {
+               "title-post": {
+                   required: true,
+                   minlength: 5,
+                   maxlength: 15
+               }
+            },
+            messages: {
+                "title-post": {
+                    required: "Bắt buộc phải nhập trường này anh ei",
+                    minlength: "Ít nhất phải 5 ký tự anh ei",
+                    maxlength: "Không được vượt quá 15 ký tự anh ei"
+                }
+            },
+            submitHandler: () => {
 
-        formAdd.addEventListener('submit', async (e) => {
-            e.preventDefault();
+                async function addPostHandler(){
+                    // Lấy giá trị input file
+                    const file = imgPost.files[0];
+                    if(file){
+                        // append vào object formData
+                        const formData = new FormData();
+                        formData.append('file', file);
+                        formData.append('upload_preset', CLOUDINARY_PRESET)
 
-            // Lấy giá trị input file
-            const file = imgPost.files[0];
-            if(file){
-                // append vào object formData
-                const formData = new FormData();
-                formData.append('file', file);
-                formData.append('upload_preset', CLOUDINARY_PRESET)
-
-                // call api cloudinary
-                const { data } = await axios.post(CLOUDINARY_API, formData, {
-                    headers: {
-                        "Content-Type": "application/form-data"
+                        // call api cloudinary
+                        const { data } = await axios.post(CLOUDINARY_API, formData, {
+                            headers: {
+                                "Content-Type": "application/form-data"
+                            }
+                        });
+                        imgLink = data.url;
                     }
-                });
-                imgLink = data.url;
-            }
 
-            
-            // call api thêm bài viết
-            add({
-                "title": document.querySelector('#title-post').value,
-                "img": imgLink || "",
-                "desc": document.querySelector('#desc-post').value
-            });
-            document.location.href="/#/admin/news";
-            await reRender(AdminPost, "#app");
+                    
+                    // call api thêm bài viết
+                    add({
+                        "title": document.querySelector('#title-post').value,
+                        "img": imgLink || "",
+                        "desc": document.querySelector('#desc-post').value
+                    });
+                    // document.location.href="/#/admin/news";
+                    // await reRender(AdminPost, "#app");
+                }
+                addPostHandler();
+            }
         })
+        // formAdd.addEventListener('submit', async (e) => {
+        //     e.preventDefault();
+
+        
+        // })
     }
 };
 export default AddPost;

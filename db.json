@@ -81,17 +81,45 @@
       "img": "http://res.cloudinary.com/ecommercer2021/image/upload/v1644301494/tkpbjdd0lfrnda1w33md.png",
       "desc": "dasdada",
       "id": "TCppoM-"
+    },
+    {
+      "title": "validate",
+      "img": "http://res.cloudinary.com/ecommercer2021/image/upload/v1645509168/p5jabtymqkyonu0marde.jpg",
+      "desc": "",
+      "id": "00LbxWr"
     }
   ],
   "postCates": [
-    { "id": 1, "name": "danh mục bài viết 1"},
-    { "id": 2, "name": "danh mục bài viết 2"}
+    {
+      "id": 1,
+      "name": "danh mục bài viết 1"
+    },
+    {
+      "id": 2,
+      "name": "danh mục bài viết 2"
+    }
   ],
   "products": [
-    {"id": "1", "name": "Product A", "price": "100"},
-    {"id": "2", "name": "Product B", "price": "200"},
-    {"id": "3", "name": "Product C", "price": "300"},
-    {"id": "4", "name": "Product D", "price": "400"}
+    {
+      "id": "1",
+      "name": "Product A",
+      "price": "100"
+    },
+    {
+      "id": "2",
+      "name": "Product B",
+      "price": "200"
+    },
+    {
+      "id": "3",
+      "name": "Product C",
+      "price": "300"
+    },
+    {
+      "id": "4",
+      "name": "Product D",
+      "price": "400"
+    }
   ],
   "users": [
     {
