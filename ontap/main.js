@@ -1,10 +1,10 @@
-console.log("123");
+import AboutPage from "./pages/about";
+import HomePage from "./pages/home";
+import ProductPage from "./pages/product";
 
-// B1: Truy cập https://nodejs.org/en/ tải nodejs
-// B2: Bật terminal gõ
-// npm create vite@latest ontap -- --template vanilla
-// B3:
-// - cd ontap
-// - npm i
-// - code .
-// - npm run dev
+document.addEventListener("DOMContentLoaded", function () {
+    const app = document.getElementById("app");
+    if (app) {
+        app.innerHTML = ProductPage.render();
+    }
+});

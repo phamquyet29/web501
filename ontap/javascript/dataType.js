@@ -1,4 +1,4 @@
-import productList, { a } from "./data";
+import productList from "./data";
 
 function showProductList(products) {
     let result = "";
