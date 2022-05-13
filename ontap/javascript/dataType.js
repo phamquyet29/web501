@@ -1,20 +1,4 @@
-const a = 10; // number
-const b = "10"; // string
-const isMarried = true; // boolean
-const info = {
-    name: "Dat",
-    age: 20,
-    "ten la": "Dat ....",
-    run: function () {
-        console.log(`Thay ${this.name} dep...à mà thôi`);
-    },
-};
-const productList = [
-    // 1
-    { id: 1, name: "Product A", price: 20 }, // products[0]
-    { id: 2, name: "Product B", price: 30 }, // products[1]
-    { id: 3, name: "Product C", price: 40 }, // products[2]
-];
+import productList, { a } from "./data";
 
 function showProductList(products) {
     let result = "";
