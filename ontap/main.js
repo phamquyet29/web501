@@ -5,6 +5,6 @@ import ProductPage from "./pages/product";
 document.addEventListener("DOMContentLoaded", function () {
     const app = document.getElementById("app");
     if (app) {
-        app.innerHTML = ProductPage.render();
+        app.innerHTML = HomePage.render();
     }
 });
