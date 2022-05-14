@@ -3,7 +3,7 @@
         "target": "es5",
         "allowJs": true,
         "skipLibCheck": true,
-        "baseUrl": ".",
+        "baseUrl": "./",
         "paths": {
             "@/*": ["*"]
         }
