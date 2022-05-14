@@ -1,13 +1,8 @@
 {
     "compilerOptions": {
-        "target": "es5",
-        "allowJs": true,
-        "skipLibCheck": true,
-        "baseUrl": "./",
+        "baseUrl": "./src",
         "paths": {
             "@/*": ["*"]
         }
-    },
-    "include": ["./src/*"],
-    "exclude": ["node_modules"]
+    }
 }

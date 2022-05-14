@@ -1,6 +1,6 @@
-import banner from '@/components/banner';
 import Header from '@/components/header';
 import news from '@/components/news';
+import banner from '../components/banner';
 
 const HomePage = {
     render() {
