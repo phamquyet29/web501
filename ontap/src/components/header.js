@@ -30,12 +30,13 @@ const Header = {
                             <a
                                 class="nav-link active"
                                 aria-current="page"
-                                href="#"
+                                href="/"
+                                data-navigo
                                 >Home</a
                             >
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link" href="/product"   data-navigo>Link</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a
