@@ -1,9 +1,9 @@
 import Navigo from 'navigo'; // When using ES modules.
 const router = new Navigo('/');
 
-import AboutPage from './pages/about';
-import HomePage from './pages/home';
-import ProductPage from './pages/product';
+import AboutPage from '@/pages/about';
+import HomePage from '@/pages/home';
+import ProductPage from '@/pages/product';
 
 document.addEventListener('DOMContentLoaded', function () {
     function print(page) {
@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
     router.on({
         '/': () => print(HomePage),
         '/about': () => print(AboutPage),
+        '/product': () => print(ProductPage),
     });
     router.resolve();
 });
