@@ -5,25 +5,27 @@ import AboutPage from '@/pages/about';
 import HomePage from '@/pages/home';
 import ProductPage from '@/pages/product';
 import ProductDetail from './pages/detail';
+import ProductManager from './pages/product-manager';
 
 document.addEventListener('DOMContentLoaded', function () {
-    function print(page) {
+    function print(page, id) {
         // page ~ HomePage.render()
         const app = document.getElementById('app');
         if (app) {
-            app.innerHTML = page;
+            app.innerHTML = page.render(id);
         }
+        if (page.afterRender) page.afterRender();
     }
 
     router.on({
-        '/': () => print(HomePage.render()),
-        '/about': () => print(AboutPage.render()),
-        '/product': () => print(ProductPage.render()),
+        '/': () => print(HomePage),
+        '/about': () => print(AboutPage),
+        '/product': () => print(ProductPage),
         '/product/:id': (data) => {
-            console.log('data', data);
             const id = +data.data.id;
-            print(ProductDetail.render(id));
+            print(ProductDetail, id);
         },
+        '/admin/product': () => print(ProductManager),
     });
     router.resolve();
 });
