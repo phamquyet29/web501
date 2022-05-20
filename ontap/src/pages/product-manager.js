@@ -2,6 +2,7 @@ import banner from '@/components/banner';
 import Header from '@/components/header';
 
 import data from '@/data';
+import ProductPage from './product';
 const ProductManager = {
     render() {
         return /*html*/ `
@@ -48,10 +49,12 @@ const ProductManager = {
         `;
     },
     afterRender() {
-        const btns = document.querySelectorAll('table .btn');
+        const btns = document.querySelectorAll('table .btn'); // nodeList=[btn]
         for (let btn of btns) {
+            const id = btn.dataset.id;
+            // event click
             btn.addEventListener('click', function () {
-                console.log('1');
+                // data.filter((item) => item.id !== id);
             });
         }
     },
