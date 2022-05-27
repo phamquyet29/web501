@@ -8,11 +8,12 @@ import ProductDetail from './pages/detail';
 import ProductManager from './pages/product-manager';
 
 document.addEventListener('DOMContentLoaded', function () {
-    function print(page, id) {
+    async function print(page, id) {
         // page ~ HomePage.render()
         const app = document.getElementById('app');
         if (app) {
-            app.innerHTML = page.render(id);
+            // chờ page.render() chạy xong thì mới show ra ngoài
+            app.innerHTML = await page.render(id);
         }
         if (page.afterRender) page.afterRender();
     }
