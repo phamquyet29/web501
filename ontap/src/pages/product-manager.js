@@ -1,10 +1,11 @@
 import banner from '@/components/banner';
 import Header from '@/components/header';
 
-import data from '@/data';
+// import data from '@/data';
 import ProductPage from './product';
 const ProductManager = {
-    render() {
+    async render() {
+        const data = await (await fetch('http://localhost:3001/products')).json();
         return /*html*/ `
             <div class="container">
                 ${Header.render()}
@@ -50,11 +51,23 @@ const ProductManager = {
     },
     afterRender() {
         const btns = document.querySelectorAll('table .btn'); // nodeList=[btn]
+        console.log('btns', btns);
         for (let btn of btns) {
+            // lấy thuộc tính data-id của button
             const id = btn.dataset.id;
             // event click
-            btn.addEventListener('click', function () {
-                // data.filter((item) => item.id !== id);
+            btn.addEventListener('click', async function () {
+                const confirm = window.confirm('Bạn có chắc chắn xóa không?');
+                if (confirm) {
+                    const data = await (
+                        await fetch(`http://localhost:3001/products/${id}`, {
+                            method: 'DELETE',
+                        })
+                    ).json();
+                    if (data) {
+                        console.log('delete thành công');
+                    }
+                }
             });
         }
     },

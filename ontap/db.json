@@ -1,6 +1,9 @@
 {
-    "products": [
-        { "id": 1, "name": "Product a" },
-        { "id": 1, "name": "Product b" }
-    ]
+  "products": [
+    {
+      "id": 1,
+      "name": "Product b",
+      "price": 300
+    }
+  ]
 }
