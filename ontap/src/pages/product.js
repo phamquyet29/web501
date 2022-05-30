@@ -4,9 +4,7 @@ import data from '@/data';
 
 const ProductPage = {
     async render() {
-        // const response = await fetch('https://jsonplaceholder.typicode.com/posts');
-        // const data = await response.json();
-        const data = await (await fetch('https://jsonplaceholder.typicode.com/posts')).json();
+        const data = await (await fetch('http://localhost:3001/products')).json();
         return `
             <div class="container">
             ${Header.render()}
@@ -18,7 +16,7 @@ const ProductPage = {
                 ${data
                     .map(
                         (item) =>
-                            `<div><a href="/product/${item.id}" data-navigo>${item.title}</a></div>`
+                            `<div><a href="/product/${item.id}" data-navigo>${item.name}</a></div>`
                     )
                     .join('')}
             </div>

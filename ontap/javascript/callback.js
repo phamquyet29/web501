@@ -8,9 +8,7 @@
 //     document.head.append(script);
 // }
 // loadScript('https://javascript.info/callbacks', function (script) {
-//     loadScript('abc', function(){
-
-//     })
+//     console.log('succes', script);
 // });
 
 function loadScript(src) {
@@ -38,7 +36,7 @@ loadScript('https://javascript.info/callbacks')
 // xử lý bất đồng bộ là sao? chuyển tiến trình của thằng bất đồng bộ -> đồng bộ
 
 function sum(a, b, callback) {
-    callback('abc');
+    callback(6);
 }
 
 sum(2, 4, function (result) {
@@ -52,3 +50,14 @@ const demoPromise = new Promise((resolve, reject) => {
 });
 
 demoPromise.then((result) => console.log(result)).catch((error) => console.log(error));
+
+const cauHon = new Promise(function (resolve, reject) {
+    setTimeout(function () {
+        reject('lắc đầu');
+    }, 3000);
+});
+
+cauHon
+    .then((result) => result + 'Hôn')
+    .then((success) => console.log('success'))
+    .catch((error) => console.log('error', error));

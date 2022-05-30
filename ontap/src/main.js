@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const app = document.getElementById('app');
         if (app) {
             // chờ page.render() chạy xong thì mới show ra ngoài
-            app.innerHTML = await page.render(id);
+            app.innerHTML = await page.render(id); // [object promise]
         }
         if (page.afterRender) page.afterRender();
     }
