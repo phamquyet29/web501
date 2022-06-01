@@ -1,16 +1,17 @@
 {
-  "name": "ontap",
-  "private": true,
-  "version": "0.0.0",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "vite": "^2.9.7"
-  },
-  "dependencies": {
-    "navigo": "^8.11.1"
-  }
+    "name": "ontap",
+    "private": true,
+    "version": "0.0.0",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "start:server": "json-server --watch db.json --port 3001"
+    },
+    "devDependencies": {
+        "vite": "^2.9.7"
+    },
+    "dependencies": {
+        "navigo": "^8.11.1"
+    }
 }

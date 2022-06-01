@@ -4,6 +4,15 @@
       "id": 1,
       "name": "Product b",
       "price": 300
+    },
+    {
+      "id": 3,
+      "name": "product DDDD"
+    },
+    {
+      "id": 4,
+      "name": "Product E",
+      "price": "123456"
     }
   ]
 }

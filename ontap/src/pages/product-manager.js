@@ -2,7 +2,6 @@ import banner from '@/components/banner';
 import Header from '@/components/header';
 
 // import data from '@/data';
-import ProductPage from './product';
 const ProductManager = {
     async render() {
         const data = await (await fetch('http://localhost:3001/products')).json();
@@ -13,6 +12,7 @@ const ProductManager = {
                     ${banner.render()}
                 </div>
                 <div class="news">
+                <a href="/product/add" data-navigo class="btn btn-primary">Add product</a>
                     <table class="table table-bordered">
                         <thead>
                             <tr>

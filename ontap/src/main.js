@@ -6,6 +6,7 @@ import HomePage from '@/pages/home';
 import ProductPage from '@/pages/product';
 import ProductDetail from './pages/detail';
 import ProductManager from './pages/product-manager';
+import ProductAdd from './pages/product-add';
 
 document.addEventListener('DOMContentLoaded', function () {
     async function print(page, id) {
@@ -22,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
         '/': () => print(HomePage),
         '/about': () => print(AboutPage),
         '/product': () => print(ProductPage),
+        '/product/add': () => print(ProductAdd),
         '/product/:id': (data) => {
             const id = +data.data.id;
             print(ProductDetail, id);
