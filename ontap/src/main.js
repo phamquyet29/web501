@@ -7,6 +7,7 @@ import ProductPage from '@/pages/product';
 import ProductDetail from './pages/detail';
 import ProductManager from './pages/product-manager';
 import ProductAdd from './pages/product-add';
+import ProductEdit from './pages/product-edit';
 
 document.addEventListener('DOMContentLoaded', function () {
     async function print(page, id) {
@@ -16,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // chờ page.render() chạy xong thì mới show ra ngoài
             app.innerHTML = await page.render(id); // [object promise]
         }
-        if (page.afterRender) page.afterRender();
+        if (page.afterRender) page.afterRender(id);
     }
 
     router.on({
@@ -27,6 +28,10 @@ document.addEventListener('DOMContentLoaded', function () {
         '/product/:id': (data) => {
             const id = +data.data.id;
             print(ProductDetail, id);
+        },
+        '/product/:id/edit': (data) => {
+            const id = +data.data.id;
+            print(ProductEdit, id);
         },
         '/admin/product': () => print(ProductManager),
     });

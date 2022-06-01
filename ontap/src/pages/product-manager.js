@@ -38,7 +38,9 @@ const ProductManager = {
                                             <button class="btn btn-danger btn-remove" data-id=${
                                                 item.id
                                             }>Remove</button>
-                                            <button class="btn btn-danger btn-update">Update</button>
+                                            <a href="/product/${
+                                                item.id
+                                            }/edit" class="btn btn-danger btn-update">Update</a>
                                         </td>
                                     </tr>`
                             )
@@ -60,11 +62,13 @@ const ProductManager = {
             const id = btn.dataset.id;
             // event click
             btn.addEventListener('click', async function () {
-                const confirm = window.confirm('Bạn có chắc chắn xóa không?');
-                if (confirm) {
-                    const { data } = await remove(id);
-                    if (data) {
-                        console.log('delete thành công');
+                if (btn.classList.contains('btn-remove')) {
+                    const confirm = window.confirm('Bạn có chắc chắn xóa không?');
+                    if (confirm) {
+                        const { data } = await remove(id);
+                        if (data) {
+                            console.log('delete thành công');
+                        }
                     }
                 }
             });
