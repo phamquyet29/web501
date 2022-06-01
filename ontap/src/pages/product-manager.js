@@ -1,10 +1,13 @@
 import banner from '@/components/banner';
 import Header from '@/components/header';
+import axios from 'axios';
 
 // import data from '@/data';
 const ProductManager = {
     async render() {
-        const data = await (await fetch('http://localhost:3001/products')).json();
+        // const data = await (await fetch('http://localhost:3001/products')).json();
+        const { data } = await axios.get('http://localhost:3001/products');
+        console.log(data);
         return /*html*/ `
             <div class="container">
                 ${Header.render()}
@@ -59,11 +62,7 @@ const ProductManager = {
             btn.addEventListener('click', async function () {
                 const confirm = window.confirm('Bạn có chắc chắn xóa không?');
                 if (confirm) {
-                    const data = await (
-                        await fetch(`http://localhost:3001/products/${id}`, {
-                            method: 'DELETE',
-                        })
-                    ).json();
+                    const { data } = await axios.delete(`http://localhost:3001/products/${id}`);
                     if (data) {
                         console.log('delete thành công');
                     }
