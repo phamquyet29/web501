@@ -1,3 +1,4 @@
+import { add } from '@/api/product';
 import banner from '@/components/banner';
 import Header from '@/components/header';
 import axios from 'axios';
@@ -34,14 +35,7 @@ const ProductAdd = {
                 price: document.querySelector('#product-price').value,
             };
             // call api
-            axios.post('http://localhost:3001/products', product);
-            // fetch('http://localhost:3001/products', {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify(product),
-            // });
+            add(product);
         });
     },
 };

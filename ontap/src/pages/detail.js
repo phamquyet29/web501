@@ -6,7 +6,6 @@ import axios from 'axios';
 const ProductDetail = {
     async render(id) {
         // Tìm id trong mảng data
-        // const product = data.find((item) => item.id === id);
         const { data: product } = await axios.get(`http://localhost:3001/products/${id}`);
         // nếu không có thì return về string not found
         if (!product) return `<div>Not found</div>`;
