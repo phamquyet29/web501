@@ -56,7 +56,6 @@ const ProductManager = {
     },
     afterRender() {
         const btns = document.querySelectorAll('table .btn'); // nodeList=[btn]
-        console.log('btns', btns);
         for (let btn of btns) {
             // lấy thuộc tính data-id của button
             const id = btn.dataset.id;

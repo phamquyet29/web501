@@ -12,7 +12,10 @@
         "vite": "^2.9.7"
     },
     "dependencies": {
+        "autoprefixer": "^10.4.7",
         "axios": "^0.27.2",
-        "navigo": "^8.11.1"
+        "navigo": "^8.11.1",
+        "postcss": "^8.4.14",
+        "tailwindcss": "^3.0.24"
     }
 }
