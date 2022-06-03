@@ -1,7 +1,7 @@
 import { getAll, remove } from '@/api/product';
 import banner from '@/components/banner';
 import Header from '@/components/header';
-import axios from 'axios';
+import { rerender } from '@/utils/rerender';
 
 // import data from '@/data';
 const ProductManager = {
@@ -66,6 +66,7 @@ const ProductManager = {
                     const confirm = window.confirm('Bạn có chắc chắn xóa không?');
                     if (confirm) {
                         const { data } = await remove(id);
+                        rerender('app', ProductManager);
                         if (data) {
                             console.log('delete thành công');
                         }
