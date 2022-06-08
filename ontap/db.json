@@ -9,7 +9,18 @@
       "name": "Produckjahdkasjhd",
       "price": "213123123",
       "id": 5
+    },
+    {
+      "name": "123123",
+      "price": "32132131",
+      "id": 6
     }
   ],
-  "users": []
+  "users": [
+    {
+      "email": "admin@gmail.com",
+      "password": "$2a$10$5AmzZdH.3VsdhRbw1DAClucdPbf06aZa6hyV7T3wqTpbVsWjQHsPq",
+      "id": 1
+    }
+  ]
 }

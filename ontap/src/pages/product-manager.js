@@ -15,7 +15,7 @@ const ProductManager = {
                     ${banner.render()}
                 </div>
                 <div class="news">
-                <a href="/product/add" data-navigo class="btn btn-primary">Add product</a>
+                <a href="/#/product/add" data-navigo class="btn btn-primary">Add product</a>
                     <table class="table table-bordered">
                         <thead>
                             <tr>

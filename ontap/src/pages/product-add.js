@@ -36,6 +36,7 @@ const ProductAdd = {
             };
             // call api
             add(product);
+            window.location.href = '/#/admin/product';
         });
     },
 };

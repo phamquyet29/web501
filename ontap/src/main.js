@@ -1,5 +1,5 @@
 import Navigo from 'navigo'; // When using ES modules.
-const router = new Navigo('/');
+const router = new Navigo('/', { hash: true });
 
 import AboutPage from '@/pages/about';
 import HomePage from '@/pages/home';
@@ -8,6 +8,8 @@ import ProductDetail from './pages/detail';
 import ProductManager from './pages/product-manager';
 import ProductAdd from './pages/product-add';
 import ProductEdit from './pages/product-edit';
+import Signup from './pages/signup';
+import Signin from './pages/signin';
 
 document.addEventListener('DOMContentLoaded', function () {
     async function print(page, id) {
@@ -34,6 +36,8 @@ document.addEventListener('DOMContentLoaded', function () {
             print(ProductEdit, id);
         },
         '/admin/product': () => print(ProductManager),
+        '/signup': () => print(Signup),
+        '/signin': () => print(Signin),
     });
     router.resolve();
 });
