@@ -1,73 +1,68 @@
-// var - let - const
+// ECMA chuẩn ES 6
+// Làm việc với biến
+/**
+ * 1. Khai báo biến sử dụng var, let và const
+ * 2. Đặt tên biến: Danh từ
+ * */
 var a = 10;
-var a = 20;
-
+a = 20;
 console.log(a);
 
-// ES6
 let b = 10;
 b = 20;
+console.log(b);
 
+const c = 10;
+console.log(c);
+
+// mặc định: Không dùng var, mà sử dụng const
+// Khi xác định biến
+// có sự thay đổi giá trị thì sử let
+
+// Khai baos mang
 const names = ["Kien", "Dat", "Lam"];
-const person = {
-    name: "Dat",
-};
-person.age = 20;
+// truy cap vao element
+const nameEl = document.querySelector("#nameEl");
 
-console.log(person);
+let result = "";
+for (let i = 0; i < names.length; i++) {
+    result += "<div>" + names[i] + "</div>";
+}
+nameEl.innerHTML = result;
 
-// names.push("Do");
-// console.log(names);
+// number, string, boolean, underfine
+// array, object -> Tham chieu
 
-// const nameElement = document.querySelector("#nameElement");
+const myArr = [1, 2, 3, 4];
+myArr.push(5);
 
-// let result = "";
+/**
+ *
+ */
 
-// for (let i = 0; i < names.length; i++) {
-//     result += "<div>" + names[i] + "</div>";
-// }
-// nameElement.innerHTML = result;
-
-// function name
-console.log("function name", sum(30, 10));
+// function declaration | function name
+console.log("function name", sum(10, 20));
 function sum(a, b) {
     return a + b;
 }
-
-// function expression -> anonymous function
+// function expression
 const sum2 = function (a, b) {
     return a + b;
 };
-console.log("function expression", sum2(30, 10));
-// arrow function - Viết tắt của function expression
+sum2(10, 20);
+// arrow function
 const sum3 = (a, b) => a + b;
-console.log("arrow function ", sum3(30, 40));
-// IIFE function
-((a, b) => {
-    console.log("IIFE function", a + b);
-})(50, 50);
+console.log("arrow function", sum3(10, 20));
 
-function total(a, b) {
-    // checking
-    if (typeof a == "string" || typeof b == "string") return 0;
-    // processing
-    const result = a + b;
-    // return
-    return result;
-}
-console.log(total(10, 20));
-
-const nameElement = document.querySelector("#nameElement");
-const productList = ["product A", "product B"];
 function showProduct(products) {
-    // checking
-    if (!Array.isArray(products)) return [];
-    // processing
+    if (!Array.isArray(products)) return false;
     let result = "";
     for (let i = 0; i < products.length; i++) {
         result += "<div>" + products[i] + "</div>";
     }
-    // return
     return result;
 }
-nameElement.innerHTML = showProduct(10);
+function total(a, b) {
+    if (typeof a != "number" || typeof b !== "number") return false;
+    return a + b;
+}
