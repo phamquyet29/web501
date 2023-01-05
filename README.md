@@ -4,6 +4,9 @@
 
 -   Truy cập website https://nodejs.org/en/
 -   Tải phiên bản mới nhất "Recommend for most users"
+-   Bật terminal hoặc cmd gõ: `node -v`
+    -   Nếu hiển thị phiên bản là cài thành công
+    -   Nếu không hiển thị thì tắt VSC bật lại, sau đó gõ câu lệnh trên
 
 ## Bước 2: Cài đặt template
 
