@@ -14,5 +14,6 @@
 -   Cài đặt template vanilla js:
     `npm create vite@latest we17309 -- --template vanilla`
 -   Truy cập vào thư mục: `cd we17309`
+-   Bật thư mục trong VSC: `code .`
 -   Cài đặt package: `npm i`
 -   Chạy project: `npm run dev`
