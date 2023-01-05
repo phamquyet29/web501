@@ -19,3 +19,15 @@ function showInfo({ name, age, address: { city } }) {
     console.log(name, age, city);
 }
 showInfo(person);
+
+function useState(initialState) {
+    let state = initialState;
+    function setState(newState) {
+        state = newState;
+    }
+    return [state, setState];
+}
+const [count, setCount] = useState(10);
+console.log(count); // 10
+setCount(20);
+console.log(count); // 20
