@@ -21,3 +21,21 @@ function showInfo({ name, age, address: { city } }) {
 }
 
 showInfo(person);
+
+// Destructoring array
+
+function useState(initialState) {
+    let value = initialState;
+    function getValue() {
+        return value;
+    }
+    function setValue(newValue) {
+        value = newValue;
+    }
+    return [getValue, setValue];
+}
+
+const [count, setCount] = useState(10);
+console.log("Gia tri cu", count()); // 10
+setCount(20);
+console.log("Gia tri moi", count());
