@@ -16,9 +16,7 @@ const {
 // const age = person.age;
 // const address = person.address;
 
-const showInfo = ({ name, age }) => {
-    console.log(name, age);
-};
+const showInfo = ({ name, age }) => {};
 showInfo(person);
 
 function useState(initialState) {
@@ -29,7 +27,7 @@ function useState(initialState) {
     return [state, setState];
 }
 
-const [myName, setMyName] = useState("Dat");
-console.log(myName);
-setMyName("Dat Nguyen");
-console.log(myName);
+const [count, setCount] = useState(0);
+console.log("count", count);
+setCount("Dat Nguyen");
+console.log("count", count);
