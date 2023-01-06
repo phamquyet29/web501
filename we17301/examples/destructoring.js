@@ -42,7 +42,6 @@ function useState(intialState) {
     return [getState, setState];
 }
 const [count, setCount] = useState(10);
-
 console.log("count cũ", count());
 setCount(30);
 console.log("count mới", count());
