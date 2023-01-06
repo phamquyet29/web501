@@ -12,8 +12,8 @@
 
 -   Truy cập website https://vitejs.dev/
 -   Cài đặt template vanilla js:
-    `npm create vite@latest we17309 -- --template vanilla`
--   Truy cập vào thư mục: `cd we17309`
+    `npm create vite@latest we17307 -- --template vanilla`
+-   Truy cập vào thư mục: `cd we17307`
 -   Bật thư mục trong VSC: `code .`
 -   Cài đặt package: `npm i`
 -   Chạy project: `npm run dev`
