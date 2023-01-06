@@ -30,3 +30,19 @@ function showInfo({ name, age, city, address: { number } }) {
     console.log(name, age, city, number);
 }
 showInfo(person);
+
+function useState(intialState) {
+    let state = intialState;
+    function getState() {
+        return state;
+    }
+    function setState(newState) {
+        return (state = newState);
+    }
+    return [getState, setState];
+}
+const [count, setCount] = useState(10);
+
+console.log("count cũ", count());
+setCount(30);
+console.log("count mới", count());
