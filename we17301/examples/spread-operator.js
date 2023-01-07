@@ -6,6 +6,7 @@ const person = {
 };
 const person2 = {
     ...person,
+    // shadow copy và deep copy
     address: "Thai Binh",
 };
 console.log(person2);
