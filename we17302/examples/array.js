@@ -23,8 +23,8 @@ const productList = [
     { id: 3, name: "Product C", price: 400 }, // item
 ];
 const productListElement = document.querySelector("#productList");
-// Ví dụ forEach
 
+// Ví dụ show product sử dụng forEach
 // const showProducts = () => {
 //     let result = "";
 //     productList.forEach((item) => {
@@ -35,12 +35,10 @@ const productListElement = document.querySelector("#productList");
 // showProducts();
 
 // map - method
-console.log("productList", productList);
 const newProductList = productList.map((item) => {
     return `${item.name} + ahihi`;
 });
-console.log(newProductList);
-
+// ví dụ show product sử dụng map
 const showProducts = () => {
     productListElement.innerHTML = productList.map((item) => `<div>${item.name}</div>`).join("");
 };
