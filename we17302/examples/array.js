@@ -43,3 +43,10 @@ const showProducts = () => {
     productListElement.innerHTML = productList.map((item) => `<div>${item.name}</div>`).join("");
 };
 showProducts();
+
+// filter
+const newFilterProducts = productList.filter((item) => item.id != 1);
+// find
+const findItem = productList.find((item) => item.id == 2);
+const newItem = `<div>${findItem.name}</div> <div>${findItem.price}</div>`;
+document.querySelector("#productDetail").innerHTML = newItem;
