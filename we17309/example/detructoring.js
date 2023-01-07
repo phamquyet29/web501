@@ -21,13 +21,16 @@ showInfo(person);
 
 function useState(initialState) {
     let state = initialState;
+    function getState() {
+        return state;
+    }
     function setState(newState) {
         state = newState;
     }
-    return [state, setState];
+    return [getState, setState];
 }
 
 const [count, setCount] = useState(0);
-console.log("count", count);
-setCount("Dat Nguyen");
-console.log("count", count);
+console.log("count", count());
+setCount(20);
+console.log("count", count());
