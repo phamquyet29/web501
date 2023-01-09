@@ -6,6 +6,7 @@ const add = (x, y, ...numbers) => {
     console.log(numbers); // [3,4,5]
 };
 add(1, 2, 3, 4, 5);
+
 const showObject = ({ a, b, ...other }) => {
     console.log("a", a); // a
     console.log("b", b); // b
