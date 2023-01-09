@@ -1,10 +1,13 @@
 import HomePage from "./pages/home";
 import ContactPage from "./pages/contact";
-import { render } from "./lib";
-
-console.log(HomePage());
-console.log(ContactPage());
+import AboutPage from "./pages/about";
+import { render, router } from "./lib";
 
 const app = document.querySelector("#app");
 
-app.innerHTML = ContactPage();
+router.on("/", () => render(HomePage, app));
+router.on("/about", () => render(AboutPage, app));
+
+router.resolve();
+
+// render(HomePage, app);
