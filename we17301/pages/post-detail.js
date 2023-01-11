@@ -1,4 +1,8 @@
+import Header from "../components/Header";
+
 const PostDetailPage = () => {
-    return `Post Page`;
+    return `
+    ${Header()}
+    <h1>Post Page</h1>`;
 };
 export default PostDetailPage;
