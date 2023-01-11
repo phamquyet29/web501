@@ -2,11 +2,11 @@ const Header = () => {
     return /*html*/ `
         <header>
             <nav>
-                <a href="">Home</a>
-                <a href="">About</a>
-                <a href="">Projects</a>
-                <a href="">Posts</a>
-                <a href="">Contact</a>
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+                <a href="/projects">Projects</a>
+                <a href="/posts">Posts</a>
+                <a href="/contact">Contact</a>
             </nav>
         </header>
     `;
