@@ -1,4 +1,8 @@
+import Header from "../components/Header";
+
 const ProjectsPage = () => {
-    return `Projects Page`;
+    return `
+    ${Header()}
+    `;
 };
 export default ProjectsPage;

@@ -1,4 +1,4 @@
-const ProjectPage = () => {
-    return `Project Page`;
+const ProjectDetailPage = () => {
+    return `Project Detail Page`;
 };
-export default ProjectPage;
+export default ProjectDetailPage;

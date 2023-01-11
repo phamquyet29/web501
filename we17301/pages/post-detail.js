@@ -1,4 +1,4 @@
-const PostPage = () => {
+const PostDetailPage = () => {
     return `Post Page`;
 };
-export default PostPage;
+export default PostDetailPage;
