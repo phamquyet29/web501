@@ -8,7 +8,8 @@ const ProjectsPage = () => {
     <div class="projects">
         ${projects
             .map((project) => {
-                return `<div class="project-item">${project.name}</div>`;
+                return `<div class="project-item">
+                        <a href="/project/${project.id}">${project.name}</a></div>`;
             })
             .join("")}
     </div>
