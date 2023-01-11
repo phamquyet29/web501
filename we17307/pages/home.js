@@ -1,5 +1,9 @@
+import Header from "../components/Header";
+
 const Homepage = () => {
-    return `Home page`;
+    return `
+        ${Header()}
+    `;
 };
 
 export default Homepage;
