@@ -9,5 +9,6 @@ const projectsFake = [
         ],
     },
     { id: 2, name: "Dự án mẫu", author: "Đạt" },
+    { id: 3, name: "Dự án Tốt nghiệp", author: "Kiên" },
 ];
 export default projectsFake;

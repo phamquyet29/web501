@@ -4,8 +4,8 @@ const ProjectList = () => {
     return `<div>
     
     ${projectsFake
-        .map((item) => {
-            return `<div><a href="/project/${item.id}">${item.name}</a></div>`;
+        .map((project) => {
+            return `<div><a href="/project/${project.id}">${project.name}</a></div>`;
         })
         .join("")}
     </div>`;
