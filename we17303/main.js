@@ -13,7 +13,7 @@ router.on("/", () => render(HomePage, app));
 router.on("/about", () => render(AboutPage, app));
 router.on("/contact", () => render(ContactPage, app));
 router.on("/projects", () => render(ProjectsPage, app));
-router.on("/project/:id", () => render(ProjectDetailPage, app));
+router.on("/project/:id", (params) => render(() => ProjectDetailPage(params), app));
 router.on("/post/:id", () => render(PostDetailPage, app));
 router.on("/posts", () => render(PostsPage, app));
 
