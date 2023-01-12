@@ -1,8 +1,13 @@
 import Header from "../components/Header";
+import { projectsFake } from "../data";
 
-const ProjectDetailPage = () => {
+const ProjectDetailPage = (id) => {
+    const currentProject = projectsFake.find((project) => project.id == id);
+    if (!currentProject) return "";
+
     return `
         ${Header()}
-    <h1>Project Detail Page</h1>`;
+            <h1>${currentProject.name}</h1>
+        `;
 };
 export default ProjectDetailPage;
