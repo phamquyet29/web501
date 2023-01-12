@@ -1,12 +1,12 @@
-import { render, router } from "./lib";
-import AboutPage from "./pages/about";
-import ContactPage from "./pages/contact";
-import HomePage from "./pages/home";
-import NotFoundPage from "./pages/not-found";
-import PostDetailPage from "./pages/post-detail";
-import PostsPage from "./pages/posts";
-import ProjectDetailPage from "./pages/project-detail";
-import ProjectsPage from "./pages/projects";
+import { render, router } from "./src/lib";
+import AboutPage from "./src/pages/about";
+import ContactPage from "./src/pages/contact";
+import HomePage from "./src/pages/home";
+import NotFoundPage from "./src/pages/not-found";
+import PostDetailPage from "./src/pages/post-detail";
+import PostsPage from "./src/pages/posts";
+import ProjectDetailPage from "./src/pages/project-detail";
+import ProjectsPage from "./src/pages/projects";
 
 const app = document.querySelector("#app");
 
