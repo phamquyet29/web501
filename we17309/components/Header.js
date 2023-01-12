@@ -1,13 +1,9 @@
+import Nav from "./Nav";
+
 const Header = () => {
     return `
         <header>
-            <nav>
-                <a href="/">Home</a>
-                <a href="/about">About</a>
-                <a href="">Projects</a>
-                <a href="">Post</a>
-                <a href="/contact">Contact</a>
-            </nav>
+            ${Nav()}
         </header>
     
     `;
