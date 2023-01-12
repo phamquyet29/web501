@@ -8,6 +8,20 @@ const ProjectDetailPage = ({ data: { id } }) => {
     return `
         ${Header()}
             <h1>${currentProject.name}</h1>
+            ${
+                currentProject.teams
+                    ? `
+                         <ul>
+                            ${currentProject.teams
+                                .map((member) => {
+                                    return `<li>${member.name}</li>`;
+                                })
+                                .join("")}
+                        </ul>
+                        `
+                    : ""
+            }
+            
         `;
 };
 export default ProjectDetailPage;
