@@ -20,3 +20,4 @@ router.on("/posts", () => render(PostsPage, app));
 router.notFound(() => render(NotFoundPage, app));
 
 router.resolve();
+// npm i navigo --save
