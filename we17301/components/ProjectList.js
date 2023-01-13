@@ -1,11 +1,10 @@
+
+import ProjectItem from "./ProjectItem";
 const ProjectList = ({ data }) => {
     return `
     ${data
-        .map((project) => {
-            return `<div>${project.name}</div>`;
-        })
+        .map((project) => `${ProjectItem({ project })}` )
         .join("")}
-    
     `;
 };
 export default ProjectList;
