@@ -1,3 +1,11 @@
+const menus = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Projects", path: "/projects" },
+    { name: "Posts", path: "/posts" },
+    { name: "Contact", path: "/contact" },
+];
+
 const projects = [
     {
         id: 1,
@@ -19,4 +27,4 @@ const projects = [
         ],
     },
 ];
-export { projects };
+export { projects, menus };
