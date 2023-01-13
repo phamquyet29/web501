@@ -5,6 +5,7 @@ import HomePage from "./pages/home";
 import NotFoundPage from "./pages/not-found";
 import PostDetailPage from "./pages/post-detail";
 import PostsPage from "./pages/posts";
+import ProjectDetailPage from "./pages/project-detail";
 import ProjectsPage from "./pages/projects";
 
 // alt + shift + o
@@ -16,6 +17,7 @@ router.on("/about", () => render(AboutPage, app));
 router.on("/contact", () => render(ContactPage, app));
 router.on("/posts", () => render(PostsPage, app));
 router.on("/projects", () => render(ProjectsPage, app));
+router.on("/project/:id", (params) => render(() => ProjectDetailPage(params), app));
 router.on("/posts", () => render(PostsPage, app));
 router.on("/post/:id", () => render(PostDetailPage, app));
 

@@ -7,10 +7,11 @@ const menuList = [
 ];
 
 const projectFake = [
-    { id: 1, name: "Dự án mẫu" },
+    { id: 1, name: "Dự án mẫu", img: "https://picsum.photos/400/400" },
     {
         id: 2,
         name: "Dự án 1",
+        img: "https://picsum.photos/400/400",
         teams: [
             { id: 1, name: "Đạt" },
             { id: 2, name: "Kiên" },
@@ -20,6 +21,7 @@ const projectFake = [
     {
         id: 3,
         name: "Dự án tốt nghiệp",
+        img: "https://picsum.photos/400/400",
         teams: [
             { id: 1, name: "Đạt" },
             { id: 2, name: "Kiên" },
