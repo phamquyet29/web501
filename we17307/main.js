@@ -6,6 +6,7 @@ import Homepage from "./pages/home";
 import NotFoundPage from "./pages/not-found";
 import PostsPage from "./pages/posts";
 import ProjectsPage from "./pages/projects";
+
 const app = document.querySelector("#app");
 
 router.on("/", () => render(Homepage, app));

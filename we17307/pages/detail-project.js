@@ -1,8 +1,11 @@
 import Header from "../components/Header";
+import { projects } from "../data";
 
 const DetailProjectPage = () => {
+    // find
+    const currentProject = projects.find((project) => project.id == 2);
     return `
     ${Header()}
-    <h1>Detail Project Page</h1>`;
+    <h1>${currentProject.name}</h1>`;
 };
 export default DetailProjectPage;
