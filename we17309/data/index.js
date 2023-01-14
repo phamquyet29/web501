@@ -1,3 +1,10 @@
+const menus = [
+    { id: 1, name: "Trang chủ", link: "/" },
+    { id: 2, name: "Dự án", link: "/projects" },
+    { id: 3, name: "Liên hệ", link: "/contact" },
+    { id: 4, name: "Bài viết", link: "/posts" },
+]
+
 const projectsFake = [
     {
         id: 1,
@@ -23,12 +30,4 @@ const projectsFake = [
     },
 ];
 
-export { projectsFake };
-
-// const numbers = [
-//     { id: 1, name: "A"}, // item
-//     { id: 2, name: "B"}, // item
-//     { id: 3, name: "C"}, // item
-//     { id: 4, name: "D"}]; // item
-// const currentNumber = numbers.find(item => item.id === 2);
-// console.log(currentNumber) // { id: 2, name: "B"}
+export { projectsFake, menus };
