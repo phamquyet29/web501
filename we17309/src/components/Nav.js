@@ -1,5 +1,4 @@
 import { menus } from "../data";
-
 const Nav = () => {
     return `
         <nav>
