@@ -1,3 +1,6 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+
 import { render, router } from "./src/lib";
 import AboutPage from "./src/pages/about";
 import ContactPage from "./src/pages/contact";

@@ -10,6 +10,7 @@ const ProjectList = ({ projects }) => {
     </div>`;
 };
 
+
 export default ProjectList;
 // cài đặt extension reactjs/es7
 // rafce
