@@ -1,6 +1,4 @@
-import { projects } from "../data";
-
-const ProjectList = () => {
+const ProjectList = ({ projects }) => {
     return `
     ${projects
         .map(

@@ -4,9 +4,7 @@ import ProjectInfo from "../components/ProjectInfo";
 import { projects } from "../data";
 import { router } from "../lib";
 
-const DetailProjectPage = ({ data: { id } }) => {
-    // find
-    // /project/:id
+const DetailProjectPage = (id) => {
     const currentProject = projects.find((project) => project.id == id);
     if (!currentProject) return router.navigate("/projects");
     // conditional rendering
