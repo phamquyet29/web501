@@ -6,7 +6,7 @@ const menuList = [
     { name: "Contact", path: "/contact" },
 ];
 
-const projectFake = [
+const projects = [
     { id: 1, name: "Dự án mẫu", img: "https://picsum.photos/400/400" },
     {
         id: 2,
@@ -29,4 +29,4 @@ const projectFake = [
         ],
     },
 ];
-export { projectFake, menuList };
+export { projects, menuList };

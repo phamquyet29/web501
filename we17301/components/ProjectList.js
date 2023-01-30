@@ -1,10 +1,7 @@
-
 import ProjectItem from "./ProjectItem";
-const ProjectList = ({ data }) => {
+const ProjectList = ({ projects }) => {
     return `
-    ${data
-        .map((project) => `${ProjectItem({ project })}` )
-        .join("")}
+    ${projects.map((project) => `${ProjectItem({ project })}`).join("")}
     `;
 };
 export default ProjectList;
