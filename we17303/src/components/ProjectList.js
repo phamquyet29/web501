@@ -1,8 +1,6 @@
-import { projectsFake } from "../data";
-
-const ProjectList = () => {
+const ProjectList = ({ projects }) => {
     return `
-    ${projectsFake
+    ${projects
         .map((item) => {
             return `<div><a href="/project/${item.id}">${item.name}</div>`;
         })

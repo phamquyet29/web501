@@ -1,4 +1,4 @@
-const projectsFake = [
+const projects = [
     {
         id: 1,
         name: "Dự án 1",
@@ -20,4 +20,4 @@ const projectsFake = [
         ],
     },
 ];
-export { projectsFake };
+export { projects };
