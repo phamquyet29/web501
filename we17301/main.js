@@ -1,5 +1,5 @@
-import "bootstrap/dist/css/bootstrap.min.css";
 import { render, router } from "./lib";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import AboutPage from "./pages/about";
 import AdminProjectsPage from "./pages/admin/projects";
@@ -25,7 +25,6 @@ router.on("/posts", () => render(PostsPage, app));
 router.on("/post/:id", () => render(PostDetailPage, app));
 
 router.on("/admin/projects", () => render(AdminProjectsPage, app));
-
 router.notFound(() => render(NotFoundPage, app));
 //npm i navigo --save
 router.resolve();
