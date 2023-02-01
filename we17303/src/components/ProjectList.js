@@ -1,4 +1,5 @@
 const ProjectList = ({ projects }) => {
+    if (!Array.isArray(projects) || projects.length == 0) return null;
     return `
     ${projects
         .map((item) => {
