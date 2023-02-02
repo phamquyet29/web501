@@ -1,8 +1,8 @@
-import { projectsFake } from "../data";
+import { projects } from "../data";
 
 const ProjectDetailPage = ({ data: { projectId } }) => {
     // find
-    const currentProject = projectsFake.find((project) => project.id == projectId);
+    const currentProject = projects.find((project) => project.id == projectId);
     if (!currentProject) return `Loading...`;
     return /*html*/ `<h1>Project Detail Page</h1>
         ${currentProject.name}
