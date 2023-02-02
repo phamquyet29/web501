@@ -23,8 +23,8 @@ router.on("/project/:projectId", (params) => render(() => ProjectDetailPage(para
 router.on("/post/:postId", () => render(PostDetailPage, app));
 router.on("/posts", () => render(PostsPage, app));
 
-router.on("/admin/projects", render(AdminProjectsPage, app));
-router.on("/admin/projects/add", render(AdminProjectAddPage, app));
+router.on("/admin/projects", () => render(AdminProjectsPage, app));
+router.on("/admin/projects/add", () => render(AdminProjectAddPage, app));
 
 router.notFound(() => render(NotFoundPage, app));
 
