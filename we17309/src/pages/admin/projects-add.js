@@ -1,0 +1,25 @@
+import { router, useEffect } from "../../lib";
+import { projects } from "../../data";
+const ProjectAdd = () => {
+    useEffect(() => {
+        const form = document.querySelector("#form-add");
+        const name = document.querySelector("#name");
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            projects.push({
+                id: projects.length + 1,
+                name: name.value,
+            });
+            router.navigate("/admin/projects");
+        });
+    });
+
+    return `<div>
+        <form id="form-add">
+            <input type="text" id="name" class="border" />
+            <button class="btn btn-primary">Thêm</button>
+        </form>
+    </div>`;
+};
+
+export default ProjectAdd;
