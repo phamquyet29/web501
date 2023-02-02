@@ -1,4 +1,3 @@
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
@@ -10,7 +9,7 @@ import PostDetailPage from "./src/pages/post-detail";
 import PostsPage from "./src/pages/posts";
 import ProjectDetailPage from "./src/pages/project-detail";
 import ProjectsPage from "./src/pages/projects";
-
+import AdminProjectPage from "./src/pages/admin/projects";
 // alt + shift + o
 // option + shift + o
 const app = document.querySelector("#app");
@@ -22,6 +21,8 @@ router.on("/projects", () => render(ProjectsPage, app));
 router.on("/project/:id", (params) => render(ProjectDetailPage(params.data.id), app));
 router.on("/posts", () => render(PostsPage, app));
 router.on("/post/:id", () => render(PostDetailPage, app));
+
+router.on("/admin/projects", () => render(AdminProjectPage, app));
 
 router.notFound(() => console.log("not found page"));
 
