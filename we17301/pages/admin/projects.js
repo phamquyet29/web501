@@ -1,8 +1,13 @@
-import { projects } from "../../data";
 import { useEffect, useState } from "../../lib";
 
 const AdminProjectsPage = () => {
-    const [data, setData] = useState(projects); // [data,data2,data3]
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        // kiểm tra localStorage có dữ liệu không?
+        const projects = JSON.parse(localStorage.getItem("projects")) || [];
+        setData(projects);
+    });
 
     // chạy sau khi render
     useEffect(function () {
