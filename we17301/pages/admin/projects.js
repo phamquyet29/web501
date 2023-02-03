@@ -2,21 +2,22 @@ import { useEffect, useState } from "../../lib";
 
 const AdminProjectsPage = () => {
     const [data, setData] = useState([]);
+    // chạy sau khi render
 
     useEffect(() => {
-        // kiểm tra localStorage có dữ liệu không?
+        // lấy dữ liệu từ localStorage
         const projects = JSON.parse(localStorage.getItem("projects")) || [];
         setData(projects);
-    });
+    }, []);
 
-    // chạy sau khi render
     useEffect(function () {
         const btns = document.querySelectorAll(".btn-remove");
         for (let btn of btns) {
             // btn là 1 phần tử trong mảng?
             const id = btn.dataset.id;
             btn.addEventListener("click", function () {
-                const newData = data.filter((project) => project.id != id); // [data1,data3]
+                const newData = data.filter((project) => project.id != id);
+                // thiết lập lại dữ liệu ở localStorage
                 localStorage.setItem("projects", JSON.stringify(newData));
                 setData(newData); // set lại data
             });

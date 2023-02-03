@@ -11,6 +11,7 @@ import PostsPage from "./pages/posts";
 import ProjectDetailPage from "./pages/project-detail";
 import ProjectsPage from "./pages/projects";
 import AdminAddProjectsPage from "./pages/admin/projects-add";
+import AdminEditProjectsPage from "./pages/admin/products-edit";
 
 // alt + shift + o
 // option + shift +
@@ -27,6 +28,7 @@ router.on("/post/:id", () => render(PostDetailPage, app));
 
 router.on("/admin/projects", () => render(AdminProjectsPage, app));
 router.on("/admin/projects/add", () => render(AdminAddProjectsPage, app));
+router.on("/admin/projects/:id/edit", ({ data }) => render(() => AdminEditProjectsPage(data), app));
 router.notFound(() => render(NotFoundPage, app));
 //npm i navigo --save
 router.resolve();
