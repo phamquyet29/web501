@@ -17,6 +17,7 @@ const AdminProjectsPage = () => {
             const id = btn.dataset.id;
             btn.addEventListener("click", function () {
                 const newData = data.filter((project) => project.id != id); // [data1,data3]
+                localStorage.setItem("projects", JSON.stringify(newData));
                 setData(newData); // set lại data
             });
         }
