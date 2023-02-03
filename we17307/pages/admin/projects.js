@@ -32,10 +32,10 @@ const AdminProjectsPage = () => {
                                     <td>
                                         <button data-id="${
                                             project.id
-                                        }" data-abc="ahihi" class="btn btn-danger btn-remove">
+                                        }" class="btn btn-danger btn-remove">
                                             Xóa
                                         </button>
-                                        <a href="">Sửa</a>
+                                        <a href="/admin/projects/${project.id}/edit">Sửa</a>
                                     </td>
                                 </tr>
                             `;
