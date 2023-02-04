@@ -1,4 +1,4 @@
-import { useEffect, router } from "../../lib";
+import { useEffect, router } from "@/lib";
 const AdminProjectAddPage = () => {
     const projects = JSON.parse(localStorage.getItem("projects")) || [];
     console.log("projects", projects);

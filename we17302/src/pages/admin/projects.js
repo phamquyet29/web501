@@ -1,6 +1,4 @@
-// import { projects } from "../../data";
-
-import { useEffect, useState } from "../../lib";
+import { useEffect, useState } from "@/lib";
 
 const AdminProjectsPage = () => {
     // projects  = 3
