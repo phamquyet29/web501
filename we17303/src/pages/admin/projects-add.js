@@ -1,7 +1,7 @@
-import { projects } from "../../data";
 import { useEffect, router } from "../../lib";
 
 const AdminProjectsAddPage = () => {
+    const projects = JSON.parse(localStorage.getItem("projects")) || [];
     useEffect(() => {
         const form = document.querySelector("#form-add");
         const projectName = document.querySelector("#project-name");
@@ -18,6 +18,8 @@ const AdminProjectsAddPage = () => {
             // thêm dự án vào mảng projects
             projects.push(project);
 
+            // lưu vào localStorage
+            localStorage.setItem("projects", JSON.stringify(projects));
             // chuyển trang về trang quản lý dự án
             router.navigate("/admin/projects");
         });
