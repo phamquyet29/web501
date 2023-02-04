@@ -1,4 +1,4 @@
-import { projects } from "@/data";
+// import { projects } from "@/data";
 import { useEffect, useState } from "@/lib";
 const ProjectsPage = () => {
     /**
@@ -9,22 +9,22 @@ const ProjectsPage = () => {
      *    - Lấy ra các nút remove
      *    - Thêm sự kiện click cho các nút remove
      */
-    const [data, setData] = useState(projects); //
+    const [data, setData] = useState([]); // 3
 
+    useEffect(() => {
+        const projects = JSON.parse(localStorage.getItem("projects")) || [];
+        setData(projects);
+    }, []);
     useEffect(() => {
         // 3
         const btns = document.querySelectorAll(".btn-remove");
         for (let btn of btns) {
             btn.addEventListener("click", function () {
                 const id = this.dataset.id;
-                removeItem(id);
+                setData(data.filter((project) => project.id != id));
             });
         }
     });
-
-    const removeItem = (id) => {
-        setData(data.filter((project) => project.id != id));
-    };
     // 2
     return `<div>
         <h1>Quản lý dự án</h1>

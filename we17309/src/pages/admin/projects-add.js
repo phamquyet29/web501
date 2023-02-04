@@ -1,15 +1,20 @@
-import { router, useEffect } from "../../lib";
-import { projects } from "../../data";
+import { router, useEffect } from "@/lib";
+// import { projects } from "../../data";
 const ProjectAdd = () => {
+    const projects = JSON.parse(localStorage.getItem("projects")) || [];
+
     useEffect(() => {
         const form = document.querySelector("#form-add");
         const name = document.querySelector("#name");
+
         form.addEventListener("submit", (e) => {
             e.preventDefault();
             projects.push({
                 id: projects.length + 1,
                 name: name.value,
             });
+            localStorage.setItem("projects", JSON.stringify(projects));
+
             router.navigate("/admin/projects");
         });
     });
