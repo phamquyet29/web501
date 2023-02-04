@@ -1,14 +1,14 @@
-// import { projects } from "../../data";
-import { useEffect, useState } from "../../lib";
+import { useEffect, useState } from "@/lib";
+
 const AdminProjectsPage = () => {
     // localStorage
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        // OR
         const projects = JSON.parse(localStorage.getItem("projects")) || [];
         setData(projects);
     }, []);
+
     useEffect(function () {
         const btns = document.querySelectorAll(".btn-remove");
         for (let btn of btns) {
