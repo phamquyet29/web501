@@ -1,5 +1,5 @@
-import { projects } from "../../data";
-import { useEffect, useState } from "../../lib";
+import { projects } from "@/data";
+import { useEffect, useState } from "@/lib";
 const ProjectsPage = () => {
     /**
      *
