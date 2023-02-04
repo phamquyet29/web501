@@ -47,6 +47,7 @@ const ProjectsPage = () => {
                         <button data-id="${
                             project.id
                         }" class="btn btn-remove btn-danger">Remove</button>
+                        <a href="/admin/projects/${project.id}/edit">Sửa</a>
                     </td>
                 </tr>
             `
@@ -58,3 +59,7 @@ const ProjectsPage = () => {
 };
 
 export default ProjectsPage;
+
+// JSON: parse va stringify
+// localStorage.getItem(key) => vi du: JSON.parse(localStorage.get('a'))
+// localStorage.setItem(key, JSON.stringify(value));

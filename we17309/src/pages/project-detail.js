@@ -1,7 +1,7 @@
 import Header from "../components/Header";
 import { projects } from "../data";
 
-const ProjectDetailPage = (id) => {
+const ProjectDetailPage = ({ id }) => {
     const currentProject = projects.find((project) => project.id == id);
     if (!currentProject) return "";
 

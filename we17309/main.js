@@ -11,6 +11,7 @@ import ProjectDetailPage from "./src/pages/project-detail";
 import ProjectsPage from "./src/pages/projects";
 import AdminProjectPage from "./src/pages/admin/projects";
 import AdminProjectAddPage from "./src/pages/admin/projects-add";
+import AdminProjectEditPage from "./src/pages/admin/projects-edit";
 
 // alt + shift + o
 // option + shift + o
@@ -20,12 +21,13 @@ router.on("/", () => render(HomePage, app));
 router.on("/about", () => render(AboutPage, app));
 router.on("/contact", () => render(ContactPage, app));
 router.on("/projects", () => render(ProjectsPage, app));
-router.on("/project/:id", (params) => render(ProjectDetailPage(params.data.id), app));
+router.on("/project/:id", ({ data }) => render(ProjectDetailPage(data), app));
 router.on("/posts", () => render(PostsPage, app));
 router.on("/post/:id", () => render(PostDetailPage, app));
 
 router.on("/admin/projects", () => render(AdminProjectPage, app));
 router.on("/admin/projects/add", () => render(AdminProjectAddPage, app));
+router.on("/admin/projects/:id/edit", ({ data }) => render(() => AdminProjectEditPage(data), app));
 
 router.notFound(() => console.log("not found page"));
 
