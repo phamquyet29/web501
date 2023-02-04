@@ -1,3 +1,4 @@
+import AdminProjectEditPage from "@/pages/admin/projects-edit";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { render, router } from "./src/lib";
@@ -23,7 +24,7 @@ router.on("/posts", () => render(PostsPage, app));
 
 router.on("/admin/projects", () => render(AdminProjectsPage, app));
 router.on("/admin/projects/add", () => render(AdminProjectsAddPage, app));
-
+router.on("/admin/projects/:id/edit", ({ data }) => render(() => AdminProjectEditPage(data), app));
 router.notFound(() => render(NotFoundPage, app));
 
 router.resolve();
