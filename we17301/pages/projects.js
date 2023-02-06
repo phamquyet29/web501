@@ -1,8 +1,10 @@
 import Header from "../components/Header";
 import ProjectList from "../components/ProjectList";
-import { projects } from "../data";
+import { useState } from "../lib";
+// import { projects } from "../data";
 
 const ProjectsPage = () => {
+    const [projects, setProjects] = useState([]);
     return `
     ${Header()}
     <div>
