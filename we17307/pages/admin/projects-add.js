@@ -1,17 +1,20 @@
 import { useEffect, router } from "../../lib";
-import { projects } from "../../data";
+// import { projects } from "../../data";
 
 const AdminAddProjectPage = () => {
+    const projects = JSON.parse(localStorage.getItem("projects")) || [];
     useEffect(() => {
         const form = document.getElementById("form-add");
         const projectName = document.getElementById("project-name");
 
         form.addEventListener("submit", function (e) {
-            console.log("hi!");
             // Chặn sự kiện reload sau khi submit
             e.preventDefault();
             // thêm phần tử vào mảng projects
             projects.push({ id: projects.length + 1, name: projectName.value });
+
+            // lưu vào localStorage
+            localStorage.setItem("projects", JSON.stringify(projects));
             // chuyển hướng về trang admin/projects
             router.navigate("/admin/projects");
         });
