@@ -2,6 +2,7 @@ import { useEffect, router } from "../../lib";
 // import { projects } from "../../data";
 
 const AdminAddProjectPage = () => {
+    // Lấy dữ liệu từ localStorage
     const projects = JSON.parse(localStorage.getItem("projects")) || [];
     useEffect(() => {
         const form = document.getElementById("form-add");
