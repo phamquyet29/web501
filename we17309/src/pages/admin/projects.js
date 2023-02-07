@@ -12,8 +12,11 @@ const ProjectsPage = () => {
     const [data, setData] = useState([]); // 3
 
     useEffect(() => {
-        const projects = JSON.parse(localStorage.getItem("projects")) || [];
-        setData(projects);
+        fetch("https://reqres.in/api/users")
+            .then((response) => response.json())
+            .then(({ data }) => setData(data));
+        // const projects = JSON.parse(localStorage.getItem("projects")) || [];
+        // setData(projects);
     }, []);
     useEffect(() => {
         // 3
@@ -21,7 +24,9 @@ const ProjectsPage = () => {
         for (let btn of btns) {
             btn.addEventListener("click", function () {
                 const id = this.dataset.id;
-                setData(data.filter((project) => project.id != id));
+                const newProjects = data.filter((project) => project.id != id);
+                // localStorage.setItem('projects', JSON.stringify(newProjects))
+                setData(newProjects);
             });
         }
     });
@@ -42,7 +47,7 @@ const ProjectsPage = () => {
                     (project, index) => `
                 <tr>
                     <td>${index + 1}</td>
-                    <td>${project.name}</td>
+                    <td>${project.first_name + project.last_name}</td>
                     <td>
                         <button data-id="${
                             project.id
