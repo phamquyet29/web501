@@ -6,8 +6,11 @@ const AdminProjectsPage = () => {
     const [status, setStatus] = useState("loading...");
 
     useEffect(() => {
-        const projects = JSON.parse(localStorage.getItem("projects")) || [];
-        setData(projects);
+        fetch("https://reqres.in/api/unknown")
+            .then((response) => response.json())
+            .then(({ data }) => setData(data));
+        // const projects = JSON.parse(localStorage.getItem("projects")) || [];
+        // setData(projects);
     }, []);
 
     useEffect(function () {
