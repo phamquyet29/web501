@@ -12,15 +12,15 @@ const AdminEditProjectPage = ({ id }) => {
         form.addEventListener("submit", function (e) {
             e.preventDefault();
             // Tạo ra project mới
-            const newProject = {
+            const formData = {
                 id: currentProject.id,
                 name: projectName.value,
             };
             // Tạo ra mảng newProjects mới
             const newProjects = projects.map((project) => {
-                // nếu project.id == newProject.id thì trả về mảng đã cập nhật phần tử mới
+                // nếu project.id == formData.id thì trả về mảng đã cập nhật phần tử mới
                 // ngược lại trả về mảng không cập nhật gì
-                return project.id == newProject.id ? newProject : project;
+                return project.id == formdata.id ? formData : project;
             });
 
             // lưu vào localStorage
@@ -30,7 +30,6 @@ const AdminEditProjectPage = ({ id }) => {
             router.navigate("/admin/projects");
         });
     });
-    if (!currentProject) return null;
 
     return `<div class="container">
             <h1>Thêm sản phẩm</h1>

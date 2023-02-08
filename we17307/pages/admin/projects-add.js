@@ -12,7 +12,12 @@ const AdminAddProjectPage = () => {
             // Chặn sự kiện reload sau khi submit
             e.preventDefault();
             // thêm phần tử vào mảng projects
-            projects.push({ id: projects.length + 1, name: projectName.value });
+
+            const formData = {
+                id: projects.length + 1,
+                name: projectName.value,
+            };
+            projects.push(formData);
 
             // lưu vào localStorage
             localStorage.setItem("projects", JSON.stringify(projects));

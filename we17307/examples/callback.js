@@ -1,8 +1,20 @@
-const myDisplay = (content) => {
-    document.querySelector("#app").innerHTML = content;
-};
-const myCalculator = (a, b, callback) => {
-    callback(a + b);
-};
+function loadScript(src, callback) {
+    const script = document.createElement("script"); // <script>
+    script.src = src; // <script src="https://developer.mozilla.org"></script>
+    script.onload = function () {
+        callback(script);
+    };
+    script.onload = function () {
+        callback(new Error("load failed"));
+    };
+    document.head.append(script); // <head><script src="https://developer.mozilla.org"></script></head>
+}
 
-myCalculator(5, 5, myDisplay);
+// setTimeout
+loadScript("https://developer.mozilla.org", function (error, script) {
+    if (error) {
+        console.log(error);
+    } else {
+        console.log(script);
+    }
+});

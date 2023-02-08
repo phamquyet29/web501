@@ -1,4 +1,4 @@
-import { projects } from "../../data";
+// import { projects } from "../../data";
 import { useState, useEffect } from "../../lib";
 
 const AdminProjectsPage = () => {
@@ -7,8 +7,14 @@ const AdminProjectsPage = () => {
 
     // Bước 3: Lấy dữ liệu từ localStorage và gán vào biến data
     useEffect(() => {
-        const projects = JSON.parse(localStorage.getItem("projects")) || [];
-        setData(projects);
+        fetch("https://reqres.in/api/users", {
+            method: "GET",
+        })
+            .then((response) => response.json())
+            .then(({ data }) => setData(data));
+
+        // const projects = JSON.parse(localStorage.getItem("projects")) || [];
+        // setData(projects);
     }, []);
 
     useEffect(() => {
@@ -46,7 +52,7 @@ const AdminProjectsPage = () => {
                                 return `
                                 <tr>
                                     <td>${index + 1}</td>
-                                    <td>${project.name}</td>
+                                    <td>${project.first_name} ${project.last_name}</td>
                                     <td>
                                         <button data-id="${
                                             project.id
