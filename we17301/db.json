@@ -2,7 +2,8 @@
   "projects": [
     {
       "id": "3",
-      "name": "Project C"
+      "name": "Project C updated",
+      "img": "https://picsum.photos/400/400"
     },
     {
       "name": "dự án 1",

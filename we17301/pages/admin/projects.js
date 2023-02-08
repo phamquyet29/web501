@@ -50,6 +50,7 @@ const AdminProjectsPage = () => {
                                         }" class="btn btn-danger btn-remove">
                                             Xóa
                                         </button>
+                                        <a href="/admin/projects/${project.id}/edit">Sửa</a>
                                     </td>
                                 </tr>
                             `;
