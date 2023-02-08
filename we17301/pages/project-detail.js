@@ -1,21 +1,24 @@
 import Header from "../components/Header";
-import { router } from "../lib";
+import { router, useEffect, useState } from "../lib";
 import { projects } from "../data";
 import ProjectGallery from "../components/ProjectGallery";
 import ProjectInfo from "../components/ProjectInfo";
 
 const ProjectDetailPage = ({ data: { id } }) => {
-    // find
-    const currentProject = projects.find((project) => project.id == id);
-    console.log(currentProject);
-    if (!currentProject) return router.navigate("/projects");
+    const [project, setProject] = useState({});
 
+    useEffect(() => {
+        fetch("http://localhost:3000/projects/" + id)
+            .then((response) => response.json())
+            .then((data) => setProject(data))
+            .catch((error) => console.log(error));
+    }, []);
     return `
     ${Header()}
     <main>
-        ${ProjectGallery({ project: currentProject })}
+        ${ProjectGallery({ project })}
         <div>
-            ${ProjectInfo({ project: currentProject })}
+            ${ProjectInfo({ project })}
         </div>
     </main>
     `;

@@ -1,10 +1,14 @@
 import Header from "../components/Header";
 import ProjectList from "../components/ProjectList";
-import { useState } from "../lib";
-// import { projects } from "../data";
+import { useEffect, useState } from "../lib";
 
 const ProjectsPage = () => {
     const [projects, setProjects] = useState([]);
+    useEffect(() => {
+        fetch("http://localhost:3000/projects")
+            .then((response) => response.json())
+            .then((data) => setProjects(data));
+    }, []);
     return `
     ${Header()}
     <div>
