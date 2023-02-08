@@ -8,9 +8,6 @@ const AdminProjectsPage = () => {
         fetch("http://localhost:3000/projects")
             .then((response) => response.json())
             .then((data) => setData(data));
-        // lấy dữ liệu từ localStorage
-        // const projects = JSON.parse(localStorage.getItem("projects")) || [];
-        // setData(projects);
     }, []);
 
     useEffect(function () {
@@ -19,10 +16,13 @@ const AdminProjectsPage = () => {
             // btn là 1 phần tử trong mảng?
             const id = btn.dataset.id;
             btn.addEventListener("click", function () {
+                // reRender lại màn hình sau khi xóa
                 const newData = data.filter((project) => project.id != id);
-                // thiết lập lại dữ liệu ở localStorage
-                localStorage.setItem("projects", JSON.stringify(newData));
                 setData(newData); // set lại data
+
+                fetch("http://localhost:3000/projects/" + id, {
+                    method: "DELETE",
+                });
             });
         }
     });
