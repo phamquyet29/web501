@@ -5,11 +5,9 @@ const AdminProjectsPage = () => {
     // chạy sau khi render
 
     useEffect(() => {
-        fetch("https://reqres.in/api/users")
+        fetch("http://localhost:3000/projects")
             .then((response) => response.json())
-            .then(({ data }) => {
-                setData(data);
-            });
+            .then((data) => setData(data));
         // lấy dữ liệu từ localStorage
         // const projects = JSON.parse(localStorage.getItem("projects")) || [];
         // setData(projects);
@@ -45,7 +43,7 @@ const AdminProjectsPage = () => {
                                 return `
                                 <tr>
                                     <td>${index + 1}</td>
-                                    <td>${project.first_name}</td>
+                                    <td>${project.name}</td>
                                     <td width="150">
                                         <button data-id="${
                                             project.id

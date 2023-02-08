@@ -4,7 +4,8 @@ const AdminAddProjectsPage = () => {
     // kiểm tra localStorage có dữ liệu không?
     // nếu có thì lấy dữ liệu
     // ngược lại thì gán mảng rỗng
-    const projects = JSON.parse(localStorage.getItem("projects")) || [];
+
+    // const projects = JSON.parse(localStorage.getItem("projects")) || [];
     useEffect(() => {
         const form = document.getElementById("form-add");
         const projectName = document.getElementById("project-name");
@@ -12,16 +13,21 @@ const AdminAddProjectsPage = () => {
         form.addEventListener("submit", (e) => {
             e.preventDefault();
             // tạo ra 1 object mới lấy dữ liệu từ form
-            const newObject = {
-                id: projects.length + 1,
+            const formData = {
                 name: projectName.value,
                 img: "https://picsum.photos/400/400",
             };
-            // thêm vào mảng projects
-            projects.push(newObject);
-
-            // lưu vào localStorage dưới dạng chuỗi
-            localStorage.setItem("projects", JSON.stringify(projects));
+            // call api va tham phan tu
+            // GET, POST, PUT, DELETE
+            fetch("http://localhost:3000/projects", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            })
+                .then((response) => response.json())
+                .then((data) => console.log(data));
             // chuyển hướng về trang quản lý dự án
             router.navigate("/admin/projects");
         });
