@@ -1,32 +1,28 @@
 // import { projects } from "@/data";
 import { useEffect, useState } from "@/lib";
 const ProjectsPage = () => {
-    /**
-     *
-     * Bước 1: Khởi tạo state
-     * Bước 2: render HTML
-     * Bước 3: Chạy vào hàm useEffect
-     *    - Lấy ra các nút remove
-     *    - Thêm sự kiện click cho các nút remove
-     */
-    const [data, setData] = useState([]); // 3
+    const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetch("https://reqres.in/api/users")
+        fetch("http://localhost:3000/projects")
             .then((response) => response.json())
-            .then(({ data }) => setData(data));
-        // const projects = JSON.parse(localStorage.getItem("projects")) || [];
-        // setData(projects);
-    }, []);
+            .then((data) => setData(data));
+    }, []); // điều kiện để gọi lại useEffect
     useEffect(() => {
         // 3
         const btns = document.querySelectorAll(".btn-remove");
         for (let btn of btns) {
             btn.addEventListener("click", function () {
                 const id = this.dataset.id;
+                // Xóa local
                 const newProjects = data.filter((project) => project.id != id);
-                // localStorage.setItem('projects', JSON.stringify(newProjects))
                 setData(newProjects);
+
+                // xóa server
+
+                fetch(`http://localhost:3000/projects/${id}`, {
+                    method: "DELETE",
+                }).then(() => alert("Xóa thành công"));
             });
         }
     });
@@ -47,7 +43,7 @@ const ProjectsPage = () => {
                     (project, index) => `
                 <tr>
                     <td>${index + 1}</td>
-                    <td>${project.first_name + project.last_name}</td>
+                    <td>${project.name}</td>
                     <td>
                         <button data-id="${
                             project.id
@@ -68,3 +64,8 @@ export default ProjectsPage;
 // JSON: parse va stringify
 // localStorage.getItem(key) => vi du: JSON.parse(localStorage.get('a'))
 // localStorage.setItem(key, JSON.stringify(value));
+
+// Bước 1: npm i -g json-server
+// Bước 2: truy cập vào root folder gõ : json-server --watch db.json
+// Nếu lỗi: truy cập https://angular.io/guide/setup-local
+// copy dòng: Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
