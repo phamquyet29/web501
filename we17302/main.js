@@ -1,3 +1,4 @@
+import AdminProjectEditPage from "@/pages/admin/projects-edit";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
@@ -19,12 +20,15 @@ router.on("/", () => render(HomePage, app));
 router.on("/about", () => render(AboutPage, app));
 router.on("/contact", () => render(ContactPage, app));
 router.on("/projects", () => render(ProjectsPage, app));
-router.on("/project/:projectId", (params) => render(() => ProjectDetailPage(params), app));
+router.on("/project/:projectId", ({ data }) => render(() => ProjectDetailPage(data), app));
 router.on("/post/:postId", () => render(PostDetailPage, app));
 router.on("/posts", () => render(PostsPage, app));
 
 router.on("/admin/projects", () => render(AdminProjectsPage, app));
 router.on("/admin/projects/add", () => render(AdminProjectAddPage, app));
+router.on("/admin/projects/:projectId/edit", ({ data }) =>
+    render(() => AdminProjectEditPage(data), app)
+);
 
 router.notFound(() => render(NotFoundPage, app));
 

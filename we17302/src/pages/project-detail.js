@@ -1,6 +1,6 @@
 import { projects } from "../data";
 
-const ProjectDetailPage = ({ data: { projectId } }) => {
+const ProjectDetailPage = ({ projectId }) => {
     // find
     const currentProject = projects.find((project) => project.id == projectId);
     if (!currentProject) return `Loading...`;
