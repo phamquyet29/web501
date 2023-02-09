@@ -1,7 +1,6 @@
 import { useEffect, router } from "../../lib";
 
 const AdminProjectsAddPage = () => {
-    const projects = JSON.parse(localStorage.getItem("projects")) || [];
     useEffect(() => {
         const form = document.querySelector("#form-add");
         const projectName = document.querySelector("#project-name");
@@ -10,18 +9,20 @@ const AdminProjectsAddPage = () => {
         form.addEventListener("submit", function (e) {
             e.preventDefault();
             // Tạo proejct mới
-            const project = {
-                id: projects.length + 1,
+            const formData = {
                 name: projectName.value,
                 author: projectAuthor.value,
             };
-            // thêm dự án vào mảng projects
-            projects.push(project);
+            // call API
 
-            // lưu vào localStorage
-            localStorage.setItem("projects", JSON.stringify(projects));
-            // chuyển trang về trang quản lý dự án
-            router.navigate("/admin/projects");
+            // setTimeOut
+            fetch("http://localhost:3000/projects", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            }).then(() => router.navigate("/admin/projects"));
         });
     });
     return `<div class="container pt-5">

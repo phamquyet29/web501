@@ -2,15 +2,12 @@ import { useEffect, useState } from "@/lib";
 
 const AdminProjectsPage = () => {
     // localStorage
-    const [data, setData] = useState([]);
-    const [status, setStatus] = useState("loading...");
+    const [projects, setProjects] = useState([]);
 
     useEffect(() => {
-        fetch("https://reqres.in/api/unknown")
+        fetch("http://localhost:3000/projects")
             .then((response) => response.json())
-            .then(({ data }) => setData(data));
-        // const projects = JSON.parse(localStorage.getItem("projects")) || [];
-        // setData(projects);
+            .then((data) => setProjects(data));
     }, []);
 
     useEffect(function () {
@@ -18,11 +15,14 @@ const AdminProjectsPage = () => {
         for (let btn of btns) {
             btn.addEventListener("click", function () {
                 const id = this.dataset.id;
-                const newProjects = data.filter((project) => project.id != id);
 
-                localStorage.setItem("projects", JSON.stringify(newProjects));
-
-                setData(newProjects);
+                fetch(`http://localhost:3000/projects/${id}`, {
+                    method: "DELETE",
+                }).then(() => {
+                    // Nếu xóa thành công thì render lại màn hình
+                    const newProjects = projects.filter((project) => project.id != id);
+                    setProjects(newProjects);
+                });
             });
         }
     });
@@ -38,12 +38,9 @@ const AdminProjectsPage = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        ${
-                            data.length == 0
-                                ? `<tr><td colspan="3">${status}</td></tr>`
-                                : data
-                                      .map((project, index) => {
-                                          return `
+                        ${projects
+                            .map((project, index) => {
+                                return `
                                 <tr>
                                     <td>${index + 1}</td>
                                     <td>${project.name}</td>
@@ -55,9 +52,8 @@ const AdminProjectsPage = () => {
                                     </td>
                                 </tr>
                             `;
-                                      })
-                                      .join("")
-                        } 
+                            })
+                            .join("")} 
                         
                         
                     </tbody>
@@ -72,5 +68,6 @@ export default AdminProjectsPage;
 //         json-server --watch db.json
 // Bạn nào lỗi
 // angular.io/guide/setup-local
-// copy : Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+// copy và paste vào terminal
+// Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 // Chạy lại json-server --watch db.json
