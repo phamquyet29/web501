@@ -63,6 +63,10 @@ export default AdminProjectsPage;
 // Bước 2: truy cập folder root
 // json-server --watch db.json
 
+//disabled system
+// angular.io/guide/setup-local
+// copy : Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+
 // GET /projects -> list
 // GET /projects/:id -> single
 // POST /projects -> add
