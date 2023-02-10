@@ -27,9 +27,7 @@ const AdminAddProjectsPage = () => {
                 body: JSON.stringify(formData),
             })
                 .then((response) => response.json())
-                .then((data) => console.log(data));
-            // chuyển hướng về trang quản lý dự án
-            router.navigate("/admin/projects");
+                .then(() => router.navigate("/admin/projects"));
         });
     });
     return `<div class="container">
