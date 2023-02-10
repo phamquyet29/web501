@@ -1,11 +1,18 @@
-import { useEffect, router } from "../../lib";
+import { useEffect, router, useState } from "../../lib";
 // import { projects } from "../../data";
 
 const AdminEditProjectPage = ({ id }) => {
+    const [project, setProject] = useState({});
     // Lấy dữ liệu từ localStorage
-    const projects = JSON.parse(localStorage.getItem("projects")) || [];
-    // Tìm project theo id
-    const currentProject = projects.find((project) => project.id == id);
+    // const projects = JSON.parse(localStorage.getItem("projects")) || [];
+    // // Tìm project theo id
+    // const currentProject = projects.find((project) => project.id == id);
+
+    useEffect(() => {
+        fetch(`http://localhost:3000/projects/${id}`)
+            .then((response) => response.json())
+            .then((data) => setProject(data));
+    }, []);
     useEffect(() => {
         const form = document.getElementById("form-add");
         const projectName = document.getElementById("project-name");
@@ -13,21 +20,15 @@ const AdminEditProjectPage = ({ id }) => {
             e.preventDefault();
             // Tạo ra project mới
             const formData = {
-                id: currentProject.id,
                 name: projectName.value,
             };
-            // Tạo ra mảng newProjects mới
-            const newProjects = projects.map((project) => {
-                // nếu project.id == formData.id thì trả về mảng đã cập nhật phần tử mới
-                // ngược lại trả về mảng không cập nhật gì
-                return project.id == formdata.id ? formData : project;
-            });
-
-            // lưu vào localStorage
-            localStorage.setItem("projects", JSON.stringify(newProjects));
-
-            // chuyển hướng về trang admin/projects
-            router.navigate("/admin/projects");
+            fetch(`http://localhost:3000/projects/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData), // '{"a": "10"}'
+            }).then(() => router.navigate("/admin/projects"));
         });
     });
 
@@ -36,7 +37,7 @@ const AdminEditProjectPage = ({ id }) => {
                 <form action="" id="form-add">
                     <div class="form-group">
                         <label for="" class="form-label">Tên dự án</label>
-                        <input type="text" class="form-control" id="project-name" value="${currentProject.name}" />
+                        <input type="text" class="form-control" id="project-name" value="${project.name}" />
                     </div>
                     <button class="btn btn-primary">Cập nhật</button>
                 </form>
