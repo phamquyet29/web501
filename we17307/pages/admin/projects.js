@@ -22,14 +22,14 @@ const AdminProjectsPage = () => {
             btn.addEventListener("click", function () {
                 // Lấy id từ data-id của button
                 const id = btn.dataset.id;
-                // Lọc ra các phần tử có id khác với id của button
-                const newProjects = data.filter((project) => project.id != id);
-
-                // Lưu vào localStorage
-                localStorage.setItem("projects", JSON.stringify(newProjects));
-
-                // Gán lại giá trị cho biến data
-                setData(newProjects);
+                fetch(`http://localhost:3000/projects/${id}`, {
+                    method: "DELETE",
+                }).then(() => {
+                    // Lọc ra các phần tử có id khác với id của button
+                    const newProjects = projects.filter((project) => project.id != id);
+                    // Gán lại giá trị cho biến data
+                    setProjects(newProjects);
+                });
             });
         }
     });

@@ -1,16 +1,3 @@
 {
-  "projects": [
-    {
-      "name": "dự án 1",
-      "id": 1
-    },
-    {
-      "name": "dự án 2",
-      "id": 2
-    },
-    {
-      "name": "dự án 3",
-      "id": 3
-    }
-  ]
+  "projects": []
 }
