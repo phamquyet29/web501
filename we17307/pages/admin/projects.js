@@ -72,3 +72,10 @@ const AdminProjectsPage = () => {
 };
 
 export default AdminProjectsPage;
+
+// Bước 1: npm i -g json-server
+// Bước 2: truy cập thư mục dự án, bật terminal
+// json-server --watch db.json
+// nếu lỗi:
+// truy cập : https://angular.io/guide/setup-local
+// chay dong lenh: Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
