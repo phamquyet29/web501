@@ -3,15 +3,13 @@ import { useState, useEffect } from "../../lib";
 
 const AdminProjectsPage = () => {
     // Bước 1: Khởi tạo biến data và hàm setData, giá trị là 1 mảng rỗng
-    const [data, setData] = useState([]);
+    const [projects, setProjects] = useState([]);
 
     // Bước 3: Lấy dữ liệu từ localStorage và gán vào biến data
     useEffect(() => {
-        fetch("https://reqres.in/api/users", {
-            method: "GET",
-        })
+        fetch("http://localhost:3000/projects")
             .then((response) => response.json())
-            .then(({ data }) => setData(data));
+            .then((data) => setProjects(data));
 
         // const projects = JSON.parse(localStorage.getItem("projects")) || [];
         // setData(projects);
@@ -47,12 +45,12 @@ const AdminProjectsPage = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        ${data
+                        ${projects
                             .map(function (project, index) {
                                 return `
                                 <tr>
                                     <td>${index + 1}</td>
-                                    <td>${project.first_name} ${project.last_name}</td>
+                                    <td>${project.name}</td>
                                     <td>
                                         <button data-id="${
                                             project.id
@@ -79,3 +77,11 @@ export default AdminProjectsPage;
 // nếu lỗi:
 // truy cập : https://angular.io/guide/setup-local
 // chay dong lenh: Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+
+// endpoint
+
+// GET /projects -> lấy danh sách
+// GET /projects/:id -> lấy 1 phần tử
+// POST /projects -> thêm phần tử ( có 1 object gửi lên cùng)
+// PUT /projects/:id -> Cập nhật
+// DELETE /projects/:id -> xóa phần tử
