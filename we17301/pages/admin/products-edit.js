@@ -1,3 +1,4 @@
+import { updateProject } from "../../api/project";
 import { router, useEffect, useState } from "../../lib";
 
 const AdminEditProjectsPage = ({ id }) => {
@@ -26,17 +27,7 @@ const AdminEditProjectsPage = ({ id }) => {
                 name: projectName.value,
                 img: "https://picsum.photos/400/400",
             };
-
-            fetch("http://localhost:3000/projects/" + id, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData),
-            }).then(() => {
-                router.navigate("/admin/projects");
-            });
-            // chuyển hướng về trang quản lý dự án
+            updateProject(formData).then(() => router.navigate("/admin/projects"));
         });
     });
     return `<div class="container">

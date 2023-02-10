@@ -1,3 +1,4 @@
+import { addProject } from "../../api/project";
 import { router, useEffect } from "../../lib";
 
 const AdminAddProjectsPage = () => {
@@ -18,16 +19,7 @@ const AdminAddProjectsPage = () => {
                 img: "https://picsum.photos/400/400",
             };
             // call api va tham phan tu
-            // GET, POST, PUT, DELETE
-            fetch("http://localhost:3000/projects", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData),
-            })
-                .then((response) => response.json())
-                .then(() => router.navigate("/admin/projects"));
+            addProject(formData).then(() => router.navigate("/admin/projects"));
         });
     });
     return `<div class="container">

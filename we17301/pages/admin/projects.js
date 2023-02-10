@@ -1,3 +1,4 @@
+import { deleteProject, getProjects } from "../../api/project";
 import { useEffect, useState } from "../../lib";
 
 const AdminProjectsPage = () => {
@@ -5,9 +6,7 @@ const AdminProjectsPage = () => {
     // chạy sau khi render
 
     useEffect(() => {
-        fetch("http://localhost:3000/projects")
-            .then((response) => response.json())
-            .then((data) => setData(data));
+        getProjects().then((data) => setData(data));
     }, []);
 
     useEffect(function () {
@@ -16,12 +15,9 @@ const AdminProjectsPage = () => {
             // btn là 1 phần tử trong mảng?
             const id = btn.dataset.id;
             btn.addEventListener("click", function () {
-                // reRender lại màn hình sau khi xóa
-                const newData = data.filter((project) => project.id != id);
-                setData(newData); // set lại data
-
-                fetch("http://localhost:3000/projects/" + id, {
-                    method: "DELETE",
+                deleteProject(id).then(() => {
+                    const newData = data.filter((project) => project.id != id);
+                    setData(newData); // set lại data
                 });
             });
         }

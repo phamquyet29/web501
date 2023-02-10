@@ -1,13 +1,14 @@
 import Header from "../components/Header";
 import ProjectList from "../components/ProjectList";
 import { useEffect, useState } from "../lib";
-
+import { getProjects } from "../api/project";
 const ProjectsPage = () => {
     const [projects, setProjects] = useState([]);
     useEffect(() => {
-        fetch("http://localhost:3000/projects")
-            .then((response) => response.json())
-            .then((data) => setProjects(data));
+        // fetch("http://localhost:3000/projects")
+        //     .then((response) => response.json())
+        //     .then((data) => setProjects(data));
+        getProjects().then(({ data }) => console.log(data));
     }, []);
     return `
     ${Header()}
