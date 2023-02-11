@@ -1,14 +1,9 @@
 {
   "projects": [
     {
-      "id": 1,
-      "name": "Dự án 1 updated",
+      "id": 2,
+      "name": "Dự án 2 updated",
       "author": "Datlt"
-    },
-    {
-      "name": "Dự án 2",
-      "author": "Datlt",
-      "id": 2
     },
     {
       "name": "Dự án 3",

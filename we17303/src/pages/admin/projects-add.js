@@ -1,3 +1,4 @@
+import { addProject } from "@/api/project";
 import { useEffect, router } from "../../lib";
 
 const AdminProjectsAddPage = () => {
@@ -6,23 +7,19 @@ const AdminProjectsAddPage = () => {
         const projectName = document.querySelector("#project-name");
         const projectAuthor = document.querySelector("#project-author");
 
-        form.addEventListener("submit", function (e) {
+        form.addEventListener("submit", async (e) => {
             e.preventDefault();
-            // Tạo proejct mới
-            const formData = {
-                name: projectName.value,
-                author: projectAuthor.value,
-            };
-            // call API
-
-            // setTimeOut
-            fetch("http://localhost:3000/projects", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData),
-            }).then(() => router.navigate("/admin/projects"));
+            try {
+                // Tạo proejct mới
+                const formData = {
+                    name: projectName.value,
+                    author: projectAuthor.value,
+                };
+                await addProject(formData);
+                router.navigate("/admin/projects");
+            } catch (error) {
+                console.log(error);
+            }
         });
     });
     return `<div class="container pt-5">

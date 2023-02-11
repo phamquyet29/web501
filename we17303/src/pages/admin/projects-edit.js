@@ -1,37 +1,37 @@
+import { getProject, updateProject } from "@/api/project";
 import { useEffect, router, useState } from "@/lib";
 
 const AdminProjectEditPage = ({ id }) => {
-    // const projects = JSON.parse(localStorage.getItem("projects") || []);
-
-    // const currentProject = projects.find((project) => project.id == id);
-
     const [project, setProject] = useState({});
     useEffect(() => {
-        fetch(`http://localhost:3000/projects/${id}`)
-            .then((response) => response.json())
-            .then((data) => setProject(data));
+        (async () => {
+            try {
+                const { data } = await getProject(id);
+                setProject(data);
+            } catch (error) {
+                console.log(error);
+            }
+        })();
     }, []);
     useEffect(() => {
         const form = document.getElementById("form-edit");
         const projectName = document.getElementById("project-name");
         const projectAuthor = document.getElementById("project-author");
 
-        form.addEventListener("submit", function (e) {
+        form.addEventListener("submit", async (e) => {
             e.preventDefault();
 
-            const formData = {
-                id,
-                name: projectName.value,
-                author: projectAuthor.value,
-            };
-
-            fetch("http://localhost:3000/projects/" + id, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData),
-            }).then(() => router.navigate("/admin/projects"));
+            try {
+                const formData = {
+                    id,
+                    name: projectName.value,
+                    author: projectAuthor.value,
+                };
+                await updateProject(formData);
+                router.navigate("/admin/projects");
+            } catch (error) {
+                console.log(error);
+            }
         });
     });
     return `<div>
