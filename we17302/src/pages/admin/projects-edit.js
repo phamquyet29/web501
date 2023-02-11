@@ -5,8 +5,7 @@ const AdminProjectEditPage = ({ projectId }) => {
     useEffect(() => {
         (async () => {
             try {
-                const { data } = await getProject(projectId);
-                setProject(data);
+                setProject(await getProject(projectId));
             } catch (error) {
                 console.log(error);
             }

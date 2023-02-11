@@ -1,7 +1,7 @@
 import instance from "./config";
 
 const getProjects = () => {
-    return instance.get("/projects");
+    return instance.get("/projects"); //
 };
 const getProject = (id) => {
     return instance.get(`/projects/${id}`);
