@@ -1,33 +1,35 @@
+import { getProject, updateProject } from "@/api/project";
 import { useEffect, router, useState } from "@/lib";
 const AdminProjectEditPage = ({ projectId }) => {
     const [project, setProject] = useState({});
     useEffect(() => {
-        fetch(`http://localhost:3000/projects/${projectId}`)
-            .then((response) => response.json())
-            .then((data) => setProject(data));
+        (async () => {
+            try {
+                const { data } = await getProject(projectId);
+                setProject(data);
+            } catch (error) {
+                console.log(error);
+            }
+        })();
     }, []);
     useEffect(() => {
         const form = document.querySelector("#form-edit");
         const projectName = document.querySelector("#project-name");
         const projectAuthor = document.querySelector("#project-author");
 
-        form.addEventListener("submit", function (e) {
+        form.addEventListener("submit", async function (e) {
             e.preventDefault(); // disable reload
-
-            const formData = {
-                name: projectName.value,
-                author: projectAuthor.value,
-            };
-            // setTimeout
-            fetch(`http://localhost:3000/projects/${projectId}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData),
-            })
-                .then(() => router.navigate("/admin/projects"))
-                .catch((error) => console.log(error));
+            try {
+                const formData = {
+                    id: projectId,
+                    name: projectName.value,
+                    author: projectAuthor.value,
+                };
+                await updateProject(formData);
+                router.navigate("/admin/projects");
+            } catch (error) {
+                console.log(error);
+            }
         });
     });
     return `<div>

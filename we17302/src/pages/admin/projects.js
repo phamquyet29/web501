@@ -1,14 +1,26 @@
+import { deleteProject, getProjects } from "@/api/project";
 import { useEffect, useState } from "@/lib";
+import axios from "axios";
 
 const AdminProjectsPage = () => {
     // projects  = 3
     const [projects, setProjects] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:3000/projects")
-            .then((response) => response.json())
-            .then((data) => setProjects(data))
-            .catch((error) => console.log(error));
+        (async () => {
+            try {
+                const { data } = await getProjects();
+                setProjects(data);
+            } catch (error) {
+                console.log(error);
+            }
+        })();
+
+        // getProjects()
+        //     .then(({ data }) => {
+        //         setProjects(data);
+        //     })
+        //     .catch((error) => console.log(error));
     }, []);
     useEffect(() => {
         const btns = document.querySelectorAll(".btn-remove");
@@ -16,8 +28,7 @@ const AdminProjectsPage = () => {
             btn.addEventListener("click", function () {
                 const id = this.dataset.id;
                 // xóa trên server
-                fetch(`http://localhost:3000/projects/${id}`, { method: "DELETE" }).then(() => {
-                    // xóa ở client : reRender
+                deleteProject(id).then(() => {
                     const newsProject = projects.filter((project) => project.id != id);
                     setProjects(newsProject);
                 });
