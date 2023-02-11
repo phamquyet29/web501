@@ -9,8 +9,7 @@ const AdminProjectsPage = () => {
     useEffect(() => {
         (async () => {
             try {
-                const { data } = await getProjects();
-                setProjects(data);
+                setProjects(await getProjects());
             } catch (error) {
                 console.log(error);
             }
