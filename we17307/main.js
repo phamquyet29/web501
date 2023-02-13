@@ -10,6 +10,8 @@ import NotFoundPage from "./pages/not-found";
 import PostsPage from "./pages/posts";
 import ProjectsPage from "./pages/projects";
 import AdminEditProjectPage from "./pages/admin/projects-edit";
+import CategoryPage from "./pages/category";
+import DetailCategoryPage from "./pages/category-detail";
 
 const app = document.querySelector("#app");
 
@@ -19,6 +21,8 @@ router.on("/contact", () => render(ContactPage, app));
 router.on("/projects", () => render(ProjectsPage, app));
 router.on("/project/:id", ({ data }) => render(() => DetailProjectPage(data), app));
 router.on("/posts", () => render(PostsPage, app));
+router.on("/category", () => render(CategoryPage, app));
+router.on("/category/:id", ({ data }) => render(() => DetailCategoryPage(data), app));
 
 // Admin page
 router.on("/admin/projects", () => render(AdminProjectsPage, app));
