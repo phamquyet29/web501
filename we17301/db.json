@@ -1,4 +1,16 @@
 {
+    "users": [
+        {
+            "email": "abc@gmail.com",
+            "password": "$2a$10$TR44.TMJr82mao0x3xZFVOlZ9WSgdPjq8x4mcZRvTt7pDhCDx8.MW",
+            "id": 1
+        },
+        {
+            "email": "datlt2306@gmail.com",
+            "password": "$2a$10$UA8QTfN/dFJFXtqBa4BF..e42gG4rre5HeXYnnYVYNaLDwQbPDFP6",
+            "id": 2
+        }
+    ],
     "projects": [
         {
             "id": "3",
@@ -26,7 +38,13 @@
         }
     ],
     "categoryProjects": [
-        { "id": "1", "name": "Category A" },
-        { "id": "2", "name": "Category B" }
+        {
+            "id": "1",
+            "name": "Category A"
+        },
+        {
+            "id": "2",
+            "name": "Category B"
+        }
     ]
 }

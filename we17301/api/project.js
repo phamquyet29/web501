@@ -16,4 +16,19 @@ const updateProject = (project) => {
     return instance.put(`/projects/${project.id}`, project);
 };
 
-export { getProjects, getProject, addProject, deleteProject, updateProject };
+const getAllCategories = () => {
+    return instance.get("/categoryProjects");
+};
+const getCategory = (id) => {
+    return instance.get(`/categoryProjects/${id}?_embed=projects`);
+};
+
+export {
+    getProjects,
+    getProject,
+    addProject,
+    deleteProject,
+    updateProject,
+    getAllCategories,
+    getCategory,
+};
