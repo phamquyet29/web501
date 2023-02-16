@@ -1,12 +1,33 @@
 {
     "projects": [
         {
-            "name": "Dự án 1 update",
-            "id": 1
+            "name": "Dự án 1",
+            "id": 1,
+            "categoryId": 1
         },
         {
-            "name": "Ahihi",
-            "id": 2
+            "name": "Dự án 2",
+            "id": 2,
+            "categoryId": 2
+        },
+        {
+            "name": "Dự án 3",
+            "id": 3,
+            "categoryId": 1
+        },
+        {
+            "name": "Dự án 4",
+            "id": 4,
+            "categoryId": 1
+        },
+        {
+            "name": "Dự án 5",
+            "id": 5,
+            "categoryId": 2
         }
+    ],
+    "categories": [
+        { "id": 1, "name": "Danh mục 1" },
+        { "id": 2, "name": "Danh mục 2" }
     ]
 }
