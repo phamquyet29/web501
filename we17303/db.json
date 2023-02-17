@@ -1,4 +1,11 @@
 {
+  "users": [
+    {
+      "email": "datlt@gmail.com",
+      "password": "$2a$10$.fTJgnX/Al8La8MHlSH0KerlkmEnUn3bO5rp3uki3O/yWucZ21zBO",
+      "id": 1
+    }
+  ],
   "projects": [
     {
       "id": 2,
