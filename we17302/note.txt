@@ -1,0 +1,7 @@
+Lấy tất cả sản phẩm nằm trong danh mục : _embed
+// http://localhost:3001/categories/1?_embed=projects
+
+Lấy ra thông tin danh mục từ sản phẩm: _expand
+
+http://localhost:3001/projects?_expand=category
+
