@@ -23,7 +23,7 @@ const HomePage = () => {
     
     <h1>Home Page</h1>
     <hr />
-        ${Category({ categories, onClick: onHandleClick })}
+        ${Category({ categories: categories, onClick: onHandleClick })}
         ${Projects({ projects })}
     <hr />
     ${Footer()}
