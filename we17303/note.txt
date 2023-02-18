@@ -1,0 +1,5 @@
+Muốn lấy tất cả sản phẩm nằm trong danh mục: _embed
+ví dụ: http://localhost:3001/categories/:id?_embed=projects
+
+Muốn lấy danh mục thuộc sản phẩm: _expand
+ví dụ: http://localhost:3001/projects/:id?_expand=category
