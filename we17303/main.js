@@ -14,6 +14,15 @@ import ProjectDetailPage from "./src/pages/project-detail";
 import ProjectsPage from "./src/pages/projects";
 const app = document.querySelector("#app");
 
+router.on("/admin/*", () => {}, {
+    // nếu tao truy cập vào tất cả đường có /admin/
+    before(done) {
+        const user = JSON.parse(localStorage.getItem("user")) | [];
+        if (!user) return (window.location.href = "/");
+        if (user && user.id != "1") return (window.location.href = "/login");
+        done();
+    },
+});
 router.on("/", () => render(HomePage, app));
 router.on("/about", () => render(AboutPage, app));
 router.on("/contact", () => render(ContactPage, app));

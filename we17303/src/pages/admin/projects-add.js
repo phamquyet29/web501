@@ -38,3 +38,11 @@ const AdminProjectsAddPage = () => {
 };
 
 export default AdminProjectsAddPage;
+
+// npm i -g <package>: cài đặt package ở ổ hệ thống
+// npm i --save-dev <package> hoặc npm i -D <package>
+// Vẫn là cài đặt package nhưng nó chỉ chạy ở môi trường development
+// npm run build
+
+// npm i --save <package> hoặc npm i <package>:
+// cài đặt project, chạy trong quá trình buildtime
