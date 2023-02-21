@@ -1,7 +1,9 @@
 import { addProject } from "@/api/project";
-import { useEffect, router } from "../../lib";
+import { useEffect, router, useState } from "../../lib";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 const AdminProjectsAddPage = () => {
+    let description;
     useEffect(() => {
         const form = document.querySelector("#form-add");
         const projectName = document.querySelector("#project-name");
@@ -14,14 +16,26 @@ const AdminProjectsAddPage = () => {
                 const formData = {
                     name: projectName.value,
                     author: projectAuthor.value,
+                    description: description.getData(),
                 };
-                await addProject(formData);
-                router.navigate("/admin/projects");
+                console.log(formData);
+                // await addProject(formData);
+                // router.navigate("/admin/projects");
             } catch (error) {
                 console.log(error);
             }
         });
     });
+    useEffect(() => {
+        ClassicEditor.create(document.querySelector("#project-description"))
+            .then((editor) => {
+                description = editor;
+                // window.editor = editor;
+            })
+            .catch((error) => {
+                console.error("There was a problem initializing the editor.", error);
+            });
+    }, []);
     return `<div class="container pt-5">
         <form action="" id="form-add">
             <div class="form-group">
@@ -31,6 +45,10 @@ const AdminProjectsAddPage = () => {
             <div class="form-group">
                 <label for="" class="form-label">Tác giả</label>
                 <input type="text" class="form-control" id="project-author" />
+            </div>
+            <div class="form-group">
+                <label for="" class="form-label">Mô tả dự án</label>
+                <textarea class="form-control" id="project-description"></textarea>
             </div>
             <button class="btn btn-primary">Thêm dự án</button>
         </form>

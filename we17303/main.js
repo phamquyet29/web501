@@ -17,9 +17,9 @@ const app = document.querySelector("#app");
 router.on("/admin/*", () => {}, {
     // nếu tao truy cập vào tất cả đường có /admin/
     before(done) {
-        const user = JSON.parse(localStorage.getItem("user")) | [];
-        if (!user) return (window.location.href = "/");
-        if (user && user.id != "1") return (window.location.href = "/login");
+        // const user = JSON.parse(localStorage.getItem("user")) | [];
+        // if (!user) return (window.location.href = "/");
+        // if (user && user.id != "1") return (window.location.href = "/login");
         done();
     },
 });
