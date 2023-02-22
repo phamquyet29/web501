@@ -19,6 +19,15 @@ import RegisterPage from "./pages/register";
 // alt + shift + o
 // option + shift +
 const app = document.querySelector("#app");
+// hook
+
+router.on("/admin/*", () => {}, {
+    before: (next) => {
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (!user || (user && user.role != "admin")) return (window.location.href = "/");
+        next();
+    },
+});
 
 router.on("/", () => render(HomePage, app));
 router.on("/about", () => render(AboutPage, app));
