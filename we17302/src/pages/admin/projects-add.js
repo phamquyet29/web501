@@ -1,6 +1,13 @@
 import { addProject } from "@/api/project";
 import { useEffect, router } from "@/lib";
 import axios from "axios";
+import { object, string } from "yup";
+
+const projectSchema = object({
+    name: string().required(),
+    author: string().required(),
+});
+
 const AdminProjectAddPage = () => {
     useEffect(() => {
         const form = document.querySelector("#form-add");
@@ -14,8 +21,18 @@ const AdminProjectAddPage = () => {
                     name: projectName.value,
                     author: projectAuthor.value,
                 };
-                await addProject(formData);
-                router.navigate("/admin/projects");
+
+                projectSchema
+                    .validate(formData, { abortEarly: false })
+                    .then(() => {
+                        console.log("thành công");
+                        addProject(formData);
+                    })
+                    .catch((error) => {
+                        console.log(error.errors);
+                    });
+                //
+                // router.navigate("/admin/projects");
             } catch (error) {
                 console.log(error);
             }

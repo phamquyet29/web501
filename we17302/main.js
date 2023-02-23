@@ -16,6 +16,15 @@ import ProjectsPage from "./src/pages/projects";
 
 const app = document.querySelector("#app");
 
+router.on("/admin/*", () => {}, {
+    // private router
+    before: (next) => {
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (!user | (user && user.id != 1)) return (window.location.href = "/");
+        next();
+    },
+});
+
 router.on("/", () => render(HomePage, app));
 router.on("/about", () => render(AboutPage, app));
 router.on("/contact", () => render(ContactPage, app));

@@ -1,39 +1,50 @@
 {
-    "projects": [
-        {
-            "name": "Dự án 1",
-            "author": "datlt",
-            "id": 1,
-            "categoryId": 1
-        },
-        {
-            "name": "Dự án 2",
-            "author": "datlt",
-            "id": 2,
-            "categoryId": 1
-        },
-        {
-            "name": "Dự án 3",
-            "author": "datlt",
-            "id": 3,
-            "categoryId": 2
-        },
-        {
-            "name": "Dự án 4",
-            "author": "datlt",
-            "id": 4,
-            "categoryId": 1
-        }
-    ],
-    "categories": [
-        { "id": 1, "name": "HTML" },
-        { "id": 2, "name": "JS" }
-    ],
-    "users": [
-        {
-            "email": "admin@gmail.com",
-            "password": "$2a$10$QdQOuvHcz27pwXX9ecWgR.EWdmpZqY.jp6FuiOQWAUtdtj92GWBHi",
-            "id": 1
-        }
-    ]
+  "projects": [
+    {
+      "name": "Dự án 1",
+      "author": "datlt",
+      "id": 1,
+      "categoryId": 1
+    },
+    {
+      "name": "Dự án 2",
+      "author": "datlt",
+      "id": 2,
+      "categoryId": 1
+    },
+    {
+      "name": "Dự án 3",
+      "author": "datlt",
+      "id": 3,
+      "categoryId": 2
+    },
+    {
+      "name": "Dự án 4",
+      "author": "datlt",
+      "id": 4,
+      "categoryId": 1
+    },
+    {
+      "name": "123123",
+      "author": "12312312",
+      "id": 5
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "HTML"
+    },
+    {
+      "id": 2,
+      "name": "JS"
+    }
+  ],
+  "users": [
+    {
+      "email": "admin@gmail.com",
+      "password": "$2a$10$QdQOuvHcz27pwXX9ecWgR.EWdmpZqY.jp6FuiOQWAUtdtj92GWBHi",
+      "id": 1
+    }
+  ]
 }
