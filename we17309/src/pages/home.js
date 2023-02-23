@@ -9,12 +9,12 @@ const HomePage = () => {
     const [projects, setProjects] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:3001/categories")
+        fetch("http://localhost:3000/categories")
             .then((response) => response.json())
             .then((data) => setCategories(data));
     }, []);
     const onHandleClick = (id) => {
-        fetch(`http://localhost:3001/categories/${id}?_embed=projects`)
+        fetch(`http://localhost:3000/categories/${id}?_embed=projects`)
             .then((response) => response.json())
             .then((data) => setProjects(data.projects));
     };

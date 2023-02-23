@@ -17,6 +17,14 @@ import AdminProjectEditPage from "./src/pages/admin/projects-edit";
 // option + shift + o
 const app = document.querySelector("#app");
 
+router.on("/admin/*", () => {}, {
+    before: (next) => {
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (!user | (user && user.id != 1)) return (window.location.href = "/");
+        next();
+    },
+});
+
 router.on("/", () => render(HomePage, app));
 router.on("/about", () => render(AboutPage, app));
 router.on("/contact", () => render(ContactPage, app));
