@@ -1,6 +1,12 @@
-import { addProject } from "@/api/project";
-import { useEffect, router, useState } from "../../lib";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { useEffect } from "../../lib";
+import { object, string } from "yup";
+
+const projectSchema = object({
+    name: string().required(),
+    author: string().required(),
+    description: string(),
+});
 
 const AdminProjectsAddPage = () => {
     let description;
@@ -18,11 +24,16 @@ const AdminProjectsAddPage = () => {
                     author: projectAuthor.value,
                     description: description.getData(),
                 };
-                console.log(formData);
+
+                await projectSchema.validate(formData, { abortEarly: false });
+
                 // await addProject(formData);
                 // router.navigate("/admin/projects");
             } catch (error) {
-                console.log(error);
+                error.inner.forEach((error) => {
+                    console.log(error.path);
+                    // switch
+                });
             }
         });
     });
