@@ -22,3 +22,7 @@ let content = "";
 myArr.forEach((name, index) => (content += `<li>${name} + ${index}</li>`));
 
 app.innerHTML = `<ul> ${content}</ul>`;
+
+// Array methods: map, filter, reduce, find, findIndex, some, every, includes
+// destructoring, spread operator, rest parameter
+// nullish, optional chaining
