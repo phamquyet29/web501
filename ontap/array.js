@@ -4,6 +4,9 @@ const products = [
     { id: 2, name: "San pham B", price: 300 }, // item
     { id: 3, name: "San pham C", price: 400 }, // item
 ];
+products.find(function (item) {
+    return item.id === 3; // { id: 3, name: "San pham C", price: 400 }
+});
 const app = document.getElementById("app");
 
 // let content = "";
@@ -31,15 +34,31 @@ const app = document.getElementById("app");
 // Pass a function to map
 const content = products
     .map(
-        (item) => `<div class="border hover:border-green-300">
-        <h2>${item.name}</h2>
-        <span>${item.price}</span>
+        ({ name, price }) => `<div class="border hover:border-green-300">
+        <h2>${name}</h2>
+        <span>${price}</span>
+        <button></button>
     </div>`
     )
     .join(" ");
 
 app.innerHTML = `<div class="max-w-6xl mx-auto grid grid-cols-3 gap-8"> ${content}</div>`;
 
-// Array methods: map, filter, reduce, find
+// Array methods: map, filter, reduce,
 // destructoring, spread operator, rest parameter
-// nullish, optional chaining
+
+const myNumber = [1, 2, 3, 4];
+const newNumber = [...myNumber, 5, 6, 7, 8];
+console.log({ myNumber, newNumber });
+
+const myInfo = {
+    name: "Dat",
+};
+
+const newMyInfo = {
+    ...myInfo,
+    age: 20,
+};
+// shallow copy và deep copy
+
+console.log(newMyInfo);
