@@ -1,7 +1,9 @@
+import Header from "../components/Header";
+
 const HomePage = () => {
     return `
-        <div>
-            <h1 class="bg-red-500">Home Page</h1>
+        <div class="container max-w-4xl mx-auto px-4">
+            ${Header()}
         </div>
     `;
 };

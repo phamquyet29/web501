@@ -1,4 +1,7 @@
-const a = 10;
-const b = 20;
+export const a = 10;
+export const b = 20;
+export function sum(valueA, valueB) {
+    console.log(valueA + valueB);
+}
 
-export { a, b };
+// export { a, b };

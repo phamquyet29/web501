@@ -1,7 +1,2 @@
-import { a, b } from "./data";
-
-function sum(valueA, valueB) {
-    console.log(valueA + valueB);
-}
-
+import { a, b, sum } from "./data";
 sum(a, b);
