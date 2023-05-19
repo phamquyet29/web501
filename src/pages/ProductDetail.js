@@ -1,7 +1,10 @@
+import { products } from "../dataFake";
+
 const ProductDetail = (id) => {
-    console.log("id in component", id);
+    const product = products.find((product) => product.id === +id);
+    if (!product) return "Product not found";
     return `
-        Detail
+        ${product.name}
     `;
 };
 export default ProductDetail;
