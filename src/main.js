@@ -14,6 +14,6 @@ const render = (content, container) => {
 router.on("/", () => render(HomePage, app));
 router.on("/about", () => render(AboutPage, app));
 router.on("/product", () => render(ProductPage, app));
-router.on("/product/:id", ({ data }) => render(() => ProductDetail(data.id), app));
+router.on("/product/:id", ({ data }) => render(() => ProductDetail(data), app));
 
 router.resolve();
