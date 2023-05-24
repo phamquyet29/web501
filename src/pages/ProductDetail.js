@@ -8,3 +8,13 @@ const ProductDetail = ({ id }) => {
     `;
 };
 export default ProductDetail;
+
+// function render(content) {
+//     document.getElementById("root").innerHTML = content();
+// }
+
+// function HomePage() {
+//     return `HomePage`;
+// }
+
+// render(HomePage)
