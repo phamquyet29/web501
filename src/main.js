@@ -1,4 +1,4 @@
-import introlerPage from "./component/introlerPage"
+
 import { render, router } from "./lib"
 import HomePage from "./pages/Homepage"
 
