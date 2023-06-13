@@ -1,10 +1,22 @@
-export const home = () => {
+import { introlAll } from "../api/introler"
+import { useEffect, useState } from "../lib"
+
+
+const introlerPage = () => {
+    const [intro, setIntro] = useState([])
+    useEffect(() => {
+        introlAll().then(({ data: intol }) => setIntro(intol))
+    }, [])
     return `
     <div class="chinh">
     <div id="home" class="content1">
       <div class="gioithieu">
-        
-        <h2 style="color: white;">Hello ! I am</h2>
+        ${intro.map((item) => {
+            return`
+            <h2 style="color: white;"> ${item.name}</h2>
+            <h1 class="font-[700]">
+                <br/>
+            </h1>
 
         <svg
           version="1.1"
@@ -160,20 +172,19 @@ c0.59,0.09,1.17,0.12,1.79,0.21c2.34-4.01,5.3-9.7,5.3-12.22C442.98,22.55,442.89,2
         </div>
 
         <p style="color: white; line-height: 30px;">
-          Student of Information Technology, majoring in Website programming.
-          I dream of becoming FullStack, salary thousands of USD.
+          ${item.text}
         </p>
       </div>
       <div class="gif">
         <img
-          src="https://media.giphy.com/media/oCoDOqw7AfDFlFuCfq/giphy.gif"
+          src="${item.img}"
           alt=""
         />
       </div>
     </div>
     <div class="icon">
       <h3 style="color: white;">FIND WITH ME</h3>
-      <a class="icon--link" href="https://github.com/phamquyet29/du_an1" >
+      <a class="icon--link" href="https://github.com/phamquyet29" >
         <iconify-icon icon="mdi:github"></iconify-icon>
       </a>
       <a
@@ -186,7 +197,10 @@ c0.59,0.09,1.17,0.12,1.79,0.21c2.34-4.01,5.3-9.7,5.3-12.22C442.98,22.55,442.89,2
         <iconify-icon icon="bxl:tiktok"></iconify-icon>
       </a>
     </div>
-  </div>
-    `
-  
-};
+  </div>`
+        })}
+        
+  `
+}
+
+export default introlerPage

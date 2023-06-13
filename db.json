@@ -1,0 +1,55 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Dự án 1",
+      "img": "https://res.cloudinary.com/dnugoxp2r/image/upload/v1686655065/profile/img6_xq0zua.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Dự án mẫu",
+      "img": "https://res.cloudinary.com/dnugoxp2r/image/upload/v1686655065/profile/img5_tjdbax.jpg"
+    },
+    {
+      "id": 3,
+      "name": "php1",
+      "img": "https://res.cloudinary.com/dnugoxp2r/image/upload/v1686655065/profile/img4_nmbkem.jpg"
+    },
+    {
+      "id": 4,
+      "name": "ECMA",
+      "img": "https://res.cloudinary.com/dnugoxp2r/image/upload/v1686655065/profile/img2_njxjqi.jpg"
+    }
+  ],
+  "about": [
+    {
+      "id": 1,
+      "time1": "Tôi sinh ngày29/11/2003 tại Bắc Kạn. Sinh ra và lớn lên ở đây, giờ đi xa mới thấy nhớ quê hương lạ.",
+      "time2": "Năm 2021, tôi tốt nghiệp THPT tại trường THPT Hài Bà Trưng và cũng bắt đầu cuộc sống xa nhà để theo đuổi ước mơ từ đây.",
+      "tinhcach1": "Tôi là người trầm tính, ít nói, sống nội tâm, yêu màu hồng (à mà thực ra là màu xanh, ghi cho nó vần tý), đặc biệt ghét sự dối trá vì đã từng bị lừa dối.",
+      "tinhcach2": "Người ta mới gặp tôi sẽ nghĩ tôi là một người ít nói, quen rồi mới biết đã ít nói lại còn rất chán nữa chứ.",
+      "liker1": "Sở thích thì nhiều vô cùng nhưng có lẽ chơi game là thú vui lớn nhất của tôi. Bây giờ vẫn vậy nhưng không có thời gian nữa.",
+      "liker2": "Có niềm đam mê lớn với công nghệ, thích mày mò vọc vạch đồ điện tử."
+    }
+  ],
+  "introlers": [
+    {
+      "id": 1,
+      "name": "Hi, I'm Quyet",
+      "img": "https://res.cloudinary.com/dnugoxp2r/image/upload/v1686653070/profile/giphy_ukjtfd.gif",
+      "text": "Student of Information Technology, majoring in Website programming.\n          I dream of becoming FullStack, salary thousands of USD."
+    }
+  ],
+  "user": [
+    {
+      "id": 1,
+      "email": "admin@gmail.com",
+      "pass": "quyet123"
+    },
+    {
+      "email": "abc@gmail.com",
+      "password": "123456",
+      "id": 2
+    }
+  ]
+}
