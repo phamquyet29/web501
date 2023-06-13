@@ -1,7 +1,8 @@
 import introlerPage from "./component/introlerPage"
 import projectPage from "./component/projectPage"
 import { render, router } from "./lib"
-import HomePage from "./pages/HomePage"
+import HomePage from "./pages/Homepage"
+
 import aboutHome from "./pages/admin/about/aboutHome"
 import aboutUpdatePage from "./pages/admin/about/aboutUpdate"
 import introlerHome from "./pages/admin/introler/introlerHome"
@@ -14,8 +15,7 @@ import signinPage from "./pages/signinPage"
 import signupPage from "./pages/signupPage"
 
 const app = document.querySelector('#app')
-
-router.on("/", () => { render(HomePage, app) })
+router.on('/',()=> {render(HomePage,app)})
 router.on("/projects/:id", (params) => {
     render(function () {
         return detailPage(params)
