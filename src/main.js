@@ -1,5 +1,4 @@
 import introlerPage from "./component/introlerPage"
-import projectPage from "./component/projectPage"
 import { render, router } from "./lib"
 import HomePage from "./pages/Homepage"
 
